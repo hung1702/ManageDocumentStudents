@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamMobile.Views.Diem.ListDiemPage"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Kết Quả Học Tập">
+    <ContentPage.Content>
+        <StackLayout Margin="0, 5, 0, 0">
+            <StackLayout HeightRequest="80">
+                <Label Text="Bảng Điểm Sinh Viên" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Tên:"/>
+                    <Label Grid.Column="1" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Phan Trung Hung"/>
+                    <Label Grid.Column="2" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="MSV:"/>
+                    <Label Grid.Column="3" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="D19123"/>
+                </Grid>
+            </StackLayout>
+
+            <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            <StackLayout IsVisible="{Binding IsNoDataAll}">
+                <Label Text="{Binding MessageResultAll}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Red" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource TitleLabel}"/>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding HasDataAll}">
+                <Frame HasShadow="True" CornerRadius="10" BackgroundColor="Wheat" Margin="10, 5, 10, 5" Padding="10">
+                    <StackLayout>
+                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                            <Label Grid.Column="0" Grid.Row="0" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Điểm tích lũy (Hệ 4)" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Grid.Row="0" TextColor="Red" Style="{StaticResource TitleLabel}" FontSize="17" Text="{Binding DiemTotalHe4}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                            <Label Grid.Column="0" Grid.Row="1" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Điểm tích lũy (Hệ 10)" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Grid.Row="1" TextColor="Red" Style="{StaticResource TitleLabel}" FontSize="17" Text="{Binding DiemTotal}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                            <Label Grid.Column="0" Grid.Row="2" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Số tín chỉ tích lũy" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Grid.Row="2" TextColor="Red" Style="{StaticResource TitleLabel}" FontSize="17" Text="{Binding TinChiTotal}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            <StackLayout HeightRequest="100" Margin="5,0,5,0">
+                <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Chọn học kỳ:"/>
+                    <Picker Grid.Column="1" TextColor="Black" x:Name="valuePicker" Title="Chọn"
+                            FontSize="16" Style="{StaticResource TitleLabel}" 
+                            ItemsSource="{Binding TenHocKyList}"
+                            SelectedIndex="{Binding SelectedHocky}"
+                            SelectedIndexChanged="OnPickerHocKySelectedIndexChanged" />
+                    <Label Grid.Column="2" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Sắp xếp theo:"/>
+                    <Picker Grid.Column="3" TextColor="Black" x:Name="pickerSortBy" Title="Chọn" 
+                            FontSize="16" Style="{StaticResource TitleLabel}" 
+                            ItemsSource="{Binding SelectedSortBy}" 
+                            SelectedIndexChanged="Picker_OnSelectedSortBy"/>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout Margin="5,0,5,0">
+                <StackLayout>
+                    <Frame HasShadow="True" Margin="5" Padding="7" CornerRadius="10" BackgroundColor="{StaticResource MainColor}">
+                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="6*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="0" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Tên học phần" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                                <Label  Grid.Column="1" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Số TC" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="2" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Điểm TB" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="3" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Điểm Chữ" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsNoDataAll}">
+                    <Label Text="{Binding MessageResultAll}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Red" FontSize="22" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource TitleLabel}"/>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding HasDataAll}">
+                    <Label Text="{Binding MessageResult}" IsVisible="{Binding IsNoDataFilter}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Red" FontSize="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Style="{StaticResource TitleLabel}"/>
+                    <ListView IsVisible="{Binding HasDataFilter}" HasUnevenRows="True" ItemSelected="ListView_ItemSelected" ItemsSource="{Binding ListDiem}" RowHeight="60">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame HasShadow="True" Margin="5" Padding="10" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                                        <StackLayout>
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="6*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" Text="{Binding TenMonHoc}" FontSize="15"></Label>
+                                                <Label HorizontalOptions="Center" Grid.Column="1" FontSize="15" TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding SoTinChi}"></Label>
+                                                <Label HorizontalOptions="Center" Grid.Column="2" FontSize="15" TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding DiemTB}"></Label>
+                                                <Label HorizontalOptions="Center" Grid.Column="3" FontSize="15" TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding DiemChu}"></Label>
+                                            </Grid>
+                                        </StackLayout>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

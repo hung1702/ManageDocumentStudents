@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ced76eaf07043f695532b4f8577d6d6" Name="Diagram1" ZoomLevel="60">
+        <EntityTypeShape EntityType="SoHoaModel.AccessToken" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SoHoaModel.Diem" Width="1.5" PointX="11.25" PointY="7.625" />
+        <EntityTypeShape EntityType="SoHoaModel.HocKy" Width="1.5" PointX="9" PointY="6.875" />
+        <EntityTypeShape EntityType="SoHoaModel.HocPhi" Width="1.5" PointX="11.25" PointY="12.25" />
+        <EntityTypeShape EntityType="SoHoaModel.Khoa" Width="1.5" PointX="1.5" PointY="4.25" />
+        <EntityTypeShape EntityType="SoHoaModel.LoaiVB" Width="1.5" PointX="6" PointY="7.375" />
+        <EntityTypeShape EntityType="SoHoaModel.LopSinhVien" Width="1.5" PointX="3.75" PointY="4.125" />
+        <EntityTypeShape EntityType="SoHoaModel.MonHoc" Width="1.5" PointX="9" PointY="2.5" />
+        <EntityTypeShape EntityType="SoHoaModel.S_Authority" Width="1.5" PointX="0.75" PointY="16.5" />
+        <EntityTypeShape EntityType="SoHoaModel.S_NhanVien" Width="1.5" PointX="3" PointY="23.75" />
+        <EntityTypeShape EntityType="SoHoaModel.S_Role" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="SoHoaModel.S_Role_URL" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="SoHoaModel.S_Uers_Atuthority" Width="1.5" PointX="3" PointY="12.25" />
+        <EntityTypeShape EntityType="SoHoaModel.S_User_Role" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="SoHoaModel.S_Users" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SoHoaModel.SinhVien" Width="1.5" PointX="6" PointY="10.875" />
+        <EntityTypeShape EntityType="SoHoaModel.VanBan" Width="1.5" PointX="8.25" PointY="11.25" />
+        <AssociationConnector Association="SoHoaModel.FK_HocKy_Diem" />
+        <AssociationConnector Association="SoHoaModel.FK_MonHoc_Diem" />
+        <AssociationConnector Association="SoHoaModel.FK_SinhVien_Diem" />
+        <AssociationConnector Association="SoHoaModel.FK_HocKy_HocPhi" />
+        <AssociationConnector Association="SoHoaModel.FK_SinhVien_HocPhi" />
+        <AssociationConnector Association="SoHoaModel.FK_Khoa_LopSV" />
+        <AssociationConnector Association="SoHoaModel.FK_VanBan_LoaiVB" />
+        <AssociationConnector Association="SoHoaModel.FK_Lop_SinhVien" />
+        <AssociationConnector Association="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Authority" />
+        <AssociationConnector Association="SoHoaModel.FK_S_NhanVien_S_Users" />
+        <AssociationConnector Association="SoHoaModel.FK_S_Role_URL_S_Role" />
+        <AssociationConnector Association="SoHoaModel.FK_S_User_Role_S_Role" />
+        <AssociationConnector Association="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Users" />
+        <AssociationConnector Association="SoHoaModel.FK_S_User_Role_S_Users" />
+        <AssociationConnector Association="SoHoaModel.FK_S_Users_SinhVien" />
+        <AssociationConnector Association="SoHoaModel.FK_SinhVien_VanBan" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamMobile.Views.HoSo.DetailHoSoPage"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Chi Tiết Hồ Sơ">
+    <ContentPage.Content>
+
+        <ScrollView Padding="0,15,5,15">
+            <StackLayout  Margin="20, 0, 20, 0">
+                <StackLayout>
+                    <Label Text="Hồ sơ" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  TextColor="{StaticResource MainColor}" FontSize="20" FontAttributes="Bold"/>
+                </StackLayout>
+
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <ScrollView>
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 5, 0, 0">
+                        <StackLayout Orientation="Horizontal">
+                            <Label FontSize="Medium" WidthRequest="100" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" Text="Tên Hồ Sơ:" FontAttributes="Bold"></Label>
+                            <Label FontSize="Medium" LineBreakMode="NoWrap" HorizontalTextAlignment="Start" Text="{Binding CurrentData.KyHieuThongTin}" FontAttributes="Bold"></Label>
+                        </StackLayout>
+                        <Grid VerticalOptions="CenterAndExpand" RowSpacing="10">
+                            <!--<Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>-->
+                            <StackLayout>
+                                <Label FontSize="Medium" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" Style="{StaticResource TitleLabel}" Text="{Binding CurrentData.CustomNameProfileNumber}"></Label>
+                                
+                                <Label FontSize="Medium" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" Style="{StaticResource TitleLabel}" Grid.Row="1" Grid.Column="0" Text="{Binding CurrentData.CustomNameProfileCode}"></Label>
+
+                                <Label FontSize="Medium" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" Style="{StaticResource TitleLabel}" Grid.Row="2" Grid.Column="0" Text="{Binding CurrentData.ThoiGianBatDauFormat}"></Label>
+
+                                <Label FontSize="Medium" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" Style="{StaticResource TitleLabel}" Grid.Row="3" Grid.Column="0" Text="{Binding CurrentData.ThoiGianKetThucFormat}"></Label>
+
+                                <Label FontSize="Medium" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" Style="{StaticResource TitleLabel}" Grid.Row="4" Grid.Column="0" Text="{Binding CurrentData.CustomNameThoiHanBaoQuan}"></Label>
+
+                                <Label FontSize="Medium" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" Style="{StaticResource TitleLabel}" Grid.Row="5" Grid.Column="0" Text="{Binding CurrentData.CustomNameKyHieuThongTin}"></Label>
+
+                                <Label FontSize="Medium" HorizontalOptions="FillAndExpand" LineBreakMode="NoWrap" Style="{StaticResource TitleLabel}" Grid.Row="6" Grid.Column="0" Text="{Binding CurrentData.CustomNameTuKhoa}"></Label>
+                            </StackLayout>
+                            
+                        </Grid>
+                    </StackLayout>
+                   
+                </ScrollView>
+
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+
+                
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

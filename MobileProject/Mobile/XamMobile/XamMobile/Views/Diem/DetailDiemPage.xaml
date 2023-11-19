@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamMobile.Views.Diem.DetailDiemPage"
+             xmlns:htmlLabel="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
+             Title="Kết quả học tập"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <StackLayout Margin="5" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  HeightRequest="500" BackgroundColor="White">
+            <StackLayout>
+                <Label Text="Chi Tiết Điểm" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="Black" FontSize="20" FontAttributes="Bold"/>
+                <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Tên:"/>
+                    <Label Grid.Column="1" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Phan Trung Hung"/>
+                    <Label Grid.Column="2" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="MSV:"/>
+                    <Label Grid.Column="3" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="D19123"/>
+                </Grid>
+            </StackLayout>
+
+            <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            <StackLayout>
+                <Frame HasShadow="True" CornerRadius="10" BackgroundColor="Wheat" Margin="10, 5, 10, 5" Padding="10">
+                    <StackLayout>
+                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                            <Label Grid.Column="0" Grid.Row="0" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Điểm tích lũy (Hệ 4)" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Grid.Row="0" TextColor="Red" Style="{StaticResource TitleLabel}" FontSize="17" Text="{Binding DiemTotalHe4}"  VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                            <Label Grid.Column="0" Grid.Row="1" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Điểm tích lũy (Hệ 10)" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Grid.Row="1" TextColor="Red" Style="{StaticResource TitleLabel}" FontSize="17" Text="{Binding DiemTotal}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Margin="10,0,10,0" Orientation="Horizontal">
+                            <Label Grid.Column="0" Grid.Row="2" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" Text="Số tín chỉ tích lũy" VerticalOptions="Center" HorizontalOptions="Start"/>
+                            <Label Grid.Column="1" Grid.Row="2" TextColor="Red" Style="{StaticResource TitleLabel}" FontSize="17" Text="{Binding TinChiTotal}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            <ScrollView>
+                <StackLayout>
+                    <Frame HasShadow="True" Margin="10, 5, 10, 5" Padding="10" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10, 0, 10, 0">
+                            <StackLayout>
+                                <Label Text="Tên học phần" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"></Label>
+                                <Label Text="{Binding DiemDetail.TenMonHoc}" TextColor="{StaticResource MainColor}" FontSize="22" Style="{StaticResource TitleLabel}" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                <Label Text="Mã học phần" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                <Label Text="{Binding DiemDetail.MaMonHoc}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                <Label Text="Học kỳ" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                <Label Text="{Binding DiemDetail.TenHocKy}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                <Label Text="Số tín chỉ" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                <Label Text="{Binding DiemDetail.SoTinChi}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Margin="0,10,0,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Điểm chuyên cần" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                    <Label Grid.Column="1" Text="{Binding HeSoDiemCC}" TextColor="{StaticResource MainColor}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                                    <Label Grid.Column="2" Text="{Binding DiemDetail.DiemCC}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Margin="0,10,0,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Điểm kiểm tra" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                    <Label Grid.Column="1" Text="{Binding HeSoDiemKT}" TextColor="{StaticResource MainColor}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                                    <Label Grid.Column="2" Text="{Binding DiemDetail.DiemKT}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Margin="0,10,0,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Điểm thực hành" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" HorizontalOptions="Start"></Label>
+                                    <Label Grid.Column="1" Text="{Binding HeSoDiemTH}" TextColor="{StaticResource MainColor}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                                    <Label Grid.Column="2" Text="{Binding DiemDetail.DiemTH}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Margin="0,10,0,0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="4*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Điểm thi" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                    <Label Grid.Column="1" Text="{Binding HeSoDiemThi}" TextColor="{StaticResource MainColor}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                                    <Label Grid.Column="2" Text="{Binding DiemDetail.DiemThi}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="End"></Label>
+                                </Grid>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                <Label Text="Tổng kết (Hệ 10)" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                <Label Text="{Binding DiemDetail.DiemTB}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                <Label Text="Tổng kết (Hệ 4)" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                <Label Text="{Binding DiemDetail.DiemTBHe4}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" Margin="0,10,0,0">
+                                <Label Text="Tổng kết (Dạng chữ)" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                                <Label Text="{Binding DiemDetail.DiemChu}" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="17" VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Label>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--<ActivityIndicator Color="{StaticResource MainColor}" IsRunning="True"></ActivityIndicator>-->
+                    <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+            </ScrollView>
+            <StackLayout AbsoluteLayout.LayoutBounds=".5,1,.5,.1" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Orientation="Horizontal">
+                <!--<Button BackgroundColor="{StaticResource MainColor}" CornerRadius="10" TextColor="White" HorizontalOptions="CenterAndExpand" Text="Xem chi tiết điểm" Command="{Binding GotoDetailDiemPageCommand}"></Button>-->
+                <!--<Button BackgroundColor="{StaticResource MainColor}" CornerRadius="10" TextColor="White" HorizontalOptions="CenterAndExpand" Clicked="Button_Clicked" Text="Xem chi tiết điểm"></Button>-->
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

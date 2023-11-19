@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamMobile.Views.HoSo.HoSoPage"
+             Title="Quản Lý Hồ Sơ"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0">
+                    <Image HeightRequest="180" HorizontalOptions="FillAndExpand" Aspect="AspectFill" Source="DashBoard_1.png"></Image>
+                </StackLayout>
+                <StackLayout Grid.Row="1" BackgroundColor="White" Padding="5,0,5,0">
+                    <Frame HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+                            <StackLayout Orientation="Horizontal" Margin="0,0,0,10" Padding="5,0,5,0">
+                                <!--<Image HorizontalOptions="Start"  HeightRequest="27" WidthRequest="27" Source="bell_child_red_icon.png"></Image>-->
+                                <Label Margin="0,0,0,5" Text="Danh Sách Hồ Sơ" FontAttributes="Bold" FontSize="Large" TextColor="{StaticResource MainColor}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                            <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                            <ListView HasUnevenRows="True"  ItemsSource="{Binding HoSoList}" ItemSelected="ListView_ItemSelected">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame HasShadow="True" Margin="10" CornerRadius="10" Padding="5">
+                                                <StackLayout Padding="0,5,5,5" Margin="0,5,5,5">
+                                                    <Grid ColumnSpacing="5">
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="40"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0">
+                                                            <Image VerticalOptions="CenterAndExpand" HeightRequest="30" WidthRequest="30"  Source="hoso2.jpg"></Image>
+                                                        </StackLayout>
+                                                        <StackLayout Grid.Column="1">
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <Label LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="Tên Hồ Sơ:" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                                                <Label LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="{Binding KyHieuThongTin}" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                                            </StackLayout>
+                                                            <Label LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="{Binding CustomNameProfileNumber}" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                                            <Label LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="{Binding CustomNameProfileCode}" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                                            <Label TextColor="{Binding TextColor}" MaxLines="2" LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="{Binding TrangThai}" FontSize="{StaticResource FontSizeSmall}"></Label>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                    
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

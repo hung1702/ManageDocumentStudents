@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:customcontrols="clr-namespace:XamMobile.CustomControls"
+             x:Class="XamMobile.Views.NhanVien.AddNhanVienPage"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Tạo Nhân Viên Mới">
+    <ContentPage.Content>
+        <ScrollView Padding="0,15,5,15">
+            <StackLayout  Margin="20, 0, 20, 0">
+                <StackLayout>
+                    <Label Text="Nhân Viên" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  TextColor="{StaticResource MainColor}" FontSize="20" FontAttributes="Bold"/>
+                </StackLayout>
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <Grid ColumnSpacing="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Margin="5, 0, 0, 0">
+                        <Label Text="Avartar" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  TextColor="Gray" FontSize="Small"/>
+                        <Frame CornerRadius="5" Padding="15">
+                            <Image Aspect="AspectFill" Source="{Binding ImageSourceAvatar}" HeightRequest="150" WidthRequest="150">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding UpdatePictureCommand}"></TapGestureRecognizer>
+                                </Image.GestureRecognizers>
+                                <Image.Triggers>
+                                    <DataTrigger Binding="{Binding ImageSourceAvatar}" TargetType="Image" Value="null">
+                                        <Setter Property="Source" Value="image_default.png"></Setter>
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Column="1">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding UpdatePictureCommand}"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Image VerticalOptions="EndAndExpand" HeightRequest="25" WidthRequest="25" Source="pencil.png"></Image>
+                        <Label Text="Add Avatar" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource MainColor}" FontSize="Small" FontAttributes="Bold"/>
+                    </StackLayout>
+                </Grid>
+
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand">
+                            <Label Text="Họ Tên"></Label>
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding CurrentData.TenNhanVien}" Placeholder="Họ tên" HorizontalOptions="FillAndExpand" PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                            <StackLayout Orientation="Horizontal">
+                                <Label VerticalOptions="Center" Text="Ngày sinh"></Label>
+                                <DatePicker HorizontalOptions="EndAndExpand" Date="{Binding CurrentData.NgaySinh}"></DatePicker>
+                            </StackLayout>
+                            <Label Text="Giới tính"></Label>
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding CurrentData.GioiTinhStr}" Placeholder="Giới tính" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                            <Label Text="Số CMT"></Label>
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding CurrentData.SoCMT}" Placeholder="Số CMT" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                            <StackLayout Orientation="Horizontal">
+                                <Label VerticalOptions="Center" Text="Ngày cấp"></Label>
+                                <DatePicker HorizontalOptions="EndAndExpand" Date="{Binding CurrentData.NgayCap}"></DatePicker>
+                            </StackLayout>
+                            <Label Text="Nơi cấp"></Label>
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding CurrentData.NoiCap}" Placeholder="Nơi cấp" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                            <Label Text="Quê quán"></Label>
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding CurrentData.NguyenQuan}" Placeholder="Quê quán" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                            <Label Text="Số điện thoại"></Label>
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding CurrentData.SoDienThoai}" Placeholder="Số điện thoại" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                            <Label Text="Email"></Label>
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding CurrentData.Email}" Placeholder="Email" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                        </StackLayout>
+                        <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Column="0">
+                            <Button CornerRadius="10" WidthRequest="200" BorderWidth="10" TextColor="White" BackgroundColor="{StaticResource MainColor}" HorizontalOptions="CenterAndExpand" Command="{Binding SaveNhanVienCommand}" Text="Lưu"></Button>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Button CornerRadius="10" WidthRequest="200" BorderWidth="10" TextColor="White" BackgroundColor="DarkGray" HorizontalOptions="CenterAndExpand" Text="Hủy"></Button>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
