@@ -9,7 +9,7 @@ using System.Text;
 using Xamarin.Forms;
 using XamMobile.EntityModels;
 using XamMobile.Models;
-using XamMobile.Services;
+using XamMobile.Services.Interface;
 using XamMobile.Views;
 
 namespace XamMobile.ViewModels
@@ -27,6 +27,7 @@ namespace XamMobile.ViewModels
         public DelegateCommand GotoLogPageCommand { get; private set; }
         public DelegateCommand GotoNhanVienPageCommand { get; private set; }
         public DelegateCommand GotoHoSoPageCommand { get; private set; }
+        public DelegateCommand GotoDiemMenuPageCommand { get; private set; }
 
         //INotificationService iNotificationService;
         IHoSoService hoSoService;
@@ -40,6 +41,7 @@ namespace XamMobile.ViewModels
             GotoLogPageCommand = new DelegateCommand(() => { GotoPage("LogPage"); });
             GotoNhanVienPageCommand = new DelegateCommand(() => { GotoPage("NhanVienPage"); });
             GotoHoSoPageCommand = new DelegateCommand(() => { GotoPage("HoSoPage"); });
+            GotoDiemMenuPageCommand = new DelegateCommand(() => { GotoPage("DiemMenuPage"); });
             LoadAllData();
         }
 
@@ -62,18 +64,18 @@ namespace XamMobile.ViewModels
         {
             using (UserDialogs.Instance.Loading("Đang tải"))
             {
-                var notificationResults = (await hoSoService.GetDSHoSo()).OrderBy(x => x.TrangThai);
-                if (notificationResults == null)
-                {
-                    UserDialogs.Instance.Alert("Có lỗi khi tải thông báo");
-                    return;
-                }
-                Notifications.Clear();
-                foreach (var item in notificationResults)
-                {
-                    Notifications.Add(item);
-                }
-                Console.WriteLine("");
+                //var notificationResults = (await hoSoService.GetDSHoSo()).OrderBy(x => x.TrangThai);
+                //if (notificationResults == null)
+                //{
+                //    UserDialogs.Instance.Alert("Có lỗi khi tải thông báo");
+                //    return;
+                //}
+                //Notifications.Clear();
+                //foreach (var item in notificationResults)
+                //{
+                //    Notifications.Add(item);
+                //}
+                //Console.WriteLine("");
             }
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using XamMobile.EntityModels;
+using XamMobile.Services.Interface;
 using XamMobile.Services.Models;
 
 namespace XamMobile.Services

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -24,8 +25,19 @@ namespace G02Apis.Controllers
             if (model.NhanVienID == 0)
             {
                 db.S_NhanVien.Add(model);
-                var result = db.S_NhanVien.ToList();
-                return Ok(model);
+
+                try
+                {
+                    var res = await db.SaveChangesAsync();
+                    var result = db.S_NhanVien.ToList();
+
+                    return Ok(model);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
+
+                }
             }
             else
             {
@@ -45,9 +57,12 @@ namespace G02Apis.Controllers
                 nhanVien.NoiCap = model.NoiCap;
                 nhanVien.SoDienThoai = model.SoDienThoai;
                 nhanVien.Email = model.Email;
+                db.S_NhanVien.AddOrUpdate(nhanVien);
                 try
                 {
-                    await db.SaveChangesAsync();
+                    var res = await db.SaveChangesAsync();
+
+                    return Ok(nhanVien);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -55,7 +70,6 @@ namespace G02Apis.Controllers
 
                 }
 
-                return Ok(nhanVien);
             }
         }
     }

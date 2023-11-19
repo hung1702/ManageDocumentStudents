@@ -14,12 +14,6 @@ namespace G02Apis.Models
     
     public partial class S_Uers_Atuthority
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public S_Uers_Atuthority()
-        {
-            this.S_Page = new HashSet<S_Page>();
-        }
-    
         public int SystemID { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<int> AuthorityID { get; set; }
@@ -28,8 +22,6 @@ namespace G02Apis.Models
         public Nullable<System.DateTime> NgayCapNhat { get; set; }
     
         public virtual S_Authority S_Authority { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<S_Page> S_Page { get; set; }
         public virtual S_Users S_Users { get; set; }
     }
 }

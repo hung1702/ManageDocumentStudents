@@ -21,6 +21,9 @@ namespace XamMobile.EntityModels
         [JsonProperty("NhanVienID")]
         public int NhanVienID { get; set; }
 
+        [JsonProperty("MaNhanVien")]
+        public string MaNhanVien { get; set; }
+
         private string _tenNhanVien;
         [JsonProperty("TenNhanVien")]
         public string TenNhanVien

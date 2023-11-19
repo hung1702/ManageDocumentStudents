@@ -190,7 +190,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="imgs\user-2x.png" />
     <Content Include="Models\SoHoaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SoHoaModel.edmx</DependentUpon>
@@ -216,7 +215,6 @@
     <Compile Include="Controllers\FileUploadsController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NhatKiesController.cs" />
     <Compile Include="Controllers\S_HoSoController.cs" />
     <Compile Include="Controllers\S_NhanVienController.cs" />
     <Compile Include="Controllers\S_UsersController.cs" />
@@ -227,25 +225,28 @@
     <Compile Include="Models\AccessToken.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CommonStatu.cs">
+    <Compile Include="Models\Diem.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DiaChi.cs">
+    <Compile Include="Models\HocKy.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DigitalSignature.cs">
+    <Compile Include="Models\HocPhi.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FileUpload.cs">
+    <Compile Include="Models\Khoa.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Huyen.cs">
+    <Compile Include="Models\LoaiVB.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NgonNgu.cs">
+    <Compile Include="Models\LopSinhVien.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\NhatKy.cs">
+    <Compile Include="Models\MonHoc.cs">
+      <DependentUpon>SoHoaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SinhVien.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SoHoaModel.Context.cs">
@@ -266,58 +267,13 @@
     <Compile Include="Models\S_Authority.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\S_ComputerFile.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_CoQuan.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_HopSo.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_HoSo.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_Kho.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_LoaiCoQuan.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_LoaiHoSo.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_LoaiVanBan.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_LuuTru.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_Menu.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_MucDoTinCay.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_MucLucHoSo.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\S_NhanVien.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_Page.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_Phong.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\S_Role.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\S_Role_URL.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\S_TinhTrangVatLy.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\S_Uers_Atuthority.cs">
@@ -329,13 +285,7 @@
     <Compile Include="Models\S_User_Role.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\S_VanBan.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tinh.cs">
-      <DependentUpon>SoHoaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\XaPhuong.cs">
+    <Compile Include="Models\VanBan.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -371,9 +321,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="APIs\" />
-    <Folder Include="App_Data\" />
     <Folder Include="Commons\" />
+    <Folder Include="imgs\" />
     <Folder Include="Views\FileUploads\" />
   </ItemGroup>
   <ItemGroup>

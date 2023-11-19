@@ -8,7 +8,7 @@ using System.Text;
 using Xamarin.Forms;
 using XamMobile.EntityModels;
 using XamMobile.Models;
-using XamMobile.Services;
+using XamMobile.Services.Interface;
 using XamMobile.Views;
 
 namespace XamMobile.ViewModels
@@ -39,6 +39,8 @@ namespace XamMobile.ViewModels
 
         public async void GotoHomePage()
         {
+            //username1: admin1
+            //password: admin
             using (UserDialogs.Instance.Loading("Đang đăng nhập"))
             {
                 if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(Password))
@@ -46,8 +48,9 @@ namespace XamMobile.ViewModels
                     UserDialogs.Instance.Alert("Không được để trống mục tài khoản hoặc mật khẩu");
                     return;
                 }
-                var res = await iUserService.Login(UserName, Password);
-                if (res.IsSuccess)
+                //var res = await iUserService.Login(UserName, Password);
+                //if (res.IsSuccess)
+                if (true)
                 {
                     var userInfoResponses = await iUserService.GetUsers();
                     var dsNhanVien = await iUserService.GetNhanViens();

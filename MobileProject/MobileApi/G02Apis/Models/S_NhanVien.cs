@@ -15,6 +15,7 @@ namespace G02Apis.Models
     public partial class S_NhanVien
     {
         public int NhanVienID { get; set; }
+        public string MaNhanVien { get; set; }
         public string TenNhanVien { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public string Email { get; set; }

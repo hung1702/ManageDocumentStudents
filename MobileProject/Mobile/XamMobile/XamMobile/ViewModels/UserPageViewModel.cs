@@ -13,6 +13,7 @@ using XamMobile.DependencyServices;
 using XamMobile.EntityModels;
 using XamMobile.Models;
 using XamMobile.Services;
+using XamMobile.Services.Interface;
 using XamMobile.Views.MasterDetail;
 
 namespace XamMobile.ViewModels

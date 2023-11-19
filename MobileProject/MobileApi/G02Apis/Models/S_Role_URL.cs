@@ -18,7 +18,6 @@ namespace G02Apis.Models
         public Nullable<int> MenuId { get; set; }
         public int RoleUrlId { get; set; }
     
-        public virtual S_Menu S_Menu { get; set; }
         public virtual S_Role S_Role { get; set; }
     }
 }

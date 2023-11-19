@@ -17,81 +17,89 @@
           <Property Name="UserAgent" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="IP" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="CommonStatus">
-          <Key>
-            <PropertyRef Name="StatusID" />
-          </Key>
-          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StatusName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Note" Type="nvarchar" MaxLength="500" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <EntityType Name="DiaChi">
-          <Key>
-            <PropertyRef Name="DiaChiID" />
-          </Key>
-          <Property Name="DiaChiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TinhID" Type="int" />
-          <Property Name="HuyenID" Type="int" />
-          <Property Name="XaPhuongID" Type="int" />
-          <Property Name="DiaChiChiTiet" Type="nvarchar" MaxLength="200" />
-          <Property Name="Deleted" Type="bit" />
-        </EntityType>
-        <EntityType Name="DigitalSignatures">
+        <EntityType Name="Diem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="200" />
-          <Property Name="Size" Type="varchar" MaxLength="10" />
-          <Property Name="Path" Type="nvarchar" MaxLength="500" />
-          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="CreateDate" Type="date" />
-          <Property Name="IsDeleted" Type="tinyint" />
-          <Property Name="Status" Type="tinyint" />
-          <Property Name="ServerPath" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MonHocId" Type="int" />
+          <Property Name="SinhVienId" Type="int" />
+          <Property Name="HocKyId" Type="int" />
+          <Property Name="DiemCC" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiemTH" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiemKT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiemThi" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiemTB" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiemCKy" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NgayTao" Type="datetime2" Precision="7" />
+          <Property Name="NguoiTao" Type="int" />
         </EntityType>
-        <EntityType Name="FileUploads">
+        <EntityType Name="HocKy">
           <Key>
-            <PropertyRef Name="FileUploadId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="FileUploadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="500" />
-          <Property Name="FileType" Type="nvarchar" MaxLength="500" />
-          <Property Name="FileSize" Type="nvarchar" MaxLength="500" />
-          <Property Name="FilePath" Type="nvarchar" MaxLength="500" />
-          <Property Name="FileKey" Type="nvarchar" MaxLength="500" />
-          <Property Name="FileDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NamHoc" Type="datetime2" Precision="7" />
         </EntityType>
-        <EntityType Name="Huyen">
+        <EntityType Name="HocPhi">
           <Key>
-            <PropertyRef Name="HuyenID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="HuyenID" Type="int" Nullable="false" />
-          <Property Name="TenHuyen" Type="nvarchar" MaxLength="50" />
-          <Property Name="Cap" Type="nvarchar" MaxLength="20" />
-          <Property Name="TinhID" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HocKyId" Type="int" />
+          <Property Name="SinhVienId" Type="int" />
+          <Property Name="SoTien" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NgayTao" Type="datetime2" Precision="7" />
+          <Property Name="NguoiTao" Type="int" />
         </EntityType>
-        <EntityType Name="NgonNgu">
+        <EntityType Name="Khoa">
           <Key>
-            <PropertyRef Name="NgonNguId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="NgonNguId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenNgonNgu" Type="nvarchar" MaxLength="100" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <EntityType Name="NhatKy">
-          <Key>
-            <PropertyRef Name="NhatKyId" />
-          </Key>
-          <Property Name="NhatKyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" />
-          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="TruongId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
           <Property Name="CreatedBy" Type="int" />
-          <Property Name="UpdatedBy" Type="int" />
-          <Property Name="VanBanId" Type="int" />
-          <Property Name="Action" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="LoaiVB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ThoiGianXuLy" Type="int" />
+        </EntityType>
+        <EntityType Name="LopSinhVien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="MaLop" Type="nvarchar(max)" />
           <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="KhoaId" Type="int" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="NgayTao" Type="datetime2" Precision="7" />
+          <Property Name="NguoiTao" Type="int" />
+          <Property Name="SoTinChi" Type="int" />
+          <Property Name="HocKyId" Type="int" />
         </EntityType>
         <EntityType Name="S_Authority">
           <Key>
@@ -102,221 +110,23 @@
           <Property Name="NgayTao" Type="date" />
           <Property Name="NgayCapNhat" Type="date" />
         </EntityType>
-        <EntityType Name="S_ComputerFile">
-          <Key>
-            <PropertyRef Name="ComputerFileID" />
-          </Key>
-          <Property Name="ComputerFileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
-          <Property Name="IsDeleted" Type="bit" />
-          <Property Name="Url" Type="varchar" MaxLength="4000" />
-          <Property Name="FileName" Type="nvarchar" MaxLength="300" />
-          <Property Name="NguoiTao" Type="nvarchar" MaxLength="100" />
-          <Property Name="NguoiCapNhat" Type="nvarchar" MaxLength="100" />
-          <Property Name="HoSoID" Type="int" />
-          <Property Name="PageNumber" Type="int" />
-          <Property Name="SheetNumber" Type="int" />
-          <Property Name="Size" Type="nvarchar" MaxLength="20" />
-          <Property Name="FolderPath" Type="nvarchar" MaxLength="1000" />
-          <Property Name="ClientUrl" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Status" Type="tinyint" />
-        </EntityType>
-        <EntityType Name="S_CoQuan">
-          <Key>
-            <PropertyRef Name="CoQuanID" />
-          </Key>
-          <Property Name="CoQuanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MaCoQuan" Type="nvarchar" MaxLength="50" />
-          <Property Name="TenCoQuan" Type="nvarchar" MaxLength="500" />
-          <Property Name="LoaiCoQuan" Type="int" />
-          <Property Name="Deleted" Type="bit" />
-          <Property Name="Status" Type="bit" />
-          <Property Name="DiaChiID" Type="int" />
-          <Property Name="CreateDate" Type="datetime" />
-          <Property Name="UpdateDate" Type="datetime" />
-          <Property Name="CreateBy" Type="varchar" MaxLength="50" />
-          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
-          <Property Name="Description" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
-          <Property Name="AddressDetail" Type="nvarchar" MaxLength="500" />
-        </EntityType>
-        <EntityType Name="S_HopSo">
-          <Key>
-            <PropertyRef Name="HopSoID" />
-          </Key>
-          <Property Name="HopSoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MucLucHoSoID" Type="int" Nullable="false" />
-          <Property Name="MaHopSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="TieuDeHopSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="isDeleted" Type="bit" />
-          <Property Name="NgayBatDau" Type="date" />
-          <Property Name="NgayKetThuc" Type="date" />
-          <Property Name="GhiChu" Type="nvarchar(max)" />
-          <Property Name="SoLuongVanBan" Type="int" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="Status" Type="tinyint" />
-        </EntityType>
-        <EntityType Name="S_HoSo">
-          <Key>
-            <PropertyRef Name="HoSoID" />
-          </Key>
-          <Property Name="HoSoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HopSoID" Type="int" Nullable="false" />
-          <Property Name="MaHoSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="SoHoSo" Type="char" MaxLength="10" />
-          <Property Name="TieuDeHoSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="TenHoSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="LoaiHoSoID" Type="int" />
-          <Property Name="IsDeleted" Type="bit" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
-          <Property Name="ThoiGianBatDau" Type="datetime" />
-          <Property Name="ThoiGianKetThuc" Type="datetime" />
-          <Property Name="ThoiHanBaoQuan" Type="nvarchar" MaxLength="50" />
-          <Property Name="CheDoSuDung" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgonNgu" Type="nvarchar" MaxLength="50" />
-          <Property Name="TongSoVanBan" Type="int" />
-          <Property Name="KyHieuThongTin" Type="nvarchar" MaxLength="2000" />
-          <Property Name="TuKhoa" Type="nvarchar" MaxLength="30" />
-          <Property Name="SoLuongTo" Type="int" />
-          <Property Name="SoLuongTrang" Type="int" />
-          <Property Name="TinhTrangVatLy" Type="nvarchar" MaxLength="50" />
-          <Property Name="FileCatalog" Type="int" />
-          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
-          <Property Name="Status" Type="tinyint" />
-          <Property Name="FontId" Type="int" />
-          <Property Name="OrganId" Type="int" />
-          <Property Name="TableOfContentId" Type="int" />
-        </EntityType>
-        <EntityType Name="S_Kho">
-          <Key>
-            <PropertyRef Name="KhoID" />
-          </Key>
-          <Property Name="KhoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenKho" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-        </EntityType>
-        <EntityType Name="S_LoaiCoQuan">
-          <Key>
-            <PropertyRef Name="LoaiCoQuanID" />
-          </Key>
-          <Property Name="LoaiCoQuanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenLoaiCoQuan" Type="nvarchar" MaxLength="50" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <EntityType Name="S_LoaiHoSo">
-          <Key>
-            <PropertyRef Name="LoaiHoSoID" />
-          </Key>
-          <Property Name="LoaiHoSoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenLoaiHoSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <EntityType Name="S_LoaiVanBan">
-          <Key>
-            <PropertyRef Name="LoaiVanBanID" />
-          </Key>
-          <Property Name="LoaiVanBanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TenLoaiVanBan" Type="nvarchar" MaxLength="50" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <EntityType Name="S_LuuTru">
-          <Key>
-            <PropertyRef Name="LuuTruID" />
-          </Key>
-          <Property Name="LuuTruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="KhoID" Type="int" />
-          <Property Name="PhongID" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="S_Menu">
-          <Key>
-            <PropertyRef Name="MenuId" />
-          </Key>
-          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Url" Type="nvarchar" MaxLength="2000" />
-          <Property Name="MenuName" Type="nvarchar" MaxLength="50" />
-          <Property Name="MenuRole" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="S_MucDoTinCay">
-          <Key>
-            <PropertyRef Name="MucDoTinCayID" />
-          </Key>
-          <Property Name="MucDoTinCayID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoaiMucDoTinCay" Type="nvarchar" MaxLength="30" />
-          <Property Name="IsDeleted" Type="bit" />
-        </EntityType>
-        <EntityType Name="S_MucLucHoSo">
-          <Key>
-            <PropertyRef Name="MucLucHoSoID" />
-          </Key>
-          <Property Name="MucLucHoSoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LuuTruID" Type="int" Nullable="false" />
-          <Property Name="TenMucLucHoSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="MaDanhMuc" Type="nvarchar" MaxLength="50" />
-          <Property Name="MucLucSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="isDeleted" Type="bit" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="S_NhanVien">
           <Key>
             <PropertyRef Name="NhanVienID" />
           </Key>
           <Property Name="NhanVienID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaNhanVien" Type="nvarchar(max)" />
           <Property Name="TenNhanVien" Type="nvarchar" MaxLength="150" />
           <Property Name="NgaySinh" Type="date" />
-          <Property Name="Email" Type="varchar" MaxLength="150" />
-          <Property Name="SoCMT" Type="varchar" MaxLength="12" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="SoCMT" Type="varchar(max)" />
           <Property Name="UserID" Type="int" />
           <Property Name="GioiTinh" Type="bit" />
           <Property Name="NgayCap" Type="date" />
-          <Property Name="NoiCap" Type="nvarchar" MaxLength="50" />
-          <Property Name="SoDienThoai" Type="varchar" MaxLength="12" />
+          <Property Name="NoiCap" Type="nvarchar(max)" />
+          <Property Name="SoDienThoai" Type="varchar(max)" />
           <Property Name="AnhDaiDien" Type="nvarchar" MaxLength="50" />
           <Property Name="NguyenQuan" Type="nvarchar" MaxLength="250" />
-        </EntityType>
-        <EntityType Name="S_Page">
-          <Key>
-            <PropertyRef Name="PageID" />
-          </Key>
-          <Property Name="PageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SystemID" Type="int" />
-          <Property Name="PageName" Type="nchar" MaxLength="800" />
-          <Property Name="URLPage" Type="char" MaxLength="800" />
-          <Property Name="NguoiTao" Type="nvarchar" MaxLength="50" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-        </EntityType>
-        <EntityType Name="S_Phong">
-          <Key>
-            <PropertyRef Name="PhongID" />
-          </Key>
-          <Property Name="PhongID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PhongSo" Type="nvarchar" MaxLength="50" />
-          <Property Name="CoQuanID" Type="int" />
-          <Property Name="TenPhong" Type="nvarchar" MaxLength="50" />
-          <Property Name="LichSu" Type="nvarchar(max)" />
-          <Property Name="NgonNgu" Type="nvarchar" MaxLength="50" />
-          <Property Name="isDeleted" Type="bit" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
-          <Property Name="SoLuongTaiLieuGiay" Type="float" />
-          <Property Name="SoLuongTaiLieuDaSoHoa" Type="float" />
-          <Property Name="CreatedBy" Type="int" />
-          <Property Name="ModifiedBy" Type="int" />
-          <Property Name="NgonNguID" Type="int" />
-          <Property Name="CongCu" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="S_Role">
           <Key>
@@ -333,14 +143,6 @@
           <Property Name="RoleID" Type="int" />
           <Property Name="MenuId" Type="int" />
           <Property Name="RoleUrlId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="S_TinhTrangVatLy">
-          <Key>
-            <PropertyRef Name="TinhTrangVatLyId" />
-          </Key>
-          <Property Name="TinhTrangVatLyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TinhTrang" Type="nvarchar" MaxLength="50" />
-          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="S_Uers_Atuthority">
           <Key>
@@ -376,175 +178,107 @@
           <Property Name="isDeleted" Type="smallint" />
           <Property Name="PasswordSalt" Type="varchar" MaxLength="300" />
         </EntityType>
-        <EntityType Name="S_VanBan">
+        <EntityType Name="SinhVien">
           <Key>
-            <PropertyRef Name="VanBanID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="VanBanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="HoSoID" Type="int" Nullable="false" />
-          <Property Name="MaDinhDanh" Type="nvarchar" MaxLength="25" />
-          <Property Name="STTVanBan" Type="int" />
-          <Property Name="LoaiVanBanID" Type="int" />
-          <Property Name="SoVanBan" Type="nvarchar" MaxLength="11" />
-          <Property Name="KyHieuVanBan" Type="nvarchar" MaxLength="30" />
-          <Property Name="NoiDung" Type="nvarchar" MaxLength="500" />
-          <Property Name="NgonNguID" Type="int" />
-          <Property Name="SoTo" Type="int" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
-          <Property Name="KyHieuThongTin" Type="nvarchar" MaxLength="30" />
-          <Property Name="TuKhoa" Type="nvarchar" MaxLength="100" />
-          <Property Name="ButTich" Type="nvarchar" MaxLength="2000" />
-          <Property Name="TinhTrangVatLyID" Type="int" />
-          <Property Name="MucDoTinCayID" Type="int" />
-          <Property Name="ComputerFileID" Type="int" />
-          <Property Name="NgayVanBan" Type="date" />
-          <Property Name="isDeleted" Type="bit" />
-          <Property Name="NgayTao" Type="date" />
-          <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="NguoiTao" Type="nvarchar" MaxLength="50" />
-          <Property Name="NguoiChinhSua" Type="nvarchar" MaxLength="50" />
-          <Property Name="StatusID" Type="int" />
-          <Property Name="NgayThemFile" Type="date" />
-          <Property Name="CheDoSuDung" Type="nvarchar" MaxLength="20" />
-          <Property Name="Status" Type="tinyint" />
-          <Property Name="Signature" Type="tinyint" />
-          <Property Name="Confirmed" Type="tinyint" />
-          <Property Name="CoQuanToChucBanHanh" Type="nvarchar" MaxLength="50" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaSinhVien" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="SDT" Type="nvarchar(max)" />
+          <Property Name="CMND" Type="nvarchar(max)" />
+          <Property Name="DiaChi" Type="nvarchar(max)" />
+          <Property Name="Ho" Type="nvarchar(max)" />
+          <Property Name="Ten" Type="nvarchar(max)" />
+          <Property Name="NgaySinh" Type="datetime2" Precision="7" />
+          <Property Name="GioiTinh" Type="bit" />
+          <Property Name="KhoaId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="NguoiTao" Type="datetime2" Precision="7" />
+          <Property Name="NgayTao" Type="int" />
+          <Property Name="TrangThai" Type="int" Nullable="false" />
+          <Property Name="LopId" Type="int" />
+          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Tinh">
+        <EntityType Name="VanBan">
           <Key>
-            <PropertyRef Name="TinhID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="TinhID" Type="int" Nullable="false" />
-          <Property Name="TenTinh" Type="nvarchar" MaxLength="50" />
-          <Property Name="Cap" Type="nvarchar" MaxLength="20" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SinhVienId" Type="int" />
+          <Property Name="MaSinhVien" Type="int" />
+          <Property Name="NamThu" Type="int" />
+          <Property Name="SDT" Type="int" />
+          <Property Name="KhoaHoc" Type="nvarchar(max)" />
+          <Property Name="QueQuan" Type="nvarchar(max)" />
+          <Property Name="CMND" Type="nvarchar(max)" />
+          <Property Name="NoiDung" Type="nvarchar(max)" />
+          <Property Name="LyDo" Type="nvarchar(max)" />
+          <Property Name="DaXacMinh" Type="bit" Nullable="false" />
+          <Property Name="IsPending" Type="bit" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsSolved" Type="bit" Nullable="false" />
+          <Property Name="LoaiVBId" Type="int" />
+          <Property Name="NgayTao" Type="datetime2" Precision="7" />
+          <Property Name="NguoiTao" Type="int" />
         </EntityType>
-        <EntityType Name="XaPhuong">
-          <Key>
-            <PropertyRef Name="XaPhuongID" />
-          </Key>
-          <Property Name="XaPhuongID" Type="int" Nullable="false" />
-          <Property Name="TenXaPhuong" Type="nvarchar" MaxLength="50" />
-          <Property Name="Cap" Type="nvarchar" MaxLength="20" />
-          <Property Name="HuyenID" Type="int" />
-        </EntityType>
-        <Association Name="FK_NhatKy_S_VanBan">
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="0..1" />
-          <End Role="NhatKy" Type="Self.NhatKy" Multiplicity="*" />
+        <Association Name="FK_HocKy_Diem">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="Diem" Type="Self.Diem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_VanBan">
-              <PropertyRef Name="VanBanID" />
+            <Principal Role="HocKy">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="NhatKy">
-              <PropertyRef Name="VanBanId" />
+            <Dependent Role="Diem">
+              <PropertyRef Name="HocKyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_ComputerFile_S_HoSo">
-          <End Role="S_HoSo" Type="Self.S_HoSo" Multiplicity="0..1" />
-          <End Role="S_ComputerFile" Type="Self.S_ComputerFile" Multiplicity="*" />
+        <Association Name="FK_HocKy_HocPhi">
+          <End Role="HocKy" Type="Self.HocKy" Multiplicity="0..1" />
+          <End Role="HocPhi" Type="Self.HocPhi" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_HoSo">
-              <PropertyRef Name="HoSoID" />
+            <Principal Role="HocKy">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_ComputerFile">
-              <PropertyRef Name="HoSoID" />
+            <Dependent Role="HocPhi">
+              <PropertyRef Name="HocKyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_CoQuan_DiaChi">
-          <End Role="DiaChi" Type="Self.DiaChi" Multiplicity="0..1" />
-          <End Role="S_CoQuan" Type="Self.S_CoQuan" Multiplicity="*" />
+        <Association Name="FK_Khoa_LopSV">
+          <End Role="Khoa" Type="Self.Khoa" Multiplicity="0..1" />
+          <End Role="LopSinhVien" Type="Self.LopSinhVien" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DiaChi">
-              <PropertyRef Name="DiaChiID" />
+            <Principal Role="Khoa">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_CoQuan">
-              <PropertyRef Name="DiaChiID" />
+            <Dependent Role="LopSinhVien">
+              <PropertyRef Name="KhoaId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_CoQuan_S_LoaiCoQuan1">
-          <End Role="S_LoaiCoQuan" Type="Self.S_LoaiCoQuan" Multiplicity="0..1" />
-          <End Role="S_CoQuan" Type="Self.S_CoQuan" Multiplicity="*" />
+        <Association Name="FK_Lop_SinhVien">
+          <End Role="LopSinhVien" Type="Self.LopSinhVien" Multiplicity="0..1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_LoaiCoQuan">
-              <PropertyRef Name="LoaiCoQuanID" />
+            <Principal Role="LopSinhVien">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_CoQuan">
-              <PropertyRef Name="LoaiCoQuan" />
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="LopId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_HopSo_S_MucLucHoSo">
-          <End Role="S_MucLucHoSo" Type="Self.S_MucLucHoSo" Multiplicity="1" />
-          <End Role="S_HopSo" Type="Self.S_HopSo" Multiplicity="*" />
+        <Association Name="FK_MonHoc_Diem">
+          <End Role="MonHoc" Type="Self.MonHoc" Multiplicity="0..1" />
+          <End Role="Diem" Type="Self.Diem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_MucLucHoSo">
-              <PropertyRef Name="MucLucHoSoID" />
+            <Principal Role="MonHoc">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_HopSo">
-              <PropertyRef Name="MucLucHoSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_HoSo_S_HopSo">
-          <End Role="S_HopSo" Type="Self.S_HopSo" Multiplicity="1" />
-          <End Role="S_HoSo" Type="Self.S_HoSo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_HopSo">
-              <PropertyRef Name="HopSoID" />
-            </Principal>
-            <Dependent Role="S_HoSo">
-              <PropertyRef Name="HopSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_HoSo_S_LoaiHoSo">
-          <End Role="S_LoaiHoSo" Type="Self.S_LoaiHoSo" Multiplicity="0..1" />
-          <End Role="S_HoSo" Type="Self.S_HoSo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_LoaiHoSo">
-              <PropertyRef Name="LoaiHoSoID" />
-            </Principal>
-            <Dependent Role="S_HoSo">
-              <PropertyRef Name="LoaiHoSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_LuuTru_S_Kho1">
-          <End Role="S_Kho" Type="Self.S_Kho" Multiplicity="0..1" />
-          <End Role="S_LuuTru" Type="Self.S_LuuTru" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Kho">
-              <PropertyRef Name="KhoID" />
-            </Principal>
-            <Dependent Role="S_LuuTru">
-              <PropertyRef Name="KhoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_LuuTru_S_Phong1">
-          <End Role="S_Phong" Type="Self.S_Phong" Multiplicity="1" />
-          <End Role="S_LuuTru" Type="Self.S_LuuTru" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Phong">
-              <PropertyRef Name="PhongID" />
-            </Principal>
-            <Dependent Role="S_LuuTru">
-              <PropertyRef Name="PhongID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_MucLucHoSo_S_LuuTru">
-          <End Role="S_LuuTru" Type="Self.S_LuuTru" Multiplicity="1" />
-          <End Role="S_MucLucHoSo" Type="Self.S_MucLucHoSo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_LuuTru">
-              <PropertyRef Name="LuuTruID" />
-            </Principal>
-            <Dependent Role="S_MucLucHoSo">
-              <PropertyRef Name="LuuTruID" />
+            <Dependent Role="Diem">
+              <PropertyRef Name="MonHocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -557,30 +291,6 @@
             </Principal>
             <Dependent Role="S_NhanVien">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_Page_S_Role_Uers_Atuthority]">
-          <End Role="S_Uers_Atuthority" Type="Self.S_Uers_Atuthority" Multiplicity="0..1" />
-          <End Role="S_Page" Type="Self.S_Page" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Uers_Atuthority">
-              <PropertyRef Name="SystemID" />
-            </Principal>
-            <Dependent Role="S_Page">
-              <PropertyRef Name="SystemID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_Phong_S_CoQuan">
-          <End Role="S_CoQuan" Type="Self.S_CoQuan" Multiplicity="0..1" />
-          <End Role="S_Phong" Type="Self.S_Phong" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_CoQuan">
-              <PropertyRef Name="CoQuanID" />
-            </Principal>
-            <Dependent Role="S_Phong">
-              <PropertyRef Name="CoQuanID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -605,18 +315,6 @@
             </Principal>
             <Dependent Role="S_Uers_Atuthority">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_Role_URL_S_Menu">
-          <End Role="S_Menu" Type="Self.S_Menu" Multiplicity="0..1" />
-          <End Role="S_Role_URL" Type="Self.S_Role_URL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Menu">
-              <PropertyRef Name="MenuId" />
-            </Principal>
-            <Dependent Role="S_Role_URL">
-              <PropertyRef Name="MenuId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -656,175 +354,107 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_VanBan_CommonStatus">
-          <End Role="CommonStatus" Type="Self.CommonStatus" Multiplicity="0..1" />
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="*" />
+        <Association Name="FK_S_Users_SinhVien">
+          <End Role="S_Users" Type="Self.S_Users" Multiplicity="1" />
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CommonStatus">
-              <PropertyRef Name="StatusID" />
+            <Principal Role="S_Users">
+              <PropertyRef Name="UserID" />
             </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="StatusID" />
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_VanBan_NgonNgu">
-          <End Role="NgonNgu" Type="Self.NgonNgu" Multiplicity="0..1" />
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="*" />
+        <Association Name="FK_SinhVien_Diem">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="Diem" Type="Self.Diem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NgonNgu">
-              <PropertyRef Name="NgonNguId" />
+            <Principal Role="SinhVien">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="NgonNguID" />
+            <Dependent Role="Diem">
+              <PropertyRef Name="SinhVienId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_VanBan_S_ComputerFile">
-          <End Role="S_ComputerFile" Type="Self.S_ComputerFile" Multiplicity="0..1" />
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="*" />
+        <Association Name="FK_SinhVien_HocPhi">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="HocPhi" Type="Self.HocPhi" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_ComputerFile">
-              <PropertyRef Name="ComputerFileID" />
+            <Principal Role="SinhVien">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="ComputerFileID" />
+            <Dependent Role="HocPhi">
+              <PropertyRef Name="SinhVienId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_VanBan_S_HoSo">
-          <End Role="S_HoSo" Type="Self.S_HoSo" Multiplicity="1" />
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="*" />
+        <Association Name="FK_SinhVien_VanBan">
+          <End Role="SinhVien" Type="Self.SinhVien" Multiplicity="0..1" />
+          <End Role="VanBan" Type="Self.VanBan" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_HoSo">
-              <PropertyRef Name="HoSoID" />
+            <Principal Role="SinhVien">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="HoSoID" />
+            <Dependent Role="VanBan">
+              <PropertyRef Name="SinhVienId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_VanBan_S_LoaiVanBan">
-          <End Role="S_LoaiVanBan" Type="Self.S_LoaiVanBan" Multiplicity="0..1" />
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="*" />
+        <Association Name="FK_VanBan_LoaiVB">
+          <End Role="LoaiVB" Type="Self.LoaiVB" Multiplicity="0..1" />
+          <End Role="VanBan" Type="Self.VanBan" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_LoaiVanBan">
-              <PropertyRef Name="LoaiVanBanID" />
+            <Principal Role="LoaiVB">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="LoaiVanBanID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_VanBan_S_MucDoTinCay">
-          <End Role="S_MucDoTinCay" Type="Self.S_MucDoTinCay" Multiplicity="0..1" />
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_MucDoTinCay">
-              <PropertyRef Name="MucDoTinCayID" />
-            </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="MucDoTinCayID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_VanBan_S_TinhTrangVatLy">
-          <End Role="S_TinhTrangVatLy" Type="Self.S_TinhTrangVatLy" Multiplicity="0..1" />
-          <End Role="S_VanBan" Type="Self.S_VanBan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_TinhTrangVatLy">
-              <PropertyRef Name="TinhTrangVatLyId" />
-            </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="TinhTrangVatLyID" />
+            <Dependent Role="VanBan">
+              <PropertyRef Name="LoaiVBId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SoHoaModelStoreContainer">
           <EntitySet Name="AccessTokens" EntityType="Self.AccessTokens" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CommonStatus" EntityType="Self.CommonStatus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DiaChi" EntityType="Self.DiaChi" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DigitalSignatures" EntityType="Self.DigitalSignatures" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FileUploads" EntityType="Self.FileUploads" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Huyen" EntityType="Self.Huyen" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NgonNgu" EntityType="Self.NgonNgu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NhatKy" EntityType="Self.NhatKy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diem" EntityType="Self.Diem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HocKy" EntityType="Self.HocKy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HocPhi" EntityType="Self.HocPhi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Khoa" EntityType="Self.Khoa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiVB" EntityType="Self.LoaiVB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LopSinhVien" EntityType="Self.LopSinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Authority" EntityType="Self.S_Authority" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_ComputerFile" EntityType="Self.S_ComputerFile" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_CoQuan" EntityType="Self.S_CoQuan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_HopSo" EntityType="Self.S_HopSo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_HoSo" EntityType="Self.S_HoSo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_Kho" EntityType="Self.S_Kho" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_LoaiCoQuan" EntityType="Self.S_LoaiCoQuan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_LoaiHoSo" EntityType="Self.S_LoaiHoSo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_LoaiVanBan" EntityType="Self.S_LoaiVanBan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_LuuTru" EntityType="Self.S_LuuTru" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_Menu" EntityType="Self.S_Menu" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_MucDoTinCay" EntityType="Self.S_MucDoTinCay" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_MucLucHoSo" EntityType="Self.S_MucLucHoSo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_NhanVien" EntityType="Self.S_NhanVien" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_Page" EntityType="Self.S_Page" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_Phong" EntityType="Self.S_Phong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Role" EntityType="Self.S_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Role_URL" EntityType="Self.S_Role_URL" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_TinhTrangVatLy" EntityType="Self.S_TinhTrangVatLy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Uers_Atuthority" EntityType="Self.S_Uers_Atuthority" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_User_Role" EntityType="Self.S_User_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Users" EntityType="Self.S_Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="S_VanBan" EntityType="Self.S_VanBan" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tinh" EntityType="Self.Tinh" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="XaPhuong" EntityType="Self.XaPhuong" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_NhatKy_S_VanBan" Association="Self.FK_NhatKy_S_VanBan">
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-            <End Role="NhatKy" EntitySet="NhatKy" />
+          <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VanBan" EntityType="Self.VanBan" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_HocKy_Diem" Association="Self.FK_HocKy_Diem">
+            <End Role="HocKy" EntitySet="HocKy" />
+            <End Role="Diem" EntitySet="Diem" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_ComputerFile_S_HoSo" Association="Self.FK_S_ComputerFile_S_HoSo">
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-            <End Role="S_ComputerFile" EntitySet="S_ComputerFile" />
+          <AssociationSet Name="FK_HocKy_HocPhi" Association="Self.FK_HocKy_HocPhi">
+            <End Role="HocKy" EntitySet="HocKy" />
+            <End Role="HocPhi" EntitySet="HocPhi" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_CoQuan_DiaChi" Association="Self.FK_S_CoQuan_DiaChi">
-            <End Role="DiaChi" EntitySet="DiaChi" />
-            <End Role="S_CoQuan" EntitySet="S_CoQuan" />
+          <AssociationSet Name="FK_Khoa_LopSV" Association="Self.FK_Khoa_LopSV">
+            <End Role="Khoa" EntitySet="Khoa" />
+            <End Role="LopSinhVien" EntitySet="LopSinhVien" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_CoQuan_S_LoaiCoQuan1" Association="Self.FK_S_CoQuan_S_LoaiCoQuan1">
-            <End Role="S_LoaiCoQuan" EntitySet="S_LoaiCoQuan" />
-            <End Role="S_CoQuan" EntitySet="S_CoQuan" />
+          <AssociationSet Name="FK_Lop_SinhVien" Association="Self.FK_Lop_SinhVien">
+            <End Role="LopSinhVien" EntitySet="LopSinhVien" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_HopSo_S_MucLucHoSo" Association="Self.FK_S_HopSo_S_MucLucHoSo">
-            <End Role="S_MucLucHoSo" EntitySet="S_MucLucHoSo" />
-            <End Role="S_HopSo" EntitySet="S_HopSo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_HoSo_S_HopSo" Association="Self.FK_S_HoSo_S_HopSo">
-            <End Role="S_HopSo" EntitySet="S_HopSo" />
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_HoSo_S_LoaiHoSo" Association="Self.FK_S_HoSo_S_LoaiHoSo">
-            <End Role="S_LoaiHoSo" EntitySet="S_LoaiHoSo" />
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_LuuTru_S_Kho1" Association="Self.FK_S_LuuTru_S_Kho1">
-            <End Role="S_Kho" EntitySet="S_Kho" />
-            <End Role="S_LuuTru" EntitySet="S_LuuTru" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_LuuTru_S_Phong1" Association="Self.FK_S_LuuTru_S_Phong1">
-            <End Role="S_Phong" EntitySet="S_Phong" />
-            <End Role="S_LuuTru" EntitySet="S_LuuTru" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_MucLucHoSo_S_LuuTru" Association="Self.FK_S_MucLucHoSo_S_LuuTru">
-            <End Role="S_LuuTru" EntitySet="S_LuuTru" />
-            <End Role="S_MucLucHoSo" EntitySet="S_MucLucHoSo" />
+          <AssociationSet Name="FK_MonHoc_Diem" Association="Self.FK_MonHoc_Diem">
+            <End Role="MonHoc" EntitySet="MonHoc" />
+            <End Role="Diem" EntitySet="Diem" />
           </AssociationSet>
           <AssociationSet Name="FK_S_NhanVien_S_Users" Association="Self.FK_S_NhanVien_S_Users">
             <End Role="S_Users" EntitySet="S_Users" />
             <End Role="S_NhanVien" EntitySet="S_NhanVien" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_Page_S_Role_Uers_Atuthority]" Association="Self.FK_S_Page_S_Role_Uers_Atuthority]">
-            <End Role="S_Uers_Atuthority" EntitySet="S_Uers_Atuthority" />
-            <End Role="S_Page" EntitySet="S_Page" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_Phong_S_CoQuan" Association="Self.FK_S_Phong_S_CoQuan">
-            <End Role="S_CoQuan" EntitySet="S_CoQuan" />
-            <End Role="S_Phong" EntitySet="S_Phong" />
           </AssociationSet>
           <AssociationSet Name="FK_S_Role_Uers_Atuthority]_S_Authority" Association="Self.FK_S_Role_Uers_Atuthority]_S_Authority">
             <End Role="S_Authority" EntitySet="S_Authority" />
@@ -833,10 +463,6 @@
           <AssociationSet Name="FK_S_Role_Uers_Atuthority]_S_Users" Association="Self.FK_S_Role_Uers_Atuthority]_S_Users">
             <End Role="S_Users" EntitySet="S_Users" />
             <End Role="S_Uers_Atuthority" EntitySet="S_Uers_Atuthority" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_Role_URL_S_Menu" Association="Self.FK_S_Role_URL_S_Menu">
-            <End Role="S_Menu" EntitySet="S_Menu" />
-            <End Role="S_Role_URL" EntitySet="S_Role_URL" />
           </AssociationSet>
           <AssociationSet Name="FK_S_Role_URL_S_Role" Association="Self.FK_S_Role_URL_S_Role">
             <End Role="S_Role" EntitySet="S_Role" />
@@ -850,33 +476,25 @@
             <End Role="S_Users" EntitySet="S_Users" />
             <End Role="S_User_Role" EntitySet="S_User_Role" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_CommonStatus" Association="Self.FK_S_VanBan_CommonStatus">
-            <End Role="CommonStatus" EntitySet="CommonStatus" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
+          <AssociationSet Name="FK_S_Users_SinhVien" Association="Self.FK_S_Users_SinhVien">
+            <End Role="S_Users" EntitySet="S_Users" />
+            <End Role="SinhVien" EntitySet="SinhVien" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_NgonNgu" Association="Self.FK_S_VanBan_NgonNgu">
-            <End Role="NgonNgu" EntitySet="NgonNgu" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
+          <AssociationSet Name="FK_SinhVien_Diem" Association="Self.FK_SinhVien_Diem">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="Diem" EntitySet="Diem" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_ComputerFile" Association="Self.FK_S_VanBan_S_ComputerFile">
-            <End Role="S_ComputerFile" EntitySet="S_ComputerFile" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
+          <AssociationSet Name="FK_SinhVien_HocPhi" Association="Self.FK_SinhVien_HocPhi">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="HocPhi" EntitySet="HocPhi" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_HoSo" Association="Self.FK_S_VanBan_S_HoSo">
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
+          <AssociationSet Name="FK_SinhVien_VanBan" Association="Self.FK_SinhVien_VanBan">
+            <End Role="SinhVien" EntitySet="SinhVien" />
+            <End Role="VanBan" EntitySet="VanBan" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_LoaiVanBan" Association="Self.FK_S_VanBan_S_LoaiVanBan">
-            <End Role="S_LoaiVanBan" EntitySet="S_LoaiVanBan" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_MucDoTinCay" Association="Self.FK_S_VanBan_S_MucDoTinCay">
-            <End Role="S_MucDoTinCay" EntitySet="S_MucDoTinCay" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_TinhTrangVatLy" Association="Self.FK_S_VanBan_S_TinhTrangVatLy">
-            <End Role="S_TinhTrangVatLy" EntitySet="S_TinhTrangVatLy" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
+          <AssociationSet Name="FK_VanBan_LoaiVB" Association="Self.FK_VanBan_LoaiVB">
+            <End Role="LoaiVB" EntitySet="LoaiVB" />
+            <End Role="VanBan" EntitySet="VanBan" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -885,121 +503,61 @@
       <Schema Namespace="SoHoaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SoHoaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AccessTokens" EntityType="SoHoaModel.AccessToken" />
-          <EntitySet Name="CommonStatus" EntityType="SoHoaModel.CommonStatu" />
-          <EntitySet Name="DiaChis" EntityType="SoHoaModel.DiaChi" />
-          <EntitySet Name="DigitalSignatures" EntityType="SoHoaModel.DigitalSignature" />
-          <EntitySet Name="FileUploads" EntityType="SoHoaModel.FileUpload" />
-          <EntitySet Name="Huyens" EntityType="SoHoaModel.Huyen" />
-          <EntitySet Name="NgonNgus" EntityType="SoHoaModel.NgonNgu" />
-          <EntitySet Name="NhatKies" EntityType="SoHoaModel.NhatKy" />
+          <EntitySet Name="Diems" EntityType="SoHoaModel.Diem" />
+          <EntitySet Name="HocKies" EntityType="SoHoaModel.HocKy" />
+          <EntitySet Name="HocPhis" EntityType="SoHoaModel.HocPhi" />
+          <EntitySet Name="Khoas" EntityType="SoHoaModel.Khoa" />
+          <EntitySet Name="LoaiVBs" EntityType="SoHoaModel.LoaiVB" />
+          <EntitySet Name="LopSinhViens" EntityType="SoHoaModel.LopSinhVien" />
+          <EntitySet Name="MonHocs" EntityType="SoHoaModel.MonHoc" />
           <EntitySet Name="S_Authority" EntityType="SoHoaModel.S_Authority" />
-          <EntitySet Name="S_ComputerFile" EntityType="SoHoaModel.S_ComputerFile" />
-          <EntitySet Name="S_CoQuan" EntityType="SoHoaModel.S_CoQuan" />
-          <EntitySet Name="S_HopSo" EntityType="SoHoaModel.S_HopSo" />
-          <EntitySet Name="S_HoSo" EntityType="SoHoaModel.S_HoSo" />
-          <EntitySet Name="S_Kho" EntityType="SoHoaModel.S_Kho" />
-          <EntitySet Name="S_LoaiCoQuan" EntityType="SoHoaModel.S_LoaiCoQuan" />
-          <EntitySet Name="S_LoaiHoSo" EntityType="SoHoaModel.S_LoaiHoSo" />
-          <EntitySet Name="S_LoaiVanBan" EntityType="SoHoaModel.S_LoaiVanBan" />
-          <EntitySet Name="S_LuuTru" EntityType="SoHoaModel.S_LuuTru" />
-          <EntitySet Name="S_Menu" EntityType="SoHoaModel.S_Menu" />
-          <EntitySet Name="S_MucDoTinCay" EntityType="SoHoaModel.S_MucDoTinCay" />
-          <EntitySet Name="S_MucLucHoSo" EntityType="SoHoaModel.S_MucLucHoSo" />
           <EntitySet Name="S_NhanVien" EntityType="SoHoaModel.S_NhanVien" />
-          <EntitySet Name="S_Page" EntityType="SoHoaModel.S_Page" />
-          <EntitySet Name="S_Phong" EntityType="SoHoaModel.S_Phong" />
           <EntitySet Name="S_Role" EntityType="SoHoaModel.S_Role" />
           <EntitySet Name="S_Role_URL" EntityType="SoHoaModel.S_Role_URL" />
-          <EntitySet Name="S_TinhTrangVatLy" EntityType="SoHoaModel.S_TinhTrangVatLy" />
           <EntitySet Name="S_Uers_Atuthority" EntityType="SoHoaModel.S_Uers_Atuthority" />
           <EntitySet Name="S_User_Role" EntityType="SoHoaModel.S_User_Role" />
           <EntitySet Name="S_Users" EntityType="SoHoaModel.S_Users" />
-          <EntitySet Name="S_VanBan" EntityType="SoHoaModel.S_VanBan" />
-          <EntitySet Name="Tinhs" EntityType="SoHoaModel.Tinh" />
-          <EntitySet Name="XaPhuongs" EntityType="SoHoaModel.XaPhuong" />
-          <AssociationSet Name="FK_S_VanBan_CommonStatus" Association="SoHoaModel.FK_S_VanBan_CommonStatus">
-            <End Role="CommonStatu" EntitySet="CommonStatus" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
+          <EntitySet Name="SinhViens" EntityType="SoHoaModel.SinhVien" />
+          <EntitySet Name="VanBans" EntityType="SoHoaModel.VanBan" />
+          <AssociationSet Name="FK_HocKy_Diem" Association="SoHoaModel.FK_HocKy_Diem">
+            <End Role="HocKy" EntitySet="HocKies" />
+            <End Role="Diem" EntitySet="Diems" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_CoQuan_DiaChi" Association="SoHoaModel.FK_S_CoQuan_DiaChi">
-            <End Role="DiaChi" EntitySet="DiaChis" />
-            <End Role="S_CoQuan" EntitySet="S_CoQuan" />
+          <AssociationSet Name="FK_MonHoc_Diem" Association="SoHoaModel.FK_MonHoc_Diem">
+            <End Role="MonHoc" EntitySet="MonHocs" />
+            <End Role="Diem" EntitySet="Diems" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_NgonNgu" Association="SoHoaModel.FK_S_VanBan_NgonNgu">
-            <End Role="NgonNgu" EntitySet="NgonNgus" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
+          <AssociationSet Name="FK_SinhVien_Diem" Association="SoHoaModel.FK_SinhVien_Diem">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="Diem" EntitySet="Diems" />
           </AssociationSet>
-          <AssociationSet Name="FK_NhatKy_S_VanBan" Association="SoHoaModel.FK_NhatKy_S_VanBan">
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-            <End Role="NhatKy" EntitySet="NhatKies" />
+          <AssociationSet Name="FK_HocKy_HocPhi" Association="SoHoaModel.FK_HocKy_HocPhi">
+            <End Role="HocKy" EntitySet="HocKies" />
+            <End Role="HocPhi" EntitySet="HocPhis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_HocPhi" Association="SoHoaModel.FK_SinhVien_HocPhi">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="HocPhi" EntitySet="HocPhis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Khoa_LopSV" Association="SoHoaModel.FK_Khoa_LopSV">
+            <End Role="Khoa" EntitySet="Khoas" />
+            <End Role="LopSinhVien" EntitySet="LopSinhViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VanBan_LoaiVB" Association="SoHoaModel.FK_VanBan_LoaiVB">
+            <End Role="LoaiVB" EntitySet="LoaiVBs" />
+            <End Role="VanBan" EntitySet="VanBans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lop_SinhVien" Association="SoHoaModel.FK_Lop_SinhVien">
+            <End Role="LopSinhVien" EntitySet="LopSinhViens" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
           </AssociationSet>
           <AssociationSet Name="FK_S_Role_Uers_Atuthority__S_Authority" Association="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Authority">
             <End Role="S_Authority" EntitySet="S_Authority" />
             <End Role="S_Uers_Atuthority" EntitySet="S_Uers_Atuthority" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_ComputerFile_S_HoSo" Association="SoHoaModel.FK_S_ComputerFile_S_HoSo">
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-            <End Role="S_ComputerFile" EntitySet="S_ComputerFile" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_ComputerFile" Association="SoHoaModel.FK_S_VanBan_S_ComputerFile">
-            <End Role="S_ComputerFile" EntitySet="S_ComputerFile" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_CoQuan_S_LoaiCoQuan1" Association="SoHoaModel.FK_S_CoQuan_S_LoaiCoQuan1">
-            <End Role="S_LoaiCoQuan" EntitySet="S_LoaiCoQuan" />
-            <End Role="S_CoQuan" EntitySet="S_CoQuan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_Phong_S_CoQuan" Association="SoHoaModel.FK_S_Phong_S_CoQuan">
-            <End Role="S_CoQuan" EntitySet="S_CoQuan" />
-            <End Role="S_Phong" EntitySet="S_Phong" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_HopSo_S_MucLucHoSo" Association="SoHoaModel.FK_S_HopSo_S_MucLucHoSo">
-            <End Role="S_MucLucHoSo" EntitySet="S_MucLucHoSo" />
-            <End Role="S_HopSo" EntitySet="S_HopSo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_HoSo_S_HopSo" Association="SoHoaModel.FK_S_HoSo_S_HopSo">
-            <End Role="S_HopSo" EntitySet="S_HopSo" />
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_HoSo_S_LoaiHoSo" Association="SoHoaModel.FK_S_HoSo_S_LoaiHoSo">
-            <End Role="S_LoaiHoSo" EntitySet="S_LoaiHoSo" />
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_HoSo" Association="SoHoaModel.FK_S_VanBan_S_HoSo">
-            <End Role="S_HoSo" EntitySet="S_HoSo" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_LuuTru_S_Kho1" Association="SoHoaModel.FK_S_LuuTru_S_Kho1">
-            <End Role="S_Kho" EntitySet="S_Kho" />
-            <End Role="S_LuuTru" EntitySet="S_LuuTru" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_LoaiVanBan" Association="SoHoaModel.FK_S_VanBan_S_LoaiVanBan">
-            <End Role="S_LoaiVanBan" EntitySet="S_LoaiVanBan" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_LuuTru_S_Phong1" Association="SoHoaModel.FK_S_LuuTru_S_Phong1">
-            <End Role="S_Phong" EntitySet="S_Phong" />
-            <End Role="S_LuuTru" EntitySet="S_LuuTru" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_MucLucHoSo_S_LuuTru" Association="SoHoaModel.FK_S_MucLucHoSo_S_LuuTru">
-            <End Role="S_LuuTru" EntitySet="S_LuuTru" />
-            <End Role="S_MucLucHoSo" EntitySet="S_MucLucHoSo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_Role_URL_S_Menu" Association="SoHoaModel.FK_S_Role_URL_S_Menu">
-            <End Role="S_Menu" EntitySet="S_Menu" />
-            <End Role="S_Role_URL" EntitySet="S_Role_URL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_MucDoTinCay" Association="SoHoaModel.FK_S_VanBan_S_MucDoTinCay">
-            <End Role="S_MucDoTinCay" EntitySet="S_MucDoTinCay" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-          </AssociationSet>
           <AssociationSet Name="FK_S_NhanVien_S_Users" Association="SoHoaModel.FK_S_NhanVien_S_Users">
             <End Role="S_Users" EntitySet="S_Users" />
             <End Role="S_NhanVien" EntitySet="S_NhanVien" />
-          </AssociationSet>
-          <AssociationSet Name="FK_S_Page_S_Role_Uers_Atuthority_" Association="SoHoaModel.FK_S_Page_S_Role_Uers_Atuthority_">
-            <End Role="S_Uers_Atuthority" EntitySet="S_Uers_Atuthority" />
-            <End Role="S_Page" EntitySet="S_Page" />
           </AssociationSet>
           <AssociationSet Name="FK_S_Role_URL_S_Role" Association="SoHoaModel.FK_S_Role_URL_S_Role">
             <End Role="S_Role" EntitySet="S_Role" />
@@ -1009,10 +567,6 @@
             <End Role="S_Role" EntitySet="S_Role" />
             <End Role="S_User_Role" EntitySet="S_User_Role" />
           </AssociationSet>
-          <AssociationSet Name="FK_S_VanBan_S_TinhTrangVatLy" Association="SoHoaModel.FK_S_VanBan_S_TinhTrangVatLy">
-            <End Role="S_TinhTrangVatLy" EntitySet="S_TinhTrangVatLy" />
-            <End Role="S_VanBan" EntitySet="S_VanBan" />
-          </AssociationSet>
           <AssociationSet Name="FK_S_Role_Uers_Atuthority__S_Users" Association="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Users">
             <End Role="S_Users" EntitySet="S_Users" />
             <End Role="S_Uers_Atuthority" EntitySet="S_Uers_Atuthority" />
@@ -1020,6 +574,14 @@
           <AssociationSet Name="FK_S_User_Role_S_Users" Association="SoHoaModel.FK_S_User_Role_S_Users">
             <End Role="S_Users" EntitySet="S_Users" />
             <End Role="S_User_Role" EntitySet="S_User_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_S_Users_SinhVien" Association="SoHoaModel.FK_S_Users_SinhVien">
+            <End Role="S_Users" EntitySet="S_Users" />
+            <End Role="SinhVien" EntitySet="SinhViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SinhVien_VanBan" Association="SoHoaModel.FK_SinhVien_VanBan">
+            <End Role="SinhVien" EntitySet="SinhViens" />
+            <End Role="VanBan" EntitySet="VanBans" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccessToken">
@@ -1034,85 +596,101 @@
           <Property Name="UserAgent" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="IP" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="CommonStatu">
-          <Key>
-            <PropertyRef Name="StatusID" />
-          </Key>
-          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_S_VanBan_CommonStatus" FromRole="CommonStatu" ToRole="S_VanBan" />
-        </EntityType>
-        <EntityType Name="DiaChi">
-          <Key>
-            <PropertyRef Name="DiaChiID" />
-          </Key>
-          <Property Name="DiaChiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TinhID" Type="Int32" />
-          <Property Name="HuyenID" Type="Int32" />
-          <Property Name="XaPhuongID" Type="Int32" />
-          <Property Name="DiaChiChiTiet" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Deleted" Type="Boolean" />
-          <NavigationProperty Name="S_CoQuan" Relationship="SoHoaModel.FK_S_CoQuan_DiaChi" FromRole="DiaChi" ToRole="S_CoQuan" />
-        </EntityType>
-        <EntityType Name="DigitalSignature">
+        <EntityType Name="Diem">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Size" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Path" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreateDate" Type="DateTime" Precision="0" />
-          <Property Name="IsDeleted" Type="Byte" />
-          <Property Name="Status" Type="Byte" />
-          <Property Name="ServerPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MonHocId" Type="Int32" />
+          <Property Name="SinhVienId" Type="Int32" />
+          <Property Name="HocKyId" Type="Int32" />
+          <Property Name="DiemCC" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiemTH" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiemKT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiemThi" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiemTB" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiemCKy" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NgayTao" Type="DateTime" Precision="7" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <NavigationProperty Name="HocKy" Relationship="SoHoaModel.FK_HocKy_Diem" FromRole="Diem" ToRole="HocKy" />
+          <NavigationProperty Name="MonHoc" Relationship="SoHoaModel.FK_MonHoc_Diem" FromRole="Diem" ToRole="MonHoc" />
+          <NavigationProperty Name="SinhVien" Relationship="SoHoaModel.FK_SinhVien_Diem" FromRole="Diem" ToRole="SinhVien" />
         </EntityType>
-        <EntityType Name="FileUpload">
+        <EntityType Name="HocKy">
           <Key>
-            <PropertyRef Name="FileUploadId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="FileUploadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="FileType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="FileSize" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="FileKey" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="FileDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NamHoc" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="Diems" Relationship="SoHoaModel.FK_HocKy_Diem" FromRole="HocKy" ToRole="Diem" />
+          <NavigationProperty Name="HocPhis" Relationship="SoHoaModel.FK_HocKy_HocPhi" FromRole="HocKy" ToRole="HocPhi" />
         </EntityType>
-        <EntityType Name="Huyen">
+        <EntityType Name="HocPhi">
           <Key>
-            <PropertyRef Name="HuyenID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="HuyenID" Type="Int32" Nullable="false" />
-          <Property Name="TenHuyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Cap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="TinhID" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HocKyId" Type="Int32" />
+          <Property Name="SinhVienId" Type="Int32" />
+          <Property Name="SoTien" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NgayTao" Type="DateTime" Precision="7" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <NavigationProperty Name="HocKy" Relationship="SoHoaModel.FK_HocKy_HocPhi" FromRole="HocPhi" ToRole="HocKy" />
+          <NavigationProperty Name="SinhVien" Relationship="SoHoaModel.FK_SinhVien_HocPhi" FromRole="HocPhi" ToRole="SinhVien" />
         </EntityType>
-        <EntityType Name="NgonNgu">
+        <EntityType Name="Khoa">
           <Key>
-            <PropertyRef Name="NgonNguId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="NgonNguId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenNgonNgu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_S_VanBan_NgonNgu" FromRole="NgonNgu" ToRole="S_VanBan" />
-        </EntityType>
-        <EntityType Name="NhatKy">
-          <Key>
-            <PropertyRef Name="NhatKyId" />
-          </Key>
-          <Property Name="NhatKyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TruongId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
           <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="UpdatedBy" Type="Int32" />
-          <Property Name="VanBanId" Type="Int32" />
-          <Property Name="Action" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LopSinhViens" Relationship="SoHoaModel.FK_Khoa_LopSV" FromRole="Khoa" ToRole="LopSinhVien" />
+        </EntityType>
+        <EntityType Name="LoaiVB">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ThoiGianXuLy" Type="Int32" />
+          <NavigationProperty Name="VanBans" Relationship="SoHoaModel.FK_VanBan_LoaiVB" FromRole="LoaiVB" ToRole="VanBan" />
+        </EntityType>
+        <EntityType Name="LopSinhVien">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Ten" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaLop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_NhatKy_S_VanBan" FromRole="NhatKy" ToRole="S_VanBan" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="7" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="KhoaId" Type="Int32" />
+          <NavigationProperty Name="Khoa" Relationship="SoHoaModel.FK_Khoa_LopSV" FromRole="LopSinhVien" ToRole="Khoa" />
+          <NavigationProperty Name="SinhViens" Relationship="SoHoaModel.FK_Lop_SinhVien" FromRole="LopSinhVien" ToRole="SinhVien" />
+        </EntityType>
+        <EntityType Name="MonHoc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="NgayTao" Type="DateTime" Precision="7" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="SoTinChi" Type="Int32" />
+          <Property Name="HocKyId" Type="Int32" />
+          <NavigationProperty Name="Diems" Relationship="SoHoaModel.FK_MonHoc_Diem" FromRole="MonHoc" ToRole="Diem" />
         </EntityType>
         <EntityType Name="S_Authority">
           <Key>
@@ -1124,247 +702,24 @@
           <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
           <NavigationProperty Name="S_Uers_Atuthority" Relationship="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Authority" FromRole="S_Authority" ToRole="S_Uers_Atuthority" />
         </EntityType>
-        <EntityType Name="S_ComputerFile">
-          <Key>
-            <PropertyRef Name="ComputerFileID" />
-          </Key>
-          <Property Name="ComputerFileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="Url" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="FileName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiTao" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiCapNhat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="HoSoID" Type="Int32" />
-          <Property Name="PageNumber" Type="Int32" />
-          <Property Name="SheetNumber" Type="Int32" />
-          <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="FolderPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="ClientUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Byte" />
-          <NavigationProperty Name="S_HoSo" Relationship="SoHoaModel.FK_S_ComputerFile_S_HoSo" FromRole="S_ComputerFile" ToRole="S_HoSo" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_S_VanBan_S_ComputerFile" FromRole="S_ComputerFile" ToRole="S_VanBan" />
-        </EntityType>
-        <EntityType Name="S_CoQuan">
-          <Key>
-            <PropertyRef Name="CoQuanID" />
-          </Key>
-          <Property Name="CoQuanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MaCoQuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenCoQuan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="LoaiCoQuan" Type="Int32" />
-          <Property Name="Deleted" Type="Boolean" />
-          <Property Name="Status" Type="Boolean" />
-          <Property Name="DiaChiID" Type="Int32" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="AddressDetail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DiaChi" Relationship="SoHoaModel.FK_S_CoQuan_DiaChi" FromRole="S_CoQuan" ToRole="DiaChi" />
-          <NavigationProperty Name="S_LoaiCoQuan" Relationship="SoHoaModel.FK_S_CoQuan_S_LoaiCoQuan1" FromRole="S_CoQuan" ToRole="S_LoaiCoQuan" />
-          <NavigationProperty Name="S_Phong" Relationship="SoHoaModel.FK_S_Phong_S_CoQuan" FromRole="S_CoQuan" ToRole="S_Phong" />
-        </EntityType>
-        <EntityType Name="S_HopSo">
-          <Key>
-            <PropertyRef Name="HopSoID" />
-          </Key>
-          <Property Name="HopSoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MucLucHoSoID" Type="Int32" Nullable="false" />
-          <Property Name="MaHopSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TieuDeHopSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="isDeleted" Type="Boolean" />
-          <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
-          <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
-          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuongVanBan" Type="Int32" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="Status" Type="Byte" />
-          <NavigationProperty Name="S_MucLucHoSo" Relationship="SoHoaModel.FK_S_HopSo_S_MucLucHoSo" FromRole="S_HopSo" ToRole="S_MucLucHoSo" />
-          <NavigationProperty Name="S_HoSo" Relationship="SoHoaModel.FK_S_HoSo_S_HopSo" FromRole="S_HopSo" ToRole="S_HoSo" />
-        </EntityType>
-        <EntityType Name="S_HoSo">
-          <Key>
-            <PropertyRef Name="HoSoID" />
-          </Key>
-          <Property Name="HoSoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HopSoID" Type="Int32" Nullable="false" />
-          <Property Name="MaHoSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SoHoSo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Name="TieuDeHoSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TenHoSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="LoaiHoSoID" Type="Int32" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGianBatDau" Type="DateTime" Precision="3" />
-          <Property Name="ThoiGianKetThuc" Type="DateTime" Precision="3" />
-          <Property Name="ThoiHanBaoQuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CheDoSuDung" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgonNgu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TongSoVanBan" Type="Int32" />
-          <Property Name="KyHieuThongTin" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="TuKhoa" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuongTo" Type="Int32" />
-          <Property Name="SoLuongTrang" Type="Int32" />
-          <Property Name="TinhTrangVatLy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FileCatalog" Type="Int32" />
-          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Byte" />
-          <Property Name="FontId" Type="Int32" />
-          <Property Name="OrganId" Type="Int32" />
-          <Property Name="TableOfContentId" Type="Int32" />
-          <NavigationProperty Name="S_ComputerFile" Relationship="SoHoaModel.FK_S_ComputerFile_S_HoSo" FromRole="S_HoSo" ToRole="S_ComputerFile" />
-          <NavigationProperty Name="S_HopSo" Relationship="SoHoaModel.FK_S_HoSo_S_HopSo" FromRole="S_HoSo" ToRole="S_HopSo" />
-          <NavigationProperty Name="S_LoaiHoSo" Relationship="SoHoaModel.FK_S_HoSo_S_LoaiHoSo" FromRole="S_HoSo" ToRole="S_LoaiHoSo" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_S_VanBan_S_HoSo" FromRole="S_HoSo" ToRole="S_VanBan" />
-        </EntityType>
-        <EntityType Name="S_Kho">
-          <Key>
-            <PropertyRef Name="KhoID" />
-          </Key>
-          <Property Name="KhoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenKho" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="S_LuuTru" Relationship="SoHoaModel.FK_S_LuuTru_S_Kho1" FromRole="S_Kho" ToRole="S_LuuTru" />
-        </EntityType>
-        <EntityType Name="S_LoaiCoQuan">
-          <Key>
-            <PropertyRef Name="LoaiCoQuanID" />
-          </Key>
-          <Property Name="LoaiCoQuanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenLoaiCoQuan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GhiChu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_CoQuan" Relationship="SoHoaModel.FK_S_CoQuan_S_LoaiCoQuan1" FromRole="S_LoaiCoQuan" ToRole="S_CoQuan" />
-        </EntityType>
-        <EntityType Name="S_LoaiHoSo">
-          <Key>
-            <PropertyRef Name="LoaiHoSoID" />
-          </Key>
-          <Property Name="LoaiHoSoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenLoaiHoSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_HoSo" Relationship="SoHoaModel.FK_S_HoSo_S_LoaiHoSo" FromRole="S_LoaiHoSo" ToRole="S_HoSo" />
-        </EntityType>
-        <EntityType Name="S_LoaiVanBan">
-          <Key>
-            <PropertyRef Name="LoaiVanBanID" />
-          </Key>
-          <Property Name="LoaiVanBanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenLoaiVanBan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_S_VanBan_S_LoaiVanBan" FromRole="S_LoaiVanBan" ToRole="S_VanBan" />
-        </EntityType>
-        <EntityType Name="S_LuuTru">
-          <Key>
-            <PropertyRef Name="LuuTruID" />
-          </Key>
-          <Property Name="LuuTruID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KhoID" Type="Int32" />
-          <Property Name="PhongID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="S_Kho" Relationship="SoHoaModel.FK_S_LuuTru_S_Kho1" FromRole="S_LuuTru" ToRole="S_Kho" />
-          <NavigationProperty Name="S_Phong" Relationship="SoHoaModel.FK_S_LuuTru_S_Phong1" FromRole="S_LuuTru" ToRole="S_Phong" />
-          <NavigationProperty Name="S_MucLucHoSo" Relationship="SoHoaModel.FK_S_MucLucHoSo_S_LuuTru" FromRole="S_LuuTru" ToRole="S_MucLucHoSo" />
-        </EntityType>
-        <EntityType Name="S_Menu">
-          <Key>
-            <PropertyRef Name="MenuId" />
-          </Key>
-          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Url" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="MenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MenuRole" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="S_Role_URL" Relationship="SoHoaModel.FK_S_Role_URL_S_Menu" FromRole="S_Menu" ToRole="S_Role_URL" />
-        </EntityType>
-        <EntityType Name="S_MucDoTinCay">
-          <Key>
-            <PropertyRef Name="MucDoTinCayID" />
-          </Key>
-          <Property Name="MucDoTinCayID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoaiMucDoTinCay" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_S_VanBan_S_MucDoTinCay" FromRole="S_MucDoTinCay" ToRole="S_VanBan" />
-        </EntityType>
-        <EntityType Name="S_MucLucHoSo">
-          <Key>
-            <PropertyRef Name="MucLucHoSoID" />
-          </Key>
-          <Property Name="MucLucHoSoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LuuTruID" Type="Int32" Nullable="false" />
-          <Property Name="TenMucLucHoSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaDanhMuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MucLucSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="isDeleted" Type="Boolean" />
-          <Property Name="GhiChu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="S_HopSo" Relationship="SoHoaModel.FK_S_HopSo_S_MucLucHoSo" FromRole="S_MucLucHoSo" ToRole="S_HopSo" />
-          <NavigationProperty Name="S_LuuTru" Relationship="SoHoaModel.FK_S_MucLucHoSo_S_LuuTru" FromRole="S_MucLucHoSo" ToRole="S_LuuTru" />
-        </EntityType>
         <EntityType Name="S_NhanVien">
           <Key>
             <PropertyRef Name="NhanVienID" />
           </Key>
           <Property Name="NhanVienID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaNhanVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TenNhanVien" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="SoCMT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SoCMT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="GioiTinh" Type="Boolean" />
           <Property Name="NgayCap" Type="DateTime" Precision="0" />
-          <Property Name="NoiCap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SoDienThoai" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NoiCap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SoDienThoai" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AnhDaiDien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NguyenQuan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="S_Users" Relationship="SoHoaModel.FK_S_NhanVien_S_Users" FromRole="S_NhanVien" ToRole="S_Users" />
-        </EntityType>
-        <EntityType Name="S_Page">
-          <Key>
-            <PropertyRef Name="PageID" />
-          </Key>
-          <Property Name="PageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SystemID" Type="Int32" />
-          <Property Name="PageName" Type="String" MaxLength="800" FixedLength="true" Unicode="true" />
-          <Property Name="URLPage" Type="String" MaxLength="800" FixedLength="true" Unicode="false" />
-          <Property Name="NguoiTao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="S_Uers_Atuthority" Relationship="SoHoaModel.FK_S_Page_S_Role_Uers_Atuthority_" FromRole="S_Page" ToRole="S_Uers_Atuthority" />
-        </EntityType>
-        <EntityType Name="S_Phong">
-          <Key>
-            <PropertyRef Name="PhongID" />
-          </Key>
-          <Property Name="PhongID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PhongSo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CoQuanID" Type="Int32" />
-          <Property Name="TenPhong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LichSu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="NgonNgu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="isDeleted" Type="Boolean" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuongTaiLieuGiay" Type="Double" />
-          <Property Name="SoLuongTaiLieuDaSoHoa" Type="Double" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="NgonNguID" Type="Int32" />
-          <Property Name="CongCu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="S_CoQuan" Relationship="SoHoaModel.FK_S_Phong_S_CoQuan" FromRole="S_Phong" ToRole="S_CoQuan" />
-          <NavigationProperty Name="S_LuuTru" Relationship="SoHoaModel.FK_S_LuuTru_S_Phong1" FromRole="S_Phong" ToRole="S_LuuTru" />
         </EntityType>
         <EntityType Name="S_Role">
           <Key>
@@ -1383,17 +738,7 @@
           <Property Name="RoleID" Type="Int32" />
           <Property Name="MenuId" Type="Int32" />
           <Property Name="RoleUrlId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="S_Menu" Relationship="SoHoaModel.FK_S_Role_URL_S_Menu" FromRole="S_Role_URL" ToRole="S_Menu" />
           <NavigationProperty Name="S_Role" Relationship="SoHoaModel.FK_S_Role_URL_S_Role" FromRole="S_Role_URL" ToRole="S_Role" />
-        </EntityType>
-        <EntityType Name="S_TinhTrangVatLy">
-          <Key>
-            <PropertyRef Name="TinhTrangVatLyId" />
-          </Key>
-          <Property Name="TinhTrangVatLyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TinhTrang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" />
-          <NavigationProperty Name="S_VanBan" Relationship="SoHoaModel.FK_S_VanBan_S_TinhTrangVatLy" FromRole="S_TinhTrangVatLy" ToRole="S_VanBan" />
         </EntityType>
         <EntityType Name="S_Uers_Atuthority">
           <Key>
@@ -1406,7 +751,6 @@
           <Property Name="NgayTao" Type="DateTime" Precision="0" />
           <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
           <NavigationProperty Name="S_Authority" Relationship="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Authority" FromRole="S_Uers_Atuthority" ToRole="S_Authority" />
-          <NavigationProperty Name="S_Page" Relationship="SoHoaModel.FK_S_Page_S_Role_Uers_Atuthority_" FromRole="S_Uers_Atuthority" ToRole="S_Page" />
           <NavigationProperty Name="S_Users" Relationship="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Users" FromRole="S_Uers_Atuthority" ToRole="S_Users" />
         </EntityType>
         <EntityType Name="S_User_Role">
@@ -1436,112 +780,152 @@
           <NavigationProperty Name="S_NhanVien" Relationship="SoHoaModel.FK_S_NhanVien_S_Users" FromRole="S_Users" ToRole="S_NhanVien" />
           <NavigationProperty Name="S_Uers_Atuthority" Relationship="SoHoaModel.FK_S_Role_Uers_Atuthority__S_Users" FromRole="S_Users" ToRole="S_Uers_Atuthority" />
           <NavigationProperty Name="S_User_Role" Relationship="SoHoaModel.FK_S_User_Role_S_Users" FromRole="S_Users" ToRole="S_User_Role" />
+          <NavigationProperty Name="SinhViens" Relationship="SoHoaModel.FK_S_Users_SinhVien" FromRole="S_Users" ToRole="SinhVien" />
         </EntityType>
-        <EntityType Name="S_VanBan">
+        <EntityType Name="SinhVien">
           <Key>
-            <PropertyRef Name="VanBanID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="VanBanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="HoSoID" Type="Int32" Nullable="false" />
-          <Property Name="MaDinhDanh" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
-          <Property Name="STTVanBan" Type="Int32" />
-          <Property Name="LoaiVanBanID" Type="Int32" />
-          <Property Name="SoVanBan" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <Property Name="KyHieuVanBan" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="NoiDung" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="NgonNguID" Type="Int32" />
-          <Property Name="SoTo" Type="Int32" />
-          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="KyHieuThongTin" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="TuKhoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ButTich" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
-          <Property Name="TinhTrangVatLyID" Type="Int32" />
-          <Property Name="MucDoTinCayID" Type="Int32" />
-          <Property Name="ComputerFileID" Type="Int32" />
-          <Property Name="NgayVanBan" Type="DateTime" Precision="0" />
-          <Property Name="isDeleted" Type="Boolean" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="NguoiTao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NguoiChinhSua" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StatusID" Type="Int32" />
-          <Property Name="NgayThemFile" Type="DateTime" Precision="0" />
-          <Property Name="CheDoSuDung" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Byte" />
-          <Property Name="Signature" Type="Byte" />
-          <Property Name="Confirmed" Type="Byte" />
-          <Property Name="CoQuanToChucBanHanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CommonStatu" Relationship="SoHoaModel.FK_S_VanBan_CommonStatus" FromRole="S_VanBan" ToRole="CommonStatu" />
-          <NavigationProperty Name="NgonNgu" Relationship="SoHoaModel.FK_S_VanBan_NgonNgu" FromRole="S_VanBan" ToRole="NgonNgu" />
-          <NavigationProperty Name="NhatKies" Relationship="SoHoaModel.FK_NhatKy_S_VanBan" FromRole="S_VanBan" ToRole="NhatKy" />
-          <NavigationProperty Name="S_ComputerFile" Relationship="SoHoaModel.FK_S_VanBan_S_ComputerFile" FromRole="S_VanBan" ToRole="S_ComputerFile" />
-          <NavigationProperty Name="S_HoSo" Relationship="SoHoaModel.FK_S_VanBan_S_HoSo" FromRole="S_VanBan" ToRole="S_HoSo" />
-          <NavigationProperty Name="S_LoaiVanBan" Relationship="SoHoaModel.FK_S_VanBan_S_LoaiVanBan" FromRole="S_VanBan" ToRole="S_LoaiVanBan" />
-          <NavigationProperty Name="S_MucDoTinCay" Relationship="SoHoaModel.FK_S_VanBan_S_MucDoTinCay" FromRole="S_VanBan" ToRole="S_MucDoTinCay" />
-          <NavigationProperty Name="S_TinhTrangVatLy" Relationship="SoHoaModel.FK_S_VanBan_S_TinhTrangVatLy" FromRole="S_VanBan" ToRole="S_TinhTrangVatLy" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaSinhVien" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ho" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="7" />
+          <Property Name="GioiTinh" Type="Boolean" />
+          <Property Name="KhoaId" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="NguoiTao" Type="DateTime" Precision="7" />
+          <Property Name="NgayTao" Type="Int32" />
+          <Property Name="TrangThai" Type="Int32" Nullable="false" />
+          <Property Name="LopId" Type="Int32" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Diems" Relationship="SoHoaModel.FK_SinhVien_Diem" FromRole="SinhVien" ToRole="Diem" />
+          <NavigationProperty Name="HocPhis" Relationship="SoHoaModel.FK_SinhVien_HocPhi" FromRole="SinhVien" ToRole="HocPhi" />
+          <NavigationProperty Name="LopSinhVien" Relationship="SoHoaModel.FK_Lop_SinhVien" FromRole="SinhVien" ToRole="LopSinhVien" />
+          <NavigationProperty Name="S_Users" Relationship="SoHoaModel.FK_S_Users_SinhVien" FromRole="SinhVien" ToRole="S_Users" />
+          <NavigationProperty Name="VanBans" Relationship="SoHoaModel.FK_SinhVien_VanBan" FromRole="SinhVien" ToRole="VanBan" />
         </EntityType>
-        <EntityType Name="Tinh">
+        <EntityType Name="VanBan">
           <Key>
-            <PropertyRef Name="TinhID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="TinhID" Type="Int32" Nullable="false" />
-          <Property Name="TenTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Cap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SinhVienId" Type="Int32" />
+          <Property Name="MaSinhVien" Type="Int32" />
+          <Property Name="NamThu" Type="Int32" />
+          <Property Name="SDT" Type="Int32" />
+          <Property Name="KhoaHoc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QueQuan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CMND" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LyDo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DaXacMinh" Type="Boolean" Nullable="false" />
+          <Property Name="IsPending" Type="Boolean" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsSolved" Type="Boolean" Nullable="false" />
+          <Property Name="LoaiVBId" Type="Int32" />
+          <Property Name="NgayTao" Type="DateTime" Precision="7" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <NavigationProperty Name="LoaiVB" Relationship="SoHoaModel.FK_VanBan_LoaiVB" FromRole="VanBan" ToRole="LoaiVB" />
+          <NavigationProperty Name="SinhVien" Relationship="SoHoaModel.FK_SinhVien_VanBan" FromRole="VanBan" ToRole="SinhVien" />
         </EntityType>
-        <EntityType Name="XaPhuong">
-          <Key>
-            <PropertyRef Name="XaPhuongID" />
-          </Key>
-          <Property Name="XaPhuongID" Type="Int32" Nullable="false" />
-          <Property Name="TenXaPhuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Cap" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="HuyenID" Type="Int32" />
-        </EntityType>
-        <Association Name="FK_S_VanBan_CommonStatus">
-          <End Type="SoHoaModel.CommonStatu" Role="CommonStatu" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="*" />
+        <Association Name="FK_HocKy_Diem">
+          <End Type="SoHoaModel.HocKy" Role="HocKy" Multiplicity="0..1" />
+          <End Type="SoHoaModel.Diem" Role="Diem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CommonStatu">
-              <PropertyRef Name="StatusID" />
+            <Principal Role="HocKy">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="StatusID" />
+            <Dependent Role="Diem">
+              <PropertyRef Name="HocKyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_CoQuan_DiaChi">
-          <End Type="SoHoaModel.DiaChi" Role="DiaChi" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_CoQuan" Role="S_CoQuan" Multiplicity="*" />
+        <Association Name="FK_MonHoc_Diem">
+          <End Type="SoHoaModel.MonHoc" Role="MonHoc" Multiplicity="0..1" />
+          <End Type="SoHoaModel.Diem" Role="Diem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DiaChi">
-              <PropertyRef Name="DiaChiID" />
+            <Principal Role="MonHoc">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_CoQuan">
-              <PropertyRef Name="DiaChiID" />
+            <Dependent Role="Diem">
+              <PropertyRef Name="MonHocId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_VanBan_NgonNgu">
-          <End Type="SoHoaModel.NgonNgu" Role="NgonNgu" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="*" />
+        <Association Name="FK_SinhVien_Diem">
+          <End Type="SoHoaModel.SinhVien" Role="SinhVien" Multiplicity="0..1" />
+          <End Type="SoHoaModel.Diem" Role="Diem" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="NgonNgu">
-              <PropertyRef Name="NgonNguId" />
+            <Principal Role="SinhVien">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="NgonNguID" />
+            <Dependent Role="Diem">
+              <PropertyRef Name="SinhVienId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NhatKy_S_VanBan">
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="0..1" />
-          <End Type="SoHoaModel.NhatKy" Role="NhatKy" Multiplicity="*" />
+        <Association Name="FK_HocKy_HocPhi">
+          <End Type="SoHoaModel.HocKy" Role="HocKy" Multiplicity="0..1" />
+          <End Type="SoHoaModel.HocPhi" Role="HocPhi" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="S_VanBan">
-              <PropertyRef Name="VanBanID" />
+            <Principal Role="HocKy">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="NhatKy">
-              <PropertyRef Name="VanBanId" />
+            <Dependent Role="HocPhi">
+              <PropertyRef Name="HocKyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SinhVien_HocPhi">
+          <End Type="SoHoaModel.SinhVien" Role="SinhVien" Multiplicity="0..1" />
+          <End Type="SoHoaModel.HocPhi" Role="HocPhi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HocPhi">
+              <PropertyRef Name="SinhVienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Khoa_LopSV">
+          <End Type="SoHoaModel.Khoa" Role="Khoa" Multiplicity="0..1" />
+          <End Type="SoHoaModel.LopSinhVien" Role="LopSinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Khoa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LopSinhVien">
+              <PropertyRef Name="KhoaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VanBan_LoaiVB">
+          <End Type="SoHoaModel.LoaiVB" Role="LoaiVB" Multiplicity="0..1" />
+          <End Type="SoHoaModel.VanBan" Role="VanBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiVB">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VanBan">
+              <PropertyRef Name="LoaiVBId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lop_SinhVien">
+          <End Type="SoHoaModel.LopSinhVien" Role="LopSinhVien" Multiplicity="0..1" />
+          <End Type="SoHoaModel.SinhVien" Role="SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LopSinhVien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="LopId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1557,174 +941,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_ComputerFile_S_HoSo">
-          <End Type="SoHoaModel.S_HoSo" Role="S_HoSo" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_ComputerFile" Role="S_ComputerFile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_HoSo">
-              <PropertyRef Name="HoSoID" />
-            </Principal>
-            <Dependent Role="S_ComputerFile">
-              <PropertyRef Name="HoSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_VanBan_S_ComputerFile">
-          <End Type="SoHoaModel.S_ComputerFile" Role="S_ComputerFile" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_ComputerFile">
-              <PropertyRef Name="ComputerFileID" />
-            </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="ComputerFileID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_CoQuan_S_LoaiCoQuan1">
-          <End Type="SoHoaModel.S_LoaiCoQuan" Role="S_LoaiCoQuan" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_CoQuan" Role="S_CoQuan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_LoaiCoQuan">
-              <PropertyRef Name="LoaiCoQuanID" />
-            </Principal>
-            <Dependent Role="S_CoQuan">
-              <PropertyRef Name="LoaiCoQuan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_Phong_S_CoQuan">
-          <End Type="SoHoaModel.S_CoQuan" Role="S_CoQuan" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_Phong" Role="S_Phong" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_CoQuan">
-              <PropertyRef Name="CoQuanID" />
-            </Principal>
-            <Dependent Role="S_Phong">
-              <PropertyRef Name="CoQuanID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_HopSo_S_MucLucHoSo">
-          <End Type="SoHoaModel.S_MucLucHoSo" Role="S_MucLucHoSo" Multiplicity="1" />
-          <End Type="SoHoaModel.S_HopSo" Role="S_HopSo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_MucLucHoSo">
-              <PropertyRef Name="MucLucHoSoID" />
-            </Principal>
-            <Dependent Role="S_HopSo">
-              <PropertyRef Name="MucLucHoSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_HoSo_S_HopSo">
-          <End Type="SoHoaModel.S_HopSo" Role="S_HopSo" Multiplicity="1" />
-          <End Type="SoHoaModel.S_HoSo" Role="S_HoSo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_HopSo">
-              <PropertyRef Name="HopSoID" />
-            </Principal>
-            <Dependent Role="S_HoSo">
-              <PropertyRef Name="HopSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_HoSo_S_LoaiHoSo">
-          <End Type="SoHoaModel.S_LoaiHoSo" Role="S_LoaiHoSo" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_HoSo" Role="S_HoSo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_LoaiHoSo">
-              <PropertyRef Name="LoaiHoSoID" />
-            </Principal>
-            <Dependent Role="S_HoSo">
-              <PropertyRef Name="LoaiHoSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_VanBan_S_HoSo">
-          <End Type="SoHoaModel.S_HoSo" Role="S_HoSo" Multiplicity="1" />
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_HoSo">
-              <PropertyRef Name="HoSoID" />
-            </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="HoSoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_LuuTru_S_Kho1">
-          <End Type="SoHoaModel.S_Kho" Role="S_Kho" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_LuuTru" Role="S_LuuTru" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Kho">
-              <PropertyRef Name="KhoID" />
-            </Principal>
-            <Dependent Role="S_LuuTru">
-              <PropertyRef Name="KhoID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_VanBan_S_LoaiVanBan">
-          <End Type="SoHoaModel.S_LoaiVanBan" Role="S_LoaiVanBan" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_LoaiVanBan">
-              <PropertyRef Name="LoaiVanBanID" />
-            </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="LoaiVanBanID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_LuuTru_S_Phong1">
-          <End Type="SoHoaModel.S_Phong" Role="S_Phong" Multiplicity="1" />
-          <End Type="SoHoaModel.S_LuuTru" Role="S_LuuTru" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Phong">
-              <PropertyRef Name="PhongID" />
-            </Principal>
-            <Dependent Role="S_LuuTru">
-              <PropertyRef Name="PhongID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_MucLucHoSo_S_LuuTru">
-          <End Type="SoHoaModel.S_LuuTru" Role="S_LuuTru" Multiplicity="1" />
-          <End Type="SoHoaModel.S_MucLucHoSo" Role="S_MucLucHoSo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_LuuTru">
-              <PropertyRef Name="LuuTruID" />
-            </Principal>
-            <Dependent Role="S_MucLucHoSo">
-              <PropertyRef Name="LuuTruID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_Role_URL_S_Menu">
-          <End Type="SoHoaModel.S_Menu" Role="S_Menu" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_Role_URL" Role="S_Role_URL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Menu">
-              <PropertyRef Name="MenuId" />
-            </Principal>
-            <Dependent Role="S_Role_URL">
-              <PropertyRef Name="MenuId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_VanBan_S_MucDoTinCay">
-          <End Type="SoHoaModel.S_MucDoTinCay" Role="S_MucDoTinCay" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_MucDoTinCay">
-              <PropertyRef Name="MucDoTinCayID" />
-            </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="MucDoTinCayID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_S_NhanVien_S_Users">
           <End Type="SoHoaModel.S_Users" Role="S_Users" Multiplicity="0..1" />
           <End Type="SoHoaModel.S_NhanVien" Role="S_NhanVien" Multiplicity="*" />
@@ -1734,18 +950,6 @@
             </Principal>
             <Dependent Role="S_NhanVien">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_S_Page_S_Role_Uers_Atuthority_">
-          <End Type="SoHoaModel.S_Uers_Atuthority" Role="S_Uers_Atuthority" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_Page" Role="S_Page" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_Uers_Atuthority">
-              <PropertyRef Name="SystemID" />
-            </Principal>
-            <Dependent Role="S_Page">
-              <PropertyRef Name="SystemID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1773,18 +977,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_S_VanBan_S_TinhTrangVatLy">
-          <End Type="SoHoaModel.S_TinhTrangVatLy" Role="S_TinhTrangVatLy" Multiplicity="0..1" />
-          <End Type="SoHoaModel.S_VanBan" Role="S_VanBan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="S_TinhTrangVatLy">
-              <PropertyRef Name="TinhTrangVatLyId" />
-            </Principal>
-            <Dependent Role="S_VanBan">
-              <PropertyRef Name="TinhTrangVatLyID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_S_Role_Uers_Atuthority__S_Users">
           <End Type="SoHoaModel.S_Users" Role="S_Users" Multiplicity="0..1" />
           <End Type="SoHoaModel.S_Uers_Atuthority" Role="S_Uers_Atuthority" Multiplicity="*" />
@@ -1809,6 +1001,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_S_Users_SinhVien">
+          <End Type="SoHoaModel.S_Users" Role="S_Users" Multiplicity="1" />
+          <End Type="SoHoaModel.SinhVien" Role="SinhVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="S_Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SinhVien">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SinhVien_VanBan">
+          <End Type="SoHoaModel.SinhVien" Role="SinhVien" Multiplicity="0..1" />
+          <End Type="SoHoaModel.VanBan" Role="VanBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SinhVien">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="VanBan">
+              <PropertyRef Name="SinhVienId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1828,86 +1044,94 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CommonStatus">
-            <EntityTypeMapping TypeName="SoHoaModel.CommonStatu">
-              <MappingFragment StoreEntitySet="CommonStatus">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DiaChis">
-            <EntityTypeMapping TypeName="SoHoaModel.DiaChi">
-              <MappingFragment StoreEntitySet="DiaChi">
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="DiaChiChiTiet" ColumnName="DiaChiChiTiet" />
-                <ScalarProperty Name="XaPhuongID" ColumnName="XaPhuongID" />
-                <ScalarProperty Name="HuyenID" ColumnName="HuyenID" />
-                <ScalarProperty Name="TinhID" ColumnName="TinhID" />
-                <ScalarProperty Name="DiaChiID" ColumnName="DiaChiID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DigitalSignatures">
-            <EntityTypeMapping TypeName="SoHoaModel.DigitalSignature">
-              <MappingFragment StoreEntitySet="DigitalSignatures">
-                <ScalarProperty Name="ServerPath" ColumnName="ServerPath" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <EntitySetMapping Name="Diems">
+            <EntityTypeMapping TypeName="SoHoaModel.Diem">
+              <MappingFragment StoreEntitySet="Diem">
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="DiemCKy" ColumnName="DiemCKy" />
+                <ScalarProperty Name="DiemTB" ColumnName="DiemTB" />
+                <ScalarProperty Name="DiemThi" ColumnName="DiemThi" />
+                <ScalarProperty Name="DiemKT" ColumnName="DiemKT" />
+                <ScalarProperty Name="DiemTH" ColumnName="DiemTH" />
+                <ScalarProperty Name="DiemCC" ColumnName="DiemCC" />
+                <ScalarProperty Name="HocKyId" ColumnName="HocKyId" />
+                <ScalarProperty Name="SinhVienId" ColumnName="SinhVienId" />
+                <ScalarProperty Name="MonHocId" ColumnName="MonHocId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FileUploads">
-            <EntityTypeMapping TypeName="SoHoaModel.FileUpload">
-              <MappingFragment StoreEntitySet="FileUploads">
-                <ScalarProperty Name="FileDescription" ColumnName="FileDescription" />
-                <ScalarProperty Name="FileKey" ColumnName="FileKey" />
-                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
-                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
-                <ScalarProperty Name="FileType" ColumnName="FileType" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="FileUploadId" ColumnName="FileUploadId" />
+          <EntitySetMapping Name="HocKies">
+            <EntityTypeMapping TypeName="SoHoaModel.HocKy">
+              <MappingFragment StoreEntitySet="HocKy">
+                <ScalarProperty Name="NamHoc" ColumnName="NamHoc" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Huyens">
-            <EntityTypeMapping TypeName="SoHoaModel.Huyen">
-              <MappingFragment StoreEntitySet="Huyen">
-                <ScalarProperty Name="TinhID" ColumnName="TinhID" />
-                <ScalarProperty Name="Cap" ColumnName="Cap" />
-                <ScalarProperty Name="TenHuyen" ColumnName="TenHuyen" />
-                <ScalarProperty Name="HuyenID" ColumnName="HuyenID" />
+          <EntitySetMapping Name="HocPhis">
+            <EntityTypeMapping TypeName="SoHoaModel.HocPhi">
+              <MappingFragment StoreEntitySet="HocPhi">
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+                <ScalarProperty Name="SinhVienId" ColumnName="SinhVienId" />
+                <ScalarProperty Name="HocKyId" ColumnName="HocKyId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NgonNgus">
-            <EntityTypeMapping TypeName="SoHoaModel.NgonNgu">
-              <MappingFragment StoreEntitySet="NgonNgu">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="TenNgonNgu" ColumnName="TenNgonNgu" />
-                <ScalarProperty Name="NgonNguId" ColumnName="NgonNguId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NhatKies">
-            <EntityTypeMapping TypeName="SoHoaModel.NhatKy">
-              <MappingFragment StoreEntitySet="NhatKy">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="Action" ColumnName="Action" />
-                <ScalarProperty Name="VanBanId" ColumnName="VanBanId" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <EntitySetMapping Name="Khoas">
+            <EntityTypeMapping TypeName="SoHoaModel.Khoa">
+              <MappingFragment StoreEntitySet="Khoa">
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="NhatKyId" ColumnName="NhatKyId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="TruongId" ColumnName="TruongId" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiVBs">
+            <EntityTypeMapping TypeName="SoHoaModel.LoaiVB">
+              <MappingFragment StoreEntitySet="LoaiVB">
+                <ScalarProperty Name="ThoiGianXuLy" ColumnName="ThoiGianXuLy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LopSinhViens">
+            <EntityTypeMapping TypeName="SoHoaModel.LopSinhVien">
+              <MappingFragment StoreEntitySet="LopSinhVien">
+                <ScalarProperty Name="KhoaId" ColumnName="KhoaId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonHocs">
+            <EntityTypeMapping TypeName="SoHoaModel.MonHoc">
+              <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="HocKyId" ColumnName="HocKyId" />
+                <ScalarProperty Name="SoTinChi" ColumnName="SoTinChi" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1918,184 +1142,6 @@
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
                 <ScalarProperty Name="AuthorityName" ColumnName="AuthorityName" />
                 <ScalarProperty Name="AuthorityID" ColumnName="AuthorityID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_ComputerFile">
-            <EntityTypeMapping TypeName="SoHoaModel.S_ComputerFile">
-              <MappingFragment StoreEntitySet="S_ComputerFile">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ClientUrl" ColumnName="ClientUrl" />
-                <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="SheetNumber" ColumnName="SheetNumber" />
-                <ScalarProperty Name="PageNumber" ColumnName="PageNumber" />
-                <ScalarProperty Name="HoSoID" ColumnName="HoSoID" />
-                <ScalarProperty Name="NguoiCapNhat" ColumnName="NguoiCapNhat" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="FileName" ColumnName="FileName" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="ComputerFileID" ColumnName="ComputerFileID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_CoQuan">
-            <EntityTypeMapping TypeName="SoHoaModel.S_CoQuan">
-              <MappingFragment StoreEntitySet="S_CoQuan">
-                <ScalarProperty Name="AddressDetail" ColumnName="AddressDetail" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="DiaChiID" ColumnName="DiaChiID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="LoaiCoQuan" ColumnName="LoaiCoQuan" />
-                <ScalarProperty Name="TenCoQuan" ColumnName="TenCoQuan" />
-                <ScalarProperty Name="MaCoQuan" ColumnName="MaCoQuan" />
-                <ScalarProperty Name="CoQuanID" ColumnName="CoQuanID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_HopSo">
-            <EntityTypeMapping TypeName="SoHoaModel.S_HopSo">
-              <MappingFragment StoreEntitySet="S_HopSo">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="SoLuongVanBan" ColumnName="SoLuongVanBan" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
-                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
-                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-                <ScalarProperty Name="TieuDeHopSo" ColumnName="TieuDeHopSo" />
-                <ScalarProperty Name="MaHopSo" ColumnName="MaHopSo" />
-                <ScalarProperty Name="MucLucHoSoID" ColumnName="MucLucHoSoID" />
-                <ScalarProperty Name="HopSoID" ColumnName="HopSoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_HoSo">
-            <EntityTypeMapping TypeName="SoHoaModel.S_HoSo">
-              <MappingFragment StoreEntitySet="S_HoSo">
-                <ScalarProperty Name="TableOfContentId" ColumnName="TableOfContentId" />
-                <ScalarProperty Name="OrganId" ColumnName="OrganId" />
-                <ScalarProperty Name="FontId" ColumnName="FontId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="FileCatalog" ColumnName="FileCatalog" />
-                <ScalarProperty Name="TinhTrangVatLy" ColumnName="TinhTrangVatLy" />
-                <ScalarProperty Name="SoLuongTrang" ColumnName="SoLuongTrang" />
-                <ScalarProperty Name="SoLuongTo" ColumnName="SoLuongTo" />
-                <ScalarProperty Name="TuKhoa" ColumnName="TuKhoa" />
-                <ScalarProperty Name="KyHieuThongTin" ColumnName="KyHieuThongTin" />
-                <ScalarProperty Name="TongSoVanBan" ColumnName="TongSoVanBan" />
-                <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
-                <ScalarProperty Name="CheDoSuDung" ColumnName="CheDoSuDung" />
-                <ScalarProperty Name="ThoiHanBaoQuan" ColumnName="ThoiHanBaoQuan" />
-                <ScalarProperty Name="ThoiGianKetThuc" ColumnName="ThoiGianKetThuc" />
-                <ScalarProperty Name="ThoiGianBatDau" ColumnName="ThoiGianBatDau" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="LoaiHoSoID" ColumnName="LoaiHoSoID" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="TenHoSo" ColumnName="TenHoSo" />
-                <ScalarProperty Name="TieuDeHoSo" ColumnName="TieuDeHoSo" />
-                <ScalarProperty Name="SoHoSo" ColumnName="SoHoSo" />
-                <ScalarProperty Name="MaHoSo" ColumnName="MaHoSo" />
-                <ScalarProperty Name="HopSoID" ColumnName="HopSoID" />
-                <ScalarProperty Name="HoSoID" ColumnName="HoSoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_Kho">
-            <EntityTypeMapping TypeName="SoHoaModel.S_Kho">
-              <MappingFragment StoreEntitySet="S_Kho">
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="TenKho" ColumnName="TenKho" />
-                <ScalarProperty Name="KhoID" ColumnName="KhoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_LoaiCoQuan">
-            <EntityTypeMapping TypeName="SoHoaModel.S_LoaiCoQuan">
-              <MappingFragment StoreEntitySet="S_LoaiCoQuan">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="TenLoaiCoQuan" ColumnName="TenLoaiCoQuan" />
-                <ScalarProperty Name="LoaiCoQuanID" ColumnName="LoaiCoQuanID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_LoaiHoSo">
-            <EntityTypeMapping TypeName="SoHoaModel.S_LoaiHoSo">
-              <MappingFragment StoreEntitySet="S_LoaiHoSo">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="TenLoaiHoSo" ColumnName="TenLoaiHoSo" />
-                <ScalarProperty Name="LoaiHoSoID" ColumnName="LoaiHoSoID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_LoaiVanBan">
-            <EntityTypeMapping TypeName="SoHoaModel.S_LoaiVanBan">
-              <MappingFragment StoreEntitySet="S_LoaiVanBan">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="TenLoaiVanBan" ColumnName="TenLoaiVanBan" />
-                <ScalarProperty Name="LoaiVanBanID" ColumnName="LoaiVanBanID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_LuuTru">
-            <EntityTypeMapping TypeName="SoHoaModel.S_LuuTru">
-              <MappingFragment StoreEntitySet="S_LuuTru">
-                <ScalarProperty Name="PhongID" ColumnName="PhongID" />
-                <ScalarProperty Name="KhoID" ColumnName="KhoID" />
-                <ScalarProperty Name="LuuTruID" ColumnName="LuuTruID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_Menu">
-            <EntityTypeMapping TypeName="SoHoaModel.S_Menu">
-              <MappingFragment StoreEntitySet="S_Menu">
-                <ScalarProperty Name="MenuRole" ColumnName="MenuRole" />
-                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_MucDoTinCay">
-            <EntityTypeMapping TypeName="SoHoaModel.S_MucDoTinCay">
-              <MappingFragment StoreEntitySet="S_MucDoTinCay">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="LoaiMucDoTinCay" ColumnName="LoaiMucDoTinCay" />
-                <ScalarProperty Name="MucDoTinCayID" ColumnName="MucDoTinCayID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_MucLucHoSo">
-            <EntityTypeMapping TypeName="SoHoaModel.S_MucLucHoSo">
-              <MappingFragment StoreEntitySet="S_MucLucHoSo">
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="MucLucSo" ColumnName="MucLucSo" />
-                <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
-                <ScalarProperty Name="TenMucLucHoSo" ColumnName="TenMucLucHoSo" />
-                <ScalarProperty Name="LuuTruID" ColumnName="LuuTruID" />
-                <ScalarProperty Name="MucLucHoSoID" ColumnName="MucLucHoSoID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2113,42 +1159,8 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="NhanVienID" ColumnName="NhanVienID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_Page">
-            <EntityTypeMapping TypeName="SoHoaModel.S_Page">
-              <MappingFragment StoreEntitySet="S_Page">
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="URLPage" ColumnName="URLPage" />
-                <ScalarProperty Name="PageName" ColumnName="PageName" />
-                <ScalarProperty Name="SystemID" ColumnName="SystemID" />
-                <ScalarProperty Name="PageID" ColumnName="PageID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_Phong">
-            <EntityTypeMapping TypeName="SoHoaModel.S_Phong">
-              <MappingFragment StoreEntitySet="S_Phong">
-                <ScalarProperty Name="CongCu" ColumnName="CongCu" />
-                <ScalarProperty Name="NgonNguID" ColumnName="NgonNguID" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="SoLuongTaiLieuDaSoHoa" ColumnName="SoLuongTaiLieuDaSoHoa" />
-                <ScalarProperty Name="SoLuongTaiLieuGiay" ColumnName="SoLuongTaiLieuGiay" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-                <ScalarProperty Name="NgonNgu" ColumnName="NgonNgu" />
-                <ScalarProperty Name="LichSu" ColumnName="LichSu" />
-                <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
-                <ScalarProperty Name="CoQuanID" ColumnName="CoQuanID" />
-                <ScalarProperty Name="PhongSo" ColumnName="PhongSo" />
-                <ScalarProperty Name="PhongID" ColumnName="PhongID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2167,15 +1179,6 @@
                 <ScalarProperty Name="RoleUrlId" ColumnName="RoleUrlId" />
                 <ScalarProperty Name="MenuId" ColumnName="MenuId" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="S_TinhTrangVatLy">
-            <EntityTypeMapping TypeName="SoHoaModel.S_TinhTrangVatLy">
-              <MappingFragment StoreEntitySet="S_TinhTrangVatLy">
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
-                <ScalarProperty Name="TinhTrangVatLyId" ColumnName="TinhTrangVatLyId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2216,58 +1219,49 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="S_VanBan">
-            <EntityTypeMapping TypeName="SoHoaModel.S_VanBan">
-              <MappingFragment StoreEntitySet="S_VanBan">
-                <ScalarProperty Name="CoQuanToChucBanHanh" ColumnName="CoQuanToChucBanHanh" />
-                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
-                <ScalarProperty Name="Signature" ColumnName="Signature" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CheDoSuDung" ColumnName="CheDoSuDung" />
-                <ScalarProperty Name="NgayThemFile" ColumnName="NgayThemFile" />
-                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
-                <ScalarProperty Name="NguoiChinhSua" ColumnName="NguoiChinhSua" />
-                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <EntitySetMapping Name="SinhViens">
+            <EntityTypeMapping TypeName="SoHoaModel.SinhVien">
+              <MappingFragment StoreEntitySet="SinhVien">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="LopId" ColumnName="LopId" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
-                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
-                <ScalarProperty Name="NgayVanBan" ColumnName="NgayVanBan" />
-                <ScalarProperty Name="ComputerFileID" ColumnName="ComputerFileID" />
-                <ScalarProperty Name="MucDoTinCayID" ColumnName="MucDoTinCayID" />
-                <ScalarProperty Name="TinhTrangVatLyID" ColumnName="TinhTrangVatLyID" />
-                <ScalarProperty Name="ButTich" ColumnName="ButTich" />
-                <ScalarProperty Name="TuKhoa" ColumnName="TuKhoa" />
-                <ScalarProperty Name="KyHieuThongTin" ColumnName="KyHieuThongTin" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="SoTo" ColumnName="SoTo" />
-                <ScalarProperty Name="NgonNguID" ColumnName="NgonNguID" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="KhoaId" ColumnName="KhoaId" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Ho" ColumnName="Ho" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VanBans">
+            <EntityTypeMapping TypeName="SoHoaModel.VanBan">
+              <MappingFragment StoreEntitySet="VanBan">
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="LoaiVBId" ColumnName="LoaiVBId" />
+                <ScalarProperty Name="IsSolved" ColumnName="IsSolved" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsPending" ColumnName="IsPending" />
+                <ScalarProperty Name="DaXacMinh" ColumnName="DaXacMinh" />
+                <ScalarProperty Name="LyDo" ColumnName="LyDo" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="KyHieuVanBan" ColumnName="KyHieuVanBan" />
-                <ScalarProperty Name="SoVanBan" ColumnName="SoVanBan" />
-                <ScalarProperty Name="LoaiVanBanID" ColumnName="LoaiVanBanID" />
-                <ScalarProperty Name="STTVanBan" ColumnName="STTVanBan" />
-                <ScalarProperty Name="MaDinhDanh" ColumnName="MaDinhDanh" />
-                <ScalarProperty Name="HoSoID" ColumnName="HoSoID" />
-                <ScalarProperty Name="VanBanID" ColumnName="VanBanID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tinhs">
-            <EntityTypeMapping TypeName="SoHoaModel.Tinh">
-              <MappingFragment StoreEntitySet="Tinh">
-                <ScalarProperty Name="Cap" ColumnName="Cap" />
-                <ScalarProperty Name="TenTinh" ColumnName="TenTinh" />
-                <ScalarProperty Name="TinhID" ColumnName="TinhID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="XaPhuongs">
-            <EntityTypeMapping TypeName="SoHoaModel.XaPhuong">
-              <MappingFragment StoreEntitySet="XaPhuong">
-                <ScalarProperty Name="HuyenID" ColumnName="HuyenID" />
-                <ScalarProperty Name="Cap" ColumnName="Cap" />
-                <ScalarProperty Name="TenXaPhuong" ColumnName="TenXaPhuong" />
-                <ScalarProperty Name="XaPhuongID" ColumnName="XaPhuongID" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
+                <ScalarProperty Name="KhoaHoc" ColumnName="KhoaHoc" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="NamThu" ColumnName="NamThu" />
+                <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
+                <ScalarProperty Name="SinhVienId" ColumnName="SinhVienId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,6 +12,7 @@ using XamMobile.EntityModels;
 using XamMobile.Services;
 using XamMobile.Views.MasterDetail;
 using Xamarin.Forms;
+using XamMobile.Services.Interface;
 
 namespace XamMobile.ViewModels.HoSo
 {

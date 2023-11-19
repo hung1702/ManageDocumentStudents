@@ -99,6 +99,34 @@
                             </StackLayout>
                         </Frame>
                     </Grid>
+
+                    
+                    
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="0,0,2,0">
+                            <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoDiemMenuPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="quanly1.png" Aspect="AspectFit"></Image>
+                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Quản Lý Điểm Sinh Viên" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="2,0,0,0">
+                            <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoUserInfoPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="taikhoan1.png" Aspect="AspectFit"></Image>
+                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Quan Ly" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
                 </StackLayout>
             </Grid>
         </ScrollView>

@@ -12,6 +12,7 @@ using XamMobile.DependencyServices;
 using XamMobile.EntityModels;
 using XamMobile.Models;
 using XamMobile.Services;
+using XamMobile.Services.Interface;
 using XamMobile.Views.MasterDetail;
 
 namespace XamMobile.ViewModels.NhanVien
@@ -78,9 +79,9 @@ namespace XamMobile.ViewModels.NhanVien
             {
                 using (UserDialogs.Instance.Loading("Đang tải"))
                 {
-                    ImageSourceAvatar = string.IsNullOrEmpty(CurrentData.AnhDaiDien)
-                        ? null
-                        : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{CurrentData.AnhDaiDien}");
+                    //ImageSourceAvatar = string.IsNullOrEmpty(CurrentData.AnhDaiDien)
+                    //    ? null
+                    //    : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{CurrentData.AnhDaiDien}");
                     // var nhanVienRes = await iUserService.GetNhanVien(UserInfoSetting.UserInfos.NhanVienID);
                     //if (nhanVienRes == null)
                     //{

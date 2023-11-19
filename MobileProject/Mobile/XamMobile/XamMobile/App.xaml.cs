@@ -11,6 +11,9 @@ using XamMobile.ViewModels.NhanVien;
 using XamMobile.Views.NhanVien;
 using XamMobile.ViewModels.HoSo;
 using XamMobile.Views.HoSo;
+using XamMobile.Services.Interface;
+using XamMobile.Views.Diem;
+using XamMobile.ViewModels.Diem;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamMobile
@@ -55,6 +58,12 @@ namespace XamMobile
             containerRegistry.RegisterForNavigation<AddHoSoPage, AddHoSoPageViewModel>();
             containerRegistry.RegisterForNavigation<DetailHoSoPage, DetailHoSoPageViewModel>();
 
+            containerRegistry.RegisterForNavigation<DiemMenuPage, DiemMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListDiemPage, ListDiemPageViewModel>();
+
+            containerRegistry.RegisterForNavigation<GiaLapDiemPage, GiaLapDiemPageViewModel>();
+            containerRegistry.RegisterForNavigation<DetailDiemPage, DetailDiemPageViewModel>();
+
 
             // Services dependence injection
             //containerRegistry.Register<IBaseService, BaseService>();
@@ -64,6 +73,7 @@ namespace XamMobile
             containerRegistry.RegisterSingleton<INotificationService, NotificationService>();
             containerRegistry.RegisterSingleton<ILogService, LogService>();
             containerRegistry.RegisterSingleton<IUploadFileService, UploadFileService>();
+            containerRegistry.RegisterSingleton<IDiemService, DiemService>();
 
 
 
