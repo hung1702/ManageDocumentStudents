@@ -60,7 +60,7 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLogPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
-                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Nhật Ký" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Nhật Ký" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                             </StackLayout>
                         </Frame>
                         <Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="2,0,0,0">
@@ -69,7 +69,7 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoHoSoPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="user_red_icon.png" Aspect="AspectFit"></Image>
-                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Ho So" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Ho So" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                             </StackLayout>
                         </Frame>
                     </Grid>
@@ -85,7 +85,7 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoNhanVienPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="quanly1.png" Aspect="AspectFit"></Image>
-                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Quan Ly Nhan Vien" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Quan Ly Nhan Vien" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                             </StackLayout>
                         </Frame>
                         
@@ -95,7 +95,7 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoUserInfoPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="taikhoan1.png" Aspect="AspectFit"></Image>
-                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Tài Khoản" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Tài Khoản" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                             </StackLayout>
                         </Frame>
                     </Grid>
@@ -113,17 +113,43 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoDiemMenuPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="quanly1.png" Aspect="AspectFit"></Image>
-                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Quản Lý Điểm Sinh Viên" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                <Label LineBreakMode="WordWrap"  HorizontalTextAlignment="Center" Text="Kết quả học tập" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                             </StackLayout>
                         </Frame>
 
                         <Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="2,0,0,0">
                             <StackLayout>
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoUserInfoPageCommand}"></TapGestureRecognizer>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoDichVuMenuPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="taikhoan1.png" Aspect="AspectFit"></Image>
-                                <Label LineBreakMode="NoWrap" HorizontalTextAlignment="Center" Text="Quan Ly" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Dịch vụ một cửa" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Frame Grid.Column="0" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="0,0,2,0">
+                            <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoCongNoMenuPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="quanly1.png" Aspect="AspectFit"></Image>
+                                <Label LineBreakMode="WordWrap"  HorizontalTextAlignment="Center" Text="Công nợ" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="2,0,0,0">
+                            <StackLayout>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoThuVienMenuPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="taikhoan1.png" Aspect="AspectFit"></Image>
+                                <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Thư viên" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                             </StackLayout>
                         </Frame>
                     </Grid>

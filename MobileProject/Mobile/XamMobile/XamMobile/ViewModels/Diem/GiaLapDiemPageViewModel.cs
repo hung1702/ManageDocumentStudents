@@ -70,33 +70,33 @@ namespace XamMobile.ViewModels.Diem
         }
 
 
-        private int selectedHocky;
-        public int SelectedHocky
-        {
-            get { return selectedHocky; }
-            set
-            {
-                if (selectedHocky != value)
-                {
-                    selectedHocky = value;
-                    OnPropertyChanged(nameof(SelectedHocky));
-                }
-            }
-        }
+        //private int selectedHocky;
+        //public int SelectedHocky
+        //{
+        //    get { return selectedHocky; }
+        //    set
+        //    {
+        //        if (selectedHocky != value)
+        //        {
+        //            selectedHocky = value;
+        //            OnPropertyChanged(nameof(SelectedHocky));
+        //        }
+        //    }
+        //}
 
-        private List<string> tenHocKyList;
-        public List<string> TenHocKyList
-        {
-            get { return tenHocKyList; }
-            set
-            {
-                if (tenHocKyList != value)
-                {
-                    tenHocKyList = value;
-                    OnPropertyChanged(nameof(TenHocKyList));
-                }
-            }
-        }
+        //private List<string> tenHocKyList;
+        //public List<string> TenHocKyList
+        //{
+        //    get { return tenHocKyList; }
+        //    set
+        //    {
+        //        if (tenHocKyList != value)
+        //        {
+        //            tenHocKyList = value;
+        //            OnPropertyChanged(nameof(TenHocKyList));
+        //        }
+        //    }
+        //}
 
         private bool isNoResult;
         public bool IsNoResult
@@ -157,18 +157,18 @@ namespace XamMobile.ViewModels.Diem
 
         IUserService iUserService;
         IDiemService iDiemService;
-        public DelegateCommand GotoDetailDiemPageCommand { get; private set; }
+        public DelegateCommand GotoDuKienDiemPopupCommand { get; private set; }
 
         public GiaLapDiemPageViewModel(INavigationService navigationService, IUserService iUserService, IDiemService iDiemService) : base(navigationService)
         {
-            SelectedSortBy = new List<string> { "Tên", "Điểm TB" };
+            SelectedSortBy = new List<string> { "Tên", "Số TC", "Điểm TB dự kiến" };
             this.iUserService = iUserService;
             this.iDiemService = iDiemService;
-            GotoDetailDiemPageCommand = new DelegateCommand(() => { GotoPage("DetailDiemPage"); });
+            GotoDuKienDiemPopupCommand = new DelegateCommand(() => { GotoPage("DuKienDiemPopup"); });
 
             ListDiem = new List<DiemEntity>();
-            TenHocKyList = HocKyList.Select(x => GetTenHocKy(x)).ToList();
-            SelectedHocky = HocKyList.FirstOrDefault();
+            //TenHocKyList = HocKyList.Select(x => GetTenHocKy(x)).ToList();
+            //SelectedHocky = HocKyList.FirstOrDefault();
         }
 
         public void GotoPage(string page)
@@ -244,41 +244,46 @@ namespace XamMobile.ViewModels.Diem
             ListDiem = ListDiem.OrderBy(d => d.DiemTB).ToList();
         }
 
+        public void SortBySoTC()
+        {
+            ListDiem = ListDiem.OrderBy(d => d.SoTinChi).ToList();
+        }
+
         public void SortByName()
         {
             ListDiem = ListDiem.OrderBy(d => d.TenMonHoc).ToList();
         }
 
-        public void FilterByHocKy(int selectedIndex)
-        {
-            LoadAllData();
-            if (DataDiemList == null || !DataDiemList.Any())
-            {
-                IsNoResult = true;
-                MessageResult = string.Format("Không có dữ liệu điểm theo {0}", TenHocKyList[selectedIndex].ToString());
-            }
-            else
-            {
-                if (selectedIndex == 0)
-                {
-                    ListDiem = DataDiemList;
-                }
-                else
-                {
-                    ListDiem = DataDiemList.Where(x => x.MaHocKy == selectedIndex).ToList();
-                    if (ListDiem == null || !ListDiem.Any())
-                    {
-                        IsNoResult = true;
-                        MessageResult = string.Format("Không có dữ liệu điểm theo {0}", TenHocKyList[selectedIndex].ToString());
-                        return;
-                    }
-                    else
-                    {
-                        isNoResult = false;
-                    }
-                }
-            }
-        }
+        //public void FilterByHocKy(int selectedIndex)
+        //{
+        //    LoadAllData();
+        //    if (DataDiemList == null || !DataDiemList.Any())
+        //    {
+        //        IsNoResult = true;
+        //        MessageResult = string.Format("Không có dữ liệu điểm theo {0}", TenHocKyList[selectedIndex].ToString());
+        //    }
+        //    else
+        //    {
+        //        if (selectedIndex == 0)
+        //        {
+        //            ListDiem = DataDiemList;
+        //        }
+        //        else
+        //        {
+        //            ListDiem = DataDiemList.Where(x => x.MaHocKy == selectedIndex).ToList();
+        //            if (ListDiem == null || !ListDiem.Any())
+        //            {
+        //                IsNoResult = true;
+        //                MessageResult = string.Format("Không có dữ liệu điểm theo {0}", TenHocKyList[selectedIndex].ToString());
+        //                return;
+        //            }
+        //            else
+        //            {
+        //                isNoResult = false;
+        //            }
+        //        }
+        //    }
+        //}
 
         public double GetDiemTotal(List<DiemEntity> listDiem)
         {
@@ -312,42 +317,42 @@ namespace XamMobile.ViewModels.Diem
             return diemTotal * 4 / 10;
         }
 
-        public string GetTenHocKy(int maHocKy)
-        {
-            if (maHocKy == 0)
-                return "Tất cả";
-            else if (maHocKy == 1)
-                return "HK 1 Năm 1";
-            else if (maHocKy == 2)
-                return "HK 2 Năm 1";
-            else if (maHocKy == 3)
-                return "HK 3 Năm 1";
-            else if (maHocKy == 4)
-                return "HK 1 Năm 2";
-            else if (maHocKy == 5)
-                return "HK 2 Năm 2";
-            else if (maHocKy == 6)
-                return "HK 3 Năm 2";
-            else if (maHocKy == 7)
-                return "HK 1 Năm 3";
-            else if (maHocKy == 8)
-                return "HK 2 Năm 3";
-            else if (maHocKy == 9)
-                return "HK 3 Năm 3";
-            else if (maHocKy == 10)
-                return "HK 1 Năm 4";
-            else if (maHocKy == 11)
-                return "HK 2 Năm 4";
-            else if (maHocKy == 12)
-                return "HK 3 Năm 4";
-            else if (maHocKy == 13)
-                return "HK 1 Năm 5";
-            else if (maHocKy == 14)
-                return "HK 2 Năm 5";
-            else if (maHocKy == 15)
-                return "HK 3 Năm 5";
-            else
-                return "HK Phụ";
-        }
+        //public string GetTenHocKy(int maHocKy)
+        //{
+        //    if (maHocKy == 0)
+        //        return "Tất cả";
+        //    else if (maHocKy == 1)
+        //        return "HK 1 Năm 1";
+        //    else if (maHocKy == 2)
+        //        return "HK 2 Năm 1";
+        //    else if (maHocKy == 3)
+        //        return "HK 3 Năm 1";
+        //    else if (maHocKy == 4)
+        //        return "HK 1 Năm 2";
+        //    else if (maHocKy == 5)
+        //        return "HK 2 Năm 2";
+        //    else if (maHocKy == 6)
+        //        return "HK 3 Năm 2";
+        //    else if (maHocKy == 7)
+        //        return "HK 1 Năm 3";
+        //    else if (maHocKy == 8)
+        //        return "HK 2 Năm 3";
+        //    else if (maHocKy == 9)
+        //        return "HK 3 Năm 3";
+        //    else if (maHocKy == 10)
+        //        return "HK 1 Năm 4";
+        //    else if (maHocKy == 11)
+        //        return "HK 2 Năm 4";
+        //    else if (maHocKy == 12)
+        //        return "HK 3 Năm 4";
+        //    else if (maHocKy == 13)
+        //        return "HK 1 Năm 5";
+        //    else if (maHocKy == 14)
+        //        return "HK 2 Năm 5";
+        //    else if (maHocKy == 15)
+        //        return "HK 3 Năm 5";
+        //    else
+        //        return "HK Phụ";
+        //}
     }
 }
