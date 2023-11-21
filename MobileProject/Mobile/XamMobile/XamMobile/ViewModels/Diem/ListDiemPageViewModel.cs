@@ -165,7 +165,7 @@ namespace XamMobile.ViewModels.Diem
 
         public ListDiemPageViewModel(INavigationService navigationService, IUserService iUserService, IDiemService iDiemService) : base(navigationService)
         {
-            SelectedSortBy = new List<string> { "Tên", "Điểm TB" };
+            SelectedSortBy = new List<string> { "Tên", "Số TC", "Điểm TB" };
             this.iUserService = iUserService;
             this.iDiemService = iDiemService;
             GotoDetailDiemPageCommand = new DelegateCommand(() => { GotoPage("DetailDiemPage"); });
@@ -246,6 +246,11 @@ namespace XamMobile.ViewModels.Diem
         public void SortByDiemTB()
         {
             ListDiem = ListDiem.OrderBy(d => d.DiemTB).ToList();
+        }
+
+        public void SortBySoTC()
+        {
+            ListDiem = ListDiem.OrderBy(d => d.SoTinChi).ToList();
         }
 
         public void SortByName()

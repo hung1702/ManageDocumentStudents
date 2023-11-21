@@ -20,17 +20,17 @@ namespace XamMobile.Views.Diem
         public ListDiemPage()
         {
             InitializeComponent();
-            this.Appearing += OnPageAppearing;
+            //this.Appearing += OnPageAppearing;
         }
 
         private void OnPageAppearing(object sender, EventArgs e)
         {
-            viewModel = (ListDiemPageViewModel)BindingContext;
-            Picker picker = sender as Picker;
-            if (picker == null)
-                return;
-            picker.SelectedItem = "Tên";
-            ((ListDiemPageViewModel)BindingContext).SelectedHocky = 0;
+            //viewModel = (ListDiemPageViewModel)BindingContext;
+            //Picker picker = sender as Picker;
+            //if (picker == null)
+            //    return;
+            //picker.SelectedItem = "Tên";
+            //((ListDiemPageViewModel)BindingContext).SelectedHocky = 0;
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -52,6 +52,8 @@ namespace XamMobile.Views.Diem
                 return;
             if (picker.SelectedItem.Equals("Tên"))
                 this.viewModel.SortByName();
+            else if (picker.SelectedItem.Equals("Số TC"))
+                this.viewModel.SortBySoTC();
             else
                 this.viewModel.SortByDiemTB();
         }
