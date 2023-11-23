@@ -28,6 +28,7 @@ namespace XamMobile.ViewModels
         public DelegateCommand GotoNhanVienPageCommand { get; private set; }
         public DelegateCommand GotoHoSoPageCommand { get; private set; }
         public DelegateCommand GotoDiemMenuPageCommand { get; private set; }
+        public DelegateCommand GotoMenuTienIchPageCommand { get; private set; }
 
         //INotificationService iNotificationService;
         IHoSoService hoSoService;
@@ -42,6 +43,7 @@ namespace XamMobile.ViewModels
             GotoNhanVienPageCommand = new DelegateCommand(() => { GotoPage("NhanVienPage"); });
             GotoHoSoPageCommand = new DelegateCommand(() => { GotoPage("HoSoPage"); });
             GotoDiemMenuPageCommand = new DelegateCommand(() => { GotoPage("DiemMenuPage"); });
+            GotoMenuTienIchPageCommand = new DelegateCommand(() => { GotoPage("MenuTienIchPage"); });
             LoadAllData();
         }
 

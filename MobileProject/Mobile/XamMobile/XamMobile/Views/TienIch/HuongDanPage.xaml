@@ -3,10 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamMobile.Views.TienIch.HuongDanPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <Label Text="THÔNG BÁO HƯỚNG DẪN SỬ DỤNG PTIT S-LINK HỖ TRỢ CÔNG TÁC QUẢN LÝ ĐÀO TẠO TẠI CƠ SỞ ĐÀO TẠO HÀ NỘI" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="20"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                    HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Label Text="{Binding ThongBao}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="1. Về ứng dụng PTIT S-Link" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Label Text="{Binding UngDung}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Label Text="2. Cài đặt và sử dụng" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding CaiDat}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <Label Text="Hướng dẫn sử dụng kèm theo:" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding LinkDuongDan}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -81,6 +81,8 @@ namespace XamMobile
 
             containerRegistry.RegisterForNavigation<GioiThieuPage, GioiThieuPageViewModel>();
             containerRegistry.RegisterForNavigation<HuongDanPage, HuongDanPageViewModel>();
+            containerRegistry.RegisterForNavigation<HuongDanSlidePage, HuongDanSlidePageViewModel>();
+            containerRegistry.RegisterForNavigation<ListHuongDanPage, ListHuongDanPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuTienIchPage, MenuTienIchPageViewModel>();
             containerRegistry.RegisterForNavigation<TinTucPage, TinTucPageViewModel>();
 

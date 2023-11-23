@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamMobile.Views.TienIch.HuongDanSlidePage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                <Image HorizontalOptions="Start" Source="HDSlide1.PNG"></Image>
+                <Image HorizontalOptions="Start" Source="HDSlide2.PNG"></Image>
+                <Image HorizontalOptions="Start" Source="HDSlide3.PNG"></Image>
+                <Image HorizontalOptions="Start" Source="HDSlide4.PNG"></Image>
+                <Image HorizontalOptions="Start" Source="HDSlideC.PNG"></Image>
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

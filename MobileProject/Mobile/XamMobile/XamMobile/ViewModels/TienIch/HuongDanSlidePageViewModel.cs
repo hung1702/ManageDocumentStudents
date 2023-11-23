@@ -1,16 +1,17 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using XamMobile.Services.Interface;
 
-namespace XamMobile.ViewModels.CongNo
+namespace XamMobile.ViewModels.TienIch
 {
-    public class HocPhiPageViewModel : ViewModelBase
+    public class HuongDanSlidePageViewModel : ViewModelBase
     {
         IUserService iUserService;
 
-        public HocPhiPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
+        public HuongDanSlidePageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             this.iUserService = iUserService;
         }
