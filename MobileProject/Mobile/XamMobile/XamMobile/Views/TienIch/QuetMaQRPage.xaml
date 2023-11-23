@@ -3,22 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasBackButton="True"
              NavigationPage.HasNavigationBar="True"
-             Title="Quét Mã QR"
+             Title="Scan QR Code"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              x:Class="XamMobile.Views.TienIch.QuetMaQRPage">
     <ContentPage.Content>
-        <StackLayout>
-            <!--<zxing:ZXingScannerView x:Name="scannerView"
-                                    OnScanResult="OnScanResult"
-                                    IsScanning="True"
-                                    WidthRequest="300"
-                                    HeightRequest="300"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="CenterAndExpand" />
+        <Grid Margin="20">
+            <Label Margin="20" Text="Hướng camera về phía mã QR" FontSize="17"
+                   VerticalOptions="Start" HorizontalOptions="Center" 
+                   TextColor="{StaticResource MainColor}"></Label>
 
-            --><!-- Button to navigate to another page --><!--
-            <Button Text="Navigate to Another Page"
-                    Command="{Binding NavigateCommand}"
-                    VerticalOptions="Start" />-->
-        </StackLayout>
+            <zxing:ZXingScannerView x:Name="scannerView"
+                                OnScanResult="OnScanResult"
+                                IsScanning="{Binding IsScanning}"
+                                WidthRequest="350"
+                                HeightRequest="350"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                BackgroundColor="Gray"/>
+
+            <Button Text="Ngừng Quét"
+                Command="{Binding StopScanningCommand}"
+                IsEnabled="{Binding IsScanning}" CornerRadius="10"
+                VerticalOptions="End" HorizontalOptions="Center" WidthRequest="250"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

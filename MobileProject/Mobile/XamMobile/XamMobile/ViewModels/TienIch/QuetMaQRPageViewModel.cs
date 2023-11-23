@@ -3,6 +3,8 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 using XamMobile.Services.Interface;
 
 namespace XamMobile.ViewModels.TienIch
@@ -11,16 +13,31 @@ namespace XamMobile.ViewModels.TienIch
     {
         IUserService iUserService;
 
-        //public DelegateCommand GotoListHuongDanPageCommand { get; private set; }
-        //public DelegateCommand GotoGioiThieuPageCommand { get; private set; }
-        //public DelegateCommand GotoTinTucPageCommand { get; private set; }
+        private bool isScanning;
+        public bool IsScanning
+        {
+            get { return isScanning; }
+            set
+            {
+                if (isScanning != value)
+                {
+                    isScanning = value;
+                    OnPropertyChanged(nameof(IsScanning));
+                }
+            }
+        }
+        public ICommand StopScanningCommand { get; private set; }
 
         public QuetMaQRPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             this.iUserService = iUserService;
-            //GotoListHuongDanPageCommand = new DelegateCommand(() => { GotoPage("ListHuongDanPage"); });
-            //GotoGioiThieuPageCommand = new DelegateCommand(() => { GotoPage("GioiThieuPage"); });
-            //GotoTinTucPageCommand = new DelegateCommand(() => { GotoPage("TinTucPage"); });
+            StopScanningCommand = new Command(StopScanning);
+        }
+
+        private void StopScanning()
+        {
+            IsScanning = false;
+            GotoPage("MenuTienIchPage");
         }
 
         public void GotoPage(string page)
