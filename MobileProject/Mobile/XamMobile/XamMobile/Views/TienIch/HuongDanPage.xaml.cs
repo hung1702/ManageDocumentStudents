@@ -16,5 +16,12 @@ namespace XamMobile.Views.TienIch
 		{
 			InitializeComponent ();
 		}
-	}
+
+        [Obsolete]
+        private void OnLinkClicked(object sender, EventArgs e)
+        {
+            // Open the URL when the link is clicked
+            Device.OpenUri(new Uri("https://portal.ptit.edu.vn/wp-content/uploads/2021/01/HDSD-HSSV-Ptit.pdf"));
+        }
+    }
 }

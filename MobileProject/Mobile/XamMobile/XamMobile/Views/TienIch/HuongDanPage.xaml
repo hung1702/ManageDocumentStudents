@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Văn Bản Hướng Dẫn"
              x:Class="XamMobile.Views.TienIch.HuongDanPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical">
+            <StackLayout Margin="15" Spacing="10" Orientation="Vertical">
                 <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
 
                 <Label Text="THÔNG BÁO HƯỚNG DẪN SỬ DỤNG PTIT S-LINK HỖ TRỢ CÔNG TÁC QUẢN LÝ ĐÀO TẠO TẠI CƠ SỞ ĐÀO TẠO HÀ NỘI" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="20"
@@ -21,24 +24,31 @@
 
                 <Label Text="{Binding UngDung}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
                     VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
 
                 <Label Text="2. Cài đặt và sử dụng" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
                     VerticalOptions="StartAndExpand" 
                     HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
                 <Label Text="{Binding CaiDat}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
                     VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
 
                 <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
 
-                <Label Text="Hướng dẫn sử dụng kèm theo:" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Label Text="{Binding LinkDuongDan}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
-                    VerticalOptions="StartAndExpand" 
-                    HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
 
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Truy cập: " TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="15"
+                    VerticalOptions="StartAndExpand" 
+                    HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+
+                    <Label Text="Văn bản hướng dẫn sử dụng hệ thống" TextColor="Blue" FontAttributes="Italic" FontSize="18"
+                        VerticalOptions="StartAndExpand" HorizontalOptions="Start" HorizontalTextAlignment="Start" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnLinkClicked"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
                 <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </ScrollView>

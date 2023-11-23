@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Quét Mã QR"
+             x:Class="XamMobile.Views.TienIch.QuetMaQRPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--<zxing:ZXingScannerView x:Name="scannerView"
+                                    OnScanResult="OnScanResult"
+                                    IsScanning="True"
+                                    WidthRequest="300"
+                                    HeightRequest="300"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="CenterAndExpand" />
+
+            --><!-- Button to navigate to another page --><!--
+            <Button Text="Navigate to Another Page"
+                    Command="{Binding NavigateCommand}"
+                    VerticalOptions="Start" />-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
