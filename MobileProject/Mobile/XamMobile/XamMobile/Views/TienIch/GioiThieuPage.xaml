@@ -3,10 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamMobile.Views.ThuVien.GioiThieuPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <Label Text="GIỚI THIỆU" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="20"
+                VerticalOptions="StartAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+
+                <Label Text="{Binding VanBanGioiThieu}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Label Text="Chức năng và nhiệm vụ" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding ChucNang}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Label Text="Đào tạo" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding DaoTao}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                <Label Text="Nghiên cứu khoa học và tư vấn chuyển giao công nghệ" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding NghienCuu}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <Label Text="HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="18"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                <Label Text="{Binding DiaChi}" TextColor="Black" Style="{StaticResource TitleLabel}" FontSize="15"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

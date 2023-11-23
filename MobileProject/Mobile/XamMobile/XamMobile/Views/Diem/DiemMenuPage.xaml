@@ -24,30 +24,6 @@
                                 <Label Margin="0,0,0,5" Text="Thông báo" FontAttributes="Bold" FontSize="Medium" TextColor="{StaticResource MainColor}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
                             </StackLayout>
                             <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
-                            <!--<ListView HeightRequest="190" HasUnevenRows="True"  ItemsSource="{Binding Notifications}" ItemSelected="ListView_ItemSelected">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <ViewCell>
-                                            <StackLayout Padding="0,5,5,5" Margin="0,5,5,5">
-                                                <Grid ColumnSpacing="5">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="50"/>
-                                                        <ColumnDefinition Width="*"/>
-                                                    </Grid.ColumnDefinitions>
-                                                    <StackLayout Grid.Column="0">
-                                                        <Image VerticalOptions="CenterAndExpand" HeightRequest="25" WidthRequest="25"  Source="bell_parent_red_icon.png"></Image>
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Column="1">
-                                                        <Label LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="{Binding CustomNameProfileNumber}" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
-                                                        <Label LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="{Binding CustomNameProfileCode}" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
-                                                        <Label TextColor="{Binding TextColor}" MaxLines="2" LineBreakMode="TailTruncation" HorizontalTextAlignment="Start" Text="{Binding TrangThai}" FontSize="{StaticResource FontSizeSmall}"></Label>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </StackLayout>
-                                        </ViewCell>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>-->
                         </StackLayout>
                     </Frame>
                     <Grid Margin="10">
