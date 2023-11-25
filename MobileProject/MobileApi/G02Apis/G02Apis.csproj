@@ -246,6 +246,9 @@
     <Compile Include="Models\MonHoc.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MuonSach.cs">
+      <DependentUpon>SoHoaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SinhVien.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
@@ -283,6 +286,9 @@
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\S_User_Role.cs">
+      <DependentUpon>SoHoaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TinTuc.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\VanBan.cs">

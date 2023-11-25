@@ -42,5 +42,7 @@ namespace G02Apis.Models
         public virtual DbSet<S_Users> S_Users { get; set; }
         public virtual DbSet<SinhVien> SinhViens { get; set; }
         public virtual DbSet<VanBan> VanBans { get; set; }
+        public virtual DbSet<MuonSach> MuonSachs { get; set; }
+        public virtual DbSet<TinTuc> TinTucs { get; set; }
     }
 }

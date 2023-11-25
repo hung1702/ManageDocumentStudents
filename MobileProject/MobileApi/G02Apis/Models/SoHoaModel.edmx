@@ -101,6 +101,19 @@
           <Property Name="SoTinChi" Type="int" />
           <Property Name="HocKyId" Type="int" />
         </EntityType>
+        <EntityType Name="MuonSach">
+          <Key>
+            <PropertyRef Name="MuonSachId" />
+          </Key>
+          <Property Name="MuonSachId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayMuon" Type="datetime2" Precision="7" />
+          <Property Name="NguoiMuon" Type="int" />
+          <Property Name="TenSach" Type="nvarchar(max)" />
+          <Property Name="MaSach" Type="nvarchar(max)" />
+          <Property Name="DaTra" Type="bit" Nullable="false" />
+          <Property Name="NgayTra" Type="datetime2" Precision="7" />
+          <Property Name="ThoiHanMuon" Type="int" />
+        </EntityType>
         <EntityType Name="S_Authority">
           <Key>
             <PropertyRef Name="AuthorityID" />
@@ -199,6 +212,24 @@
           <Property Name="TrangThai" Type="int" Nullable="false" />
           <Property Name="LopId" Type="int" />
           <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TinTuc">
+          <Key>
+            <PropertyRef Name="TinTucId" />
+          </Key>
+          <Property Name="TinTucId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ten" Type="nvarchar(max)" />
+          <Property Name="NgayTao" Type="datetime2" Precision="7" />
+          <Property Name="NguoiTao" Type="int" />
+          <Property Name="NoiDungMo" Type="nvarchar(max)" />
+          <Property Name="NoiDungThan" Type="nvarchar(max)" />
+          <Property Name="NoiDungKet" Type="nvarchar(max)" />
+          <Property Name="TieuDeMo" Type="nvarchar(max)" />
+          <Property Name="TieuDeThan" Type="nvarchar(max)" />
+          <Property Name="TieuDeKet" Type="nvarchar(max)" />
+          <Property Name="AnhMo" Type="nvarchar(max)" />
+          <Property Name="AnhThan" Type="nvarchar(max)" />
+          <Property Name="AnhKet" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="VanBan">
           <Key>
@@ -423,6 +454,7 @@
           <EntitySet Name="LoaiVB" EntityType="Self.LoaiVB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LopSinhVien" EntityType="Self.LopSinhVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonHoc" EntityType="Self.MonHoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MuonSach" EntityType="Self.MuonSach" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Authority" EntityType="Self.S_Authority" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_NhanVien" EntityType="Self.S_NhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Role" EntityType="Self.S_Role" Schema="dbo" store:Type="Tables" />
@@ -431,6 +463,7 @@
           <EntitySet Name="S_User_Role" EntityType="Self.S_User_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="S_Users" EntityType="Self.S_Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SinhVien" EntityType="Self.SinhVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TinTuc" EntityType="Self.TinTuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VanBan" EntityType="Self.VanBan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_HocKy_Diem" Association="Self.FK_HocKy_Diem">
             <End Role="HocKy" EntitySet="HocKy" />
@@ -583,6 +616,8 @@
             <End Role="SinhVien" EntitySet="SinhViens" />
             <End Role="VanBan" EntitySet="VanBans" />
           </AssociationSet>
+          <EntitySet Name="MuonSaches" EntityType="SoHoaModel.MuonSach" />
+          <EntitySet Name="TinTucs" EntityType="SoHoaModel.TinTuc" />
         </EntityContainer>
         <EntityType Name="AccessToken">
           <Key>
@@ -1025,6 +1060,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="MuonSach">
+          <Key>
+            <PropertyRef Name="MuonSachId" />
+          </Key>
+          <Property Name="MuonSachId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayMuon" Type="DateTime" Precision="7" />
+          <Property Name="NguoiMuon" Type="Int32" />
+          <Property Name="TenSach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaSach" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DaTra" Type="Boolean" Nullable="false" />
+          <Property Name="NgayTra" Type="DateTime" Precision="7" />
+          <Property Name="ThoiHanMuon" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TinTuc">
+          <Key>
+            <PropertyRef Name="TinTucId" />
+          </Key>
+          <Property Name="TinTucId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="7" />
+          <Property Name="NguoiTao" Type="Int32" />
+          <Property Name="NoiDungMo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungThan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NoiDungKet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TieuDeMo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TieuDeThan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TieuDeKet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnhMo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnhThan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnhKet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1262,6 +1328,39 @@
                 <ScalarProperty Name="MaSinhVien" ColumnName="MaSinhVien" />
                 <ScalarProperty Name="SinhVienId" ColumnName="SinhVienId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MuonSaches">
+            <EntityTypeMapping TypeName="SoHoaModel.MuonSach">
+              <MappingFragment StoreEntitySet="MuonSach">
+                <ScalarProperty Name="ThoiHanMuon" ColumnName="ThoiHanMuon" />
+                <ScalarProperty Name="NgayTra" ColumnName="NgayTra" />
+                <ScalarProperty Name="DaTra" ColumnName="DaTra" />
+                <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+                <ScalarProperty Name="TenSach" ColumnName="TenSach" />
+                <ScalarProperty Name="NguoiMuon" ColumnName="NguoiMuon" />
+                <ScalarProperty Name="NgayMuon" ColumnName="NgayMuon" />
+                <ScalarProperty Name="MuonSachId" ColumnName="MuonSachId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TinTucs">
+            <EntityTypeMapping TypeName="SoHoaModel.TinTuc">
+              <MappingFragment StoreEntitySet="TinTuc">
+                <ScalarProperty Name="AnhKet" ColumnName="AnhKet" />
+                <ScalarProperty Name="AnhThan" ColumnName="AnhThan" />
+                <ScalarProperty Name="AnhMo" ColumnName="AnhMo" />
+                <ScalarProperty Name="TieuDeKet" ColumnName="TieuDeKet" />
+                <ScalarProperty Name="TieuDeThan" ColumnName="TieuDeThan" />
+                <ScalarProperty Name="TieuDeMo" ColumnName="TieuDeMo" />
+                <ScalarProperty Name="NoiDungKet" ColumnName="NoiDungKet" />
+                <ScalarProperty Name="NoiDungThan" ColumnName="NoiDungThan" />
+                <ScalarProperty Name="NoiDungMo" ColumnName="NoiDungMo" />
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="TinTucId" ColumnName="TinTucId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
