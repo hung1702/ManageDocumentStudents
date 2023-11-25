@@ -5,20 +5,18 @@ using System.Collections.Generic;
 using System.Text;
 using XamMobile.Services.Interface;
 
-namespace XamMobile.ViewModels.ThuVien
+namespace XamMobile.ViewModels.DichVu
 {
-    public class MenuThuVienPageViewModel : ViewModelBase
+    public class DichVuMenuPageViewModel : ViewModelBase
     {
         IUserService iUserService;
-        public DelegateCommand GotoTimKiemSachPageCommand { get; private set; }
-        public DelegateCommand GotoLichSuMuonPageCommand { get; private set; }
-
-        
-        public MenuThuVienPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
+        public DelegateCommand GotoBieuMauPageCommand { get; private set; }
+        public DelegateCommand GotoLichSuDichVuPageCommand { get; private set; }
+        public DichVuMenuPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             this.iUserService = iUserService;
-            GotoTimKiemSachPageCommand = new DelegateCommand(() => { GotoPage("TimKiemThuVienPage"); });
-            GotoLichSuMuonPageCommand = new DelegateCommand(() => { GotoPage("LichSuThuVienPage"); });
+            GotoBieuMauPageCommand = new DelegateCommand(() => { GotoPage("BieuMauPage"); });
+            GotoLichSuDichVuPageCommand = new DelegateCommand(() => { GotoPage("LichSuDichVuPage"); });
         }
 
         public void GotoPage(string page)

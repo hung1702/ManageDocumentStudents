@@ -22,6 +22,8 @@ using XamMobile.ViewModels.TienIch;
 using XamMobile.Views.TienIch;
 using XamMobile.Views.VanBan;
 using XamMobile.ViewModels.VanBan;
+using XamMobile.Views.DichVu;
+using XamMobile.ViewModels.DichVu;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamMobile
@@ -75,6 +77,8 @@ namespace XamMobile
 
             containerRegistry.RegisterForNavigation<HocPhiPage, HocPhiPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuCongNoPage, MenuCongNoPageViewModel>();
+            containerRegistry.RegisterForNavigation<KhoanChuaNopPage, KhoanChuaNopPageViewModel>();
+            containerRegistry.RegisterForNavigation<KhoanDaNopPage, KhoanDaNopPageViewModel>();
 
             containerRegistry.RegisterForNavigation<LichSuThuVienPage, LichSuThuVienPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuThuVienPage, MenuThuVienPageViewModel>();
@@ -93,6 +97,11 @@ namespace XamMobile
             containerRegistry.RegisterForNavigation<MenuVanBanPage, MenuVanBanPageViewModel>();
             containerRegistry.RegisterForNavigation<ThanhCongVanBanPopup, ThanhCongVanBanPopupViewModel>();
             containerRegistry.RegisterForNavigation<ThongBaoVanBanPopup, ThongBaoVanBanPopupViewModel>();
+           
+            containerRegistry.RegisterForNavigation<DichVuMenuPage, DichVuMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<BieuMauPage, BieuMauPageViewModel>();
+            containerRegistry.RegisterForNavigation<LichSuDichVuPage, LichSuDichVuPageViewModel>();
+            containerRegistry.RegisterForNavigation<QuyTrinhBieuMauPopUp, QuyTrinhBieuMauPopUpViewModel>();
 
             // Services dependence injection
             //containerRegistry.Register<IBaseService, BaseService>();
