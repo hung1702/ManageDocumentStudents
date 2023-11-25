@@ -14,6 +14,8 @@ namespace XamMobile.ViewModels.TienIch
         public DelegateCommand GotoListHuongDanPageCommand { get; private set; }
         public DelegateCommand GotoGioiThieuPageCommand { get; private set; }
         public DelegateCommand GotoTinTucPageCommand { get; private set; }
+        public DelegateCommand GotoQuetMaQRPageCommand { get; private set; }
+        public DelegateCommand GotoTruyCapMapPageCommand { get; private set; }
 
         public MenuTienIchPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
@@ -21,6 +23,8 @@ namespace XamMobile.ViewModels.TienIch
             GotoListHuongDanPageCommand = new DelegateCommand(() => { GotoPage("ListHuongDanPage"); });
             GotoGioiThieuPageCommand = new DelegateCommand(() => { GotoPage("GioiThieuPage"); });
             GotoTinTucPageCommand = new DelegateCommand(() => { GotoPage("TinTucPage"); });
+            GotoQuetMaQRPageCommand = new DelegateCommand(() => { GotoPage("QuetMaQRPage"); });
+            GotoTruyCapMapPageCommand = new DelegateCommand(() => { GotoPage("TruyCapMapPage"); });
         }
 
         public void GotoPage(string page)

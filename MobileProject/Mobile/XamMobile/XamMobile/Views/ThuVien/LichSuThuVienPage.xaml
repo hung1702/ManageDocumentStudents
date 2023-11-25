@@ -1,12 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Lịch Sử Mượn Sách"
              x:Class="XamMobile.Views.ThuVien.LichSuThuVienPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Margin="20">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Frame Padding="10" Margin="5" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="Ngày bắt đầu" FontAttributes="Bold" FontSize="17"></Label>
+                            <DatePicker Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Date="{Binding NgayBatDau}"></DatePicker>
+                        </Grid>
+                    </Frame>
+                    <Frame Padding="10" Margin="5" Grid.Row="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="Ngày kết thúc" FontAttributes="Bold" FontSize="17"></Label>
+                            <DatePicker Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Date="{Binding NgayKetThuc}"></DatePicker>
+                        </Grid>
+                    </Frame>
+                    <Frame Padding="10" Margin="5" Grid.Row="2" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center" Text="Chọn" FontAttributes="Bold" FontSize="17"></Label>
+                            <Picker Grid.Column="1" VerticalOptions="Center" TextColor="Black" x:Name="pickerSortBy" Title="Chọn" 
+                            FontSize="16" Style="{StaticResource TitleLabel}" 
+                            ItemsSource="{Binding SelectedItem}" 
+                            SelectedIndexChanged="Picker_OnSelectedSortBy"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+                <Button Text="Tìm kiếm" Command="{Binding TimKiemCommand}" CornerRadius="10" VerticalOptions="End" HorizontalOptions="Center" WidthRequest="150"/>
+
+            </StackLayout>
+            <StackLayout IsVisible="{Binding IsNoResult}">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="End">
+                    <Image HorizontalOptions="Center" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                    <Label HorizontalTextAlignment="Center" Text="Không có lịch sử" FontAttributes="Italic" FontSize="{StaticResource FontSizeNormal}"></Label>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

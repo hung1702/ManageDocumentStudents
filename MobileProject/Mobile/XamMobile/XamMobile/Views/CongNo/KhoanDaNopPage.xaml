@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasBackButton="True"
              NavigationPage.HasNavigationBar="True"
-             Title=""
-             x:Class="XamMobile.Views.VanBan.ThanhCongVanBanPopup">
+             Title="Các Khoản Đã Nộp"
+             x:Class="XamMobile.Views.CongNo.KhoanDaNopPage">
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Welcome to Xamarin.Forms!"

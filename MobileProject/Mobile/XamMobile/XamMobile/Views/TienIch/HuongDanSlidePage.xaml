@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Slide Hướng Dẫn"
              x:Class="XamMobile.Views.TienIch.HuongDanSlidePage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical">
+            <StackLayout Margin="15" Spacing="10" Orientation="Vertical">
                 <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
                 <Image HorizontalOptions="Start" Source="HDSlide1.PNG"></Image>
                 <Image HorizontalOptions="Start" Source="HDSlide2.PNG"></Image>
