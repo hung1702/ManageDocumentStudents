@@ -112,6 +112,9 @@ namespace XamMobile
             containerRegistry.RegisterSingleton<ILogService, LogService>();
             containerRegistry.RegisterSingleton<IUploadFileService, UploadFileService>();
             containerRegistry.RegisterSingleton<IDiemService, DiemService>();
+            containerRegistry.RegisterSingleton<IBieuMauService, BieuMauService>();
+            containerRegistry.RegisterSingleton<IThuVienService, ThuVienService>();
+            containerRegistry.RegisterSingleton<ITinTucService, TinTucService>();
 
             //
             containerRegistry.RegisterPopupNavigationService();

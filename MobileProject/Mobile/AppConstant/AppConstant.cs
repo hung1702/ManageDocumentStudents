@@ -18,5 +18,10 @@ namespace AppConstant
         public const string APIDeleteNhanVien1 = "api/nhanvien/deletenhanvien";
         public const string APIUploadImage = "api/img";
         public const string APIUpdateNhanVienAvatar = "api/nhanvien/updateavatar";
+
+        public const string APIGetAllTinTuc = "api/tintuc/getalltintuc";
+        public const string APIInsertOrUpdateTinTuc = "api/tintuc/insertorupdatetintuc";
+        public const string APIGetAllMuonSach = "api/muonSach/getallmuonsach";
+        public const string APIInsertOrUpdateMuonSach = "api/muonSach/insertorupdatemuonsach";
     }
 }

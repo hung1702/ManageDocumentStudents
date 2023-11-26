@@ -74,6 +74,9 @@
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="ThoiGianXuLy" Type="int" />
+          <Property Name="QuyTrinh" Type="varchar" MaxLength="3000" />
+          <Property Name="NgayTao" Type="datetime" />
+          <Property Name="NguoiTao" Type="int" />
         </EntityType>
         <EntityType Name="LopSinhVien">
           <Key>
@@ -697,6 +700,9 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="ThoiGianXuLy" Type="Int32" />
           <NavigationProperty Name="VanBans" Relationship="SoHoaModel.FK_VanBan_LoaiVB" FromRole="LoaiVB" ToRole="VanBan" />
+          <Property Name="QuyTrinh" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="NgayTao" Type="DateTime" Precision="3" />
+          <Property Name="NguoiTao" Type="Int32" />
         </EntityType>
         <EntityType Name="LopSinhVien">
           <Key>
@@ -1164,6 +1170,9 @@
           <EntitySetMapping Name="LoaiVBs">
             <EntityTypeMapping TypeName="SoHoaModel.LoaiVB">
               <MappingFragment StoreEntitySet="LoaiVB">
+                <ScalarProperty Name="NguoiTao" ColumnName="NguoiTao" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="QuyTrinh" ColumnName="QuyTrinh" />
                 <ScalarProperty Name="ThoiGianXuLy" ColumnName="ThoiGianXuLy" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
