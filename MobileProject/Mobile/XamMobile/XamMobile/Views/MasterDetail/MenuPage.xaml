@@ -10,7 +10,7 @@
     <MasterDetailPage.Master>
         <NavigationPage Title="Menu" BarBackgroundColor="{StaticResource MainColor}" BarTextColor="White" >
             <x:Arguments>
-                <ContentPage Title="Số hóa Việt Nam">
+                <ContentPage Title="Quản Lý Sinh Viên">
                     <StackLayout>
                         <StackLayout>
                             <Image Source="logo2.png" Aspect="AspectFill" HorizontalOptions="FillAndExpand" HeightRequest="50"></Image>

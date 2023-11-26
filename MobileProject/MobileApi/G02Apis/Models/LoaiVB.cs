@@ -26,6 +26,9 @@ namespace G02Apis.Models
         public bool IsDeleted { get; set; }
         public bool IsActive { get; set; }
         public Nullable<int> ThoiGianXuLy { get; set; }
+        public string QuyTrinh { get; set; }
+        public Nullable<System.DateTime> NgayTao { get; set; }
+        public Nullable<int> NguoiTao { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VanBan> VanBans { get; set; }

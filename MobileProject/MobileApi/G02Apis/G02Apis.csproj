@@ -3,6 +3,7 @@
   <Import Project="..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.8.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>latest</LangVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
@@ -207,18 +208,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiFilter\CachingFilter.cs" />
+    <Compile Include="Applications\DTOModel\BieuMauModel.cs" />
+    <Compile Include="Applications\DTOModel\DiemModel.cs" />
+    <Compile Include="Applications\DTOModel\HocKyModel.cs" />
+    <Compile Include="Applications\DTOModel\HocPhiModel.cs" />
+    <Compile Include="Applications\DTOModel\KhoaModel.cs" />
+    <Compile Include="Applications\DTOModel\LoaiBieuMauModel.cs" />
+    <Compile Include="Applications\DTOModel\LopSinhVienModel.cs" />
+    <Compile Include="Applications\DTOModel\MonHocModel.cs" />
+    <Compile Include="Applications\DTOModel\MuonSachModel.cs" />
+    <Compile Include="Applications\DTOModel\SinhVienModel.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\BieuMauController.cs" />
     <Compile Include="Controllers\FileUploadController.cs" />
     <Compile Include="Controllers\FileUploadsController.cs" />
+    <Compile Include="Controllers\MuonSachController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SinhVienController.cs" />
     <Compile Include="Controllers\S_HoSoController.cs" />
     <Compile Include="Controllers\S_NhanVienController.cs" />
     <Compile Include="Controllers\S_UsersController.cs" />
     <Compile Include="Controllers\S_VanBanController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +259,9 @@
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MonHoc.cs">
+      <DependentUpon>SoHoaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MuonSach.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SinhVien.cs">
@@ -285,6 +303,9 @@
     <Compile Include="Models\S_User_Role.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TinTuc.cs">
+      <DependentUpon>SoHoaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\VanBan.cs">
       <DependentUpon>SoHoaModel.tt</DependentUpon>
     </Compile>
@@ -321,6 +342,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Applications\Services\" />
     <Folder Include="Commons\" />
     <Folder Include="imgs\" />
     <Folder Include="Views\FileUploads\" />

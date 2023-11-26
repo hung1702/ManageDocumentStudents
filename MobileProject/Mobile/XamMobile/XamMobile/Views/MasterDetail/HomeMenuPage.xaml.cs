@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamMobile.ViewModels;
+using XamMobile.ViewModels.TienIch;
 
 namespace XamMobile.Views
 {
@@ -31,17 +32,17 @@ namespace XamMobile.Views
             listView.SelectedItem = null;
         }
 
-        //protected override bool OnBackButtonPressed()
-        //{
-        //    if (PopupNavigation.Instance.PopupStack.Count > 0)
-        //    {
-        //        Action ac = async () => await PopupNavigation.Instance.PopAllAsync(true);
-        //        ac.Invoke();
-        //        return true;
-        //    }
-        //    return base.OnBackButtonPressed();
-        //}
-        protected override bool OnBackButtonPressed() => true;
+        private void ListView_TinTucItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            viewModel = (HomeMenuPageViewModel)BindingContext;
+            var listView = ((ListView)sender);
+            if (listView.SelectedItem == null)
+                return;
 
+            this.viewModel.GotoTinTucDetailPage(e.SelectedItem);
+            listView.SelectedItem = null;
+        }
+
+        protected override bool OnBackButtonPressed() => true;
     }
 }
