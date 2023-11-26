@@ -7,8 +7,8 @@ namespace XamMobile.EntityModels
 {
     public class TinTucEntity
     {
-        [JsonProperty("Id")]
-        public int Id { get; set; }
+        [JsonProperty("TinTucId")]
+        public int TinTucId { get; set; }
         [JsonProperty("Ten")]
         public string Ten { get; set; }
         [JsonProperty("NgayTao")]
@@ -33,5 +33,11 @@ namespace XamMobile.EntityModels
         public string AnhThan { get; set; }
         [JsonProperty("AnhKet")]
         public string AnhKet { get; set; }
+        [JsonProperty("NgayKetThuc")]
+        public DateTime? NgayKetThuc { get; set; }
+        [JsonProperty("IsActive")]
+        public bool IsActive { get; set; }
+        [JsonProperty("IsNoiBat")]
+        public bool IsNoiBat { get; set; }
     }
 }

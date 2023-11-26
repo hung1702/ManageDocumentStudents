@@ -27,5 +27,8 @@ namespace G02Apis.Models
         public string AnhMo { get; set; }
         public string AnhThan { get; set; }
         public string AnhKet { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public Nullable<System.DateTime> NgayKetThuc { get; set; }
+        public Nullable<bool> IsNoiBat { get; set; }
     }
 }

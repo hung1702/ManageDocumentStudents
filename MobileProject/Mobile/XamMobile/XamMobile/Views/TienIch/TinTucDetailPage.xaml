@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="True"
+             Title="Chi Tiết Tin Tức"
+             x:Class="XamMobile.Views.TienIch.TinTucDetailPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Margin="15">
+                    <StackLayout Margin="5,0,5,5">
+                        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Ngày kết thúc tin"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="15" Text="{Binding NgayKetThuc}"/>
+                            <Label Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Tin nổi bật"/>
+                            <Label Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Start" Style="{StaticResource TitleLabel}" TextColor="{StaticResource MainColor}" FontSize="15" Text="{Binding TextNoiBat}"/>
+                        </Grid>
+                    </StackLayout>
+                    <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                    <StackLayout>
+                        <StackLayout>
+                            <Frame HasShadow="True" Margin="10" Padding="10" CornerRadius="10" BackgroundColor="Wheat">
+                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Label TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding TinTuc.Ten}" FontSize="17" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                                    <Label HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="14" TextColor="Gray" Style="{StaticResource TitleLabel}" Text="{Binding TinTuc.NgayTao}"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Label TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding TinTuc.TieuDeMo}" FontAttributes="Bold" FontSize="16" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                            <Label FontSize="15" TextColor="Black" Text="{Binding TinTuc.NoiDungMo}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                            <Label FontSize="15" TextColor="Gray" Text="{Binding TinTuc.AnhMo}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding HasThanTinTuc}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Label TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding TinTuc.TieuDeThan}" FontAttributes="Bold" FontSize="16" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                            <Label FontSize="15" TextColor="Black" Text="{Binding TinTuc.NoiDungThan}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                            <Label FontSize="15" TextColor="Gray" Text="{Binding TinTuc.AnhThan}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding HasAnhTinTuc}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Label TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding TinTuc.TieuDeKet}" FontAttributes="Bold" FontSize="16" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                            <Label FontSize="15" TextColor="Black" Text="{Binding TinTuc.NoiDungKet}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                            <Label FontSize="15" TextColor="Gray" Text="{Binding TinTuc.AnhKet}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                        </StackLayout>
+                        <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                        <Label Padding="10" FontSize="15" TextColor="Gray" Text="Người gửi: portal.ptit.edu.vn" HorizontalOptions="End" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal" Padding="0,0,0,5">
+                <Button IsVisible="{Binding FromQuanLyTinTuc}" HeightRequest="40" Padding="5" CornerRadius="10" WidthRequest="100" BorderWidth="10" TextColor="White" BackgroundColor="{StaticResource MainColor}" HorizontalOptions="EndAndExpand" Command="{Binding SuaTinTucDetailCommand}" Text="Sửa"></Button>
+                <Button HeightRequest="40" Padding="5" CornerRadius="10" WidthRequest="100" BorderWidth="10" TextColor="White" BackgroundColor="{StaticResource MainColor}" HorizontalOptions="CenterAndExpand" Command="{Binding DongTinTucDetailCommand}" Text="Đóng"></Button>
+                <Button IsVisible="{Binding FromQuanLyTinTuc}" HeightRequest="40" Padding="5" CornerRadius="10" WidthRequest="100" BorderWidth="10" TextColor="White" BackgroundColor="Gray" HorizontalOptions="StartAndExpand" Command="{Binding XoaTinTucDetailCommand}" Text="Xóa"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -21,6 +21,7 @@ namespace AppConstant
 
         public const string APIGetAllTinTuc = "api/tintuc/getalltintuc";
         public const string APIInsertOrUpdateTinTuc = "api/tintuc/insertorupdatetintuc";
+        public const string APIDeleteTinTuc = "api/tintuc/deletetintuc";
         public const string APIGetAllMuonSach = "api/muonSach/getallmuonsach";
         public const string APIInsertOrUpdateMuonSach = "api/muonSach/insertorupdatemuonsach";
     }

@@ -11,5 +11,7 @@ namespace XamMobile.Services.Interface
         Task<List<TinTucEntity>> GetAllTinTuc();
 
         Task<TinTucEntity> InsertOrUpdateTinTuc(TinTucEntity model);
+
+        Task<bool> DeleteTinTuc(int Id);
     }
 }

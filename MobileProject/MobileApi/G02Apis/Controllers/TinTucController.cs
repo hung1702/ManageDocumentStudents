@@ -75,6 +75,9 @@ namespace G02Apis.Controllers
                     tinTuc.AnhMo = model.AnhMo;
                     tinTuc.AnhThan = model.AnhThan;
                     tinTuc.AnhKet = model.AnhKet;
+                    tinTuc.IsActive = model.IsActive;
+                    tinTuc.NgayKetThuc = model.NgayKetThuc;
+                    tinTuc.IsNoiBat = model.IsNoiBat;
                     db.TinTucs.AddOrUpdate(tinTuc);
                     try
                     {
@@ -85,6 +88,34 @@ namespace G02Apis.Controllers
                     {
                         return NotFound();
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        [Route("api/tintuc/deletetintuc")]
+        [HttpPost]
+        public async Task<IHttpActionResult> DeleteTinTuc(int Id)
+        {
+            try
+            {
+                var db = new SoHoaEntities();
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var tinTuc = await db.TinTucs.FirstOrDefaultAsync(x => x.TinTucId == Id);
+                var result = db.TinTucs.Remove(tinTuc);
+                try
+                {
+                    var res = await db.SaveChangesAsync();
+                    return Ok(true);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return NotFound();
                 }
             }
             catch (Exception ex)

@@ -233,6 +233,9 @@
           <Property Name="AnhMo" Type="nvarchar(max)" />
           <Property Name="AnhThan" Type="nvarchar(max)" />
           <Property Name="AnhKet" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="NgayKetThuc" Type="datetime" />
+          <Property Name="IsNoiBat" Type="bit" />
         </EntityType>
         <EntityType Name="VanBan">
           <Key>
@@ -1096,6 +1099,9 @@
           <Property Name="AnhMo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnhThan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnhKet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
+          <Property Name="IsNoiBat" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1357,6 +1363,9 @@
           <EntitySetMapping Name="TinTucs">
             <EntityTypeMapping TypeName="SoHoaModel.TinTuc">
               <MappingFragment StoreEntitySet="TinTuc">
+                <ScalarProperty Name="IsNoiBat" ColumnName="IsNoiBat" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="AnhKet" ColumnName="AnhKet" />
                 <ScalarProperty Name="AnhThan" ColumnName="AnhThan" />
                 <ScalarProperty Name="AnhMo" ColumnName="AnhMo" />

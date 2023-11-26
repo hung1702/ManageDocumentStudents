@@ -16,9 +16,7 @@ namespace XamMobile.Services
             {
                 var userResponse = await GetRequestWithHandleErrorAsync<List<TinTucEntity>>(AppConstant.AppConstant.APIGetAllTinTuc);
                 if (userResponse.Message.Code == ResponseCode.SUCCESS)
-                {
                     return userResponse.Result;
-                }
                 return null;
             }
             catch (Exception)
@@ -33,17 +31,29 @@ namespace XamMobile.Services
             {
                 var result = await PostRequestWithHandleErrorAsync<TinTucEntity, TinTucEntity>(AppConstant.AppConstant.APIInsertOrUpdateTinTuc, model);
                 if (result.Message.IsSuccess)
-                {
                     return result.Result;
-                }
                 else
-                {
                     return null;
-                }
             }
             catch (Exception)
             {
                 return null;
+            }
+        }
+
+        public async Task<bool> DeleteTinTuc(int Id)
+        {
+            try
+            {
+                var result = await PostRequestWithHandleErrorAsync<int, bool>(AppConstant.AppConstant.APIDeleteTinTuc, Id);
+                if (result.Message.IsSuccess)
+                    return result.Result;
+                else
+                    return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }
