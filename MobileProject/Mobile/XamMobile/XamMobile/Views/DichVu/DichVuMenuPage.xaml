@@ -30,9 +30,9 @@
                         <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
                             <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoBieuMauPageCommand}"></TapGestureRecognizer>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLoaiBieuMauPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
-                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Biểu Mẫu" FontAttributes="Bold" FontSize="18"></Label>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Loại biểu Mẫu" FontAttributes="Bold" FontSize="18"></Label>
                                 <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
                             </StackLayout>
                         </Frame>

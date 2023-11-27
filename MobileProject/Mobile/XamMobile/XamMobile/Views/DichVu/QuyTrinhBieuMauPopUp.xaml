@@ -1,12 +1,71 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="XamMobile.Views.DichVu.QuyTrinhBieuMauPopUp">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+<pages:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:customcontrols="clr-namespace:XamMobile.CustomControls"
+   x:Class="XamMobile.Views.DichVu.QuyTrinhBieuMauPopUp">
+    <!--You can set an animation in the xaml file or in the csharp code behind-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+    <Frame CornerRadius="20" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="20,0,20,0" Padding="20">
+        <AbsoluteLayout Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"  HeightRequest="450" BackgroundColor="White">
+                <Grid Margin="0, 0, 0, 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="20"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Text="Thông tin thủ tục" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="20" HorizontalOptions="Center"></Label>
+                    <StackLayout Grid.Column="1">
+                        <Button
+                            BackgroundColor="Transparent"
+                            Clicked="OnPopupClose"
+                            CommandParameter="{Binding .}"
+                            VerticalOptions="Start"
+                            WidthRequest="20" HeightRequest="25"
+                            ImageSource="close_red_icon.png" />
+                    </StackLayout>
+                </Grid>
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout HorizontalOptions="FillAndExpand" Padding="10" Margin="10" Spacing="15">
+                            <Label TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding LoaiBieuMau.Ten}" FontSize="18" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+                            <StackLayout>
+                                <Label TextColor="Gray" Style="{StaticResource TitleLabel}" Text="THỜI GIAN XỬ LÝ" FontSize="17"></Label>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label HorizontalOptions="Start" FontSize="16" TextColor="Black" Text="Trả kết quả chậm nhất sau"></Label>
+                                    <Label HorizontalOptions="Start" FontSize="16" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" Text="{Binding LoaiBieuMau.ThoiGianXuLy}"></Label>
+                                    <Label HorizontalOptions="Start" FontSize="16" TextColor="Black" Text="ngày"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label TextColor="Gray" Style="{StaticResource TitleLabel}" Text="QUY TRÌNH THỰC HIỆN" FontSize="17"></Label>
+                                <StackLayout >
+                                    <Label HorizontalOptions="Start" FontSize="16" TextColor="Black" Text="{Binding LoaiBieuMau.QuyTrinh}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"></Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                </ScrollView>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Orientation="Horizontal">
+                    <Button HeightRequest="40" CornerRadius="10" TextColor="White" BackgroundColor="{StaticResource MainColor}" Clicked="OnPopupClose" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Text="Đóng"></Button>
+                </StackLayout>
+            </StackLayout>
+        </AbsoluteLayout>
+    </Frame>
+</pages:PopupPage>

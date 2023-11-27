@@ -35,7 +35,7 @@
                     Clicked="OnPopupClose"
                     CommandParameter="{Binding .}"
                     VerticalOptions="Start"
-                    WidthRequest="20" HeightRequest="45"
+                    WidthRequest="20" HeightRequest="25"
                     ImageSource="close_red_icon.png" />
                     </StackLayout>
                 </Grid>
