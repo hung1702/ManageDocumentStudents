@@ -120,7 +120,7 @@ namespace XamMobile.ViewModels
             {
                 var tinTuc = await iTinTucService.GetAllTinTuc();
                 DataTinTucList = tinTuc.Where(x => x.IsActive).ToList();
-                ListTinTuc = DataTinTucList.Where(x => x.IsNoiBat).ToList();
+                ListTinTuc = DataTinTucList.Where(x => x.IsNoiBat).OrderBy(x => x.NgayTao).ToList();
                 if(ListTinTuc == default || ListTinTuc.Count == 0)
                     ListTinTuc = DataTinTucList.OrderBy(x => x.NgayTao).ToList();
             }

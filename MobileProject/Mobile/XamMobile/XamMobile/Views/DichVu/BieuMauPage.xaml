@@ -3,13 +3,80 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasBackButton="True"
              NavigationPage.HasNavigationBar="True"
-             Title="Biểu Mẫu"
+             Title="Chi Tiết Biểu Mẫu"
+             xmlns:customcontrols="clr-namespace:XamMobile.CustomControls"
              x:Class="XamMobile.Views.DichVu.BieuMauPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView Margin="15">
+            <StackLayout>
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                <StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="Black" FontSize="16" Text="Tên tin tức"></Label>
+                            <Label TextColor="Red" FontSize="20" Text="*"></Label>
+                        </StackLayout>
+                        <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TinTucCurrent.Ten}" Placeholder="Nhập tên tin tức" HorizontalOptions="FillAndExpand" PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
+                                <Label VerticalOptions="Center" HorizontalOptions="Start" TextColor="Black" FontSize="15" Text="Tin nổi bật"/>
+                                <Label TextColor="Red" FontSize="20" Text="*"></Label>
+                            </StackLayout>
+                            <Picker VerticalOptions="Center" HorizontalOptions="EndAndExpand" TextColor="Black" x:Name="pickerSortBy" Title="Chọn" 
+                                    FontSize="16" 
+                                    ItemsSource="{Binding SelectedSortBy}" 
+                                    SelectedIndexChanged="Picker_OnSelectedSortBy"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
+                                <Label TextColor="Black" FontSize="16" VerticalOptions="Center" Text="Ngày tự động kết thúc tin tức"></Label>
+                                <Label TextColor="Red" FontSize="20" Text="*"></Label>
+                            </StackLayout>
+                            <DatePicker MinimumDate="{Binding CurrentDate}" HorizontalOptions="EndAndExpand" Date="{Binding TinTucCurrent.NgayKetThuc}"></DatePicker>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="Black" Text="Tiêu đề mở tin tức" FontSize="16"></Label>
+                            <Label TextColor="Red" FontSize="20" Text="*"></Label>
+                        </StackLayout>
+                        <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TinTucCurrent.TieuDeMo}" Placeholder="Nhập tiêu đề mở tin tức" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label TextColor="Black" Text="Nội dung mở tin tức" FontSize="16"></Label>
+                            <Label TextColor="Red" FontSize="20" Text="*"></Label>
+                        </StackLayout>
+                        <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TinTucCurrent.NoiDungMo}" Placeholder="Nhập nội dung mở tin tức" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                        <Label TextColor="Black" FontSize="16" Text="Upload ảnh mở tin tức"></Label>
+                        <Button CornerRadius="10" BorderWidth="10" TextColor="White" BackgroundColor="CadetBlue" HorizontalOptions="EndAndExpand" Command="{Binding UploadAnhMoCommand}" Text="Upload"></Button>
+
+                        <Label TextColor="Black" FontSize="16" Text="Tiêu đề thân tin tức"></Label>
+                        <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TinTucCurrent.TieuDeThan}" Placeholder="Nhập tiêu đề thân tin tức" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                        <Label TextColor="Black" FontSize="16" Text="Nội dung thân tin tức"></Label>
+                        <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TinTucCurrent.NoiDungThan}" Placeholder="Nhập nội dung thân tin tức" HorizontalOptions="FillAndExpand"  PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                        <Label TextColor="Black" FontSize="16" Text="Upload ảnh thân tin tức"></Label>
+                        <Button CornerRadius="10" BorderWidth="10" TextColor="White" BackgroundColor="CadetBlue" HorizontalOptions="EndAndExpand" Command="{Binding UploadAnhThanCommand}" Text="Upload"></Button>
+                        <StackLayout IsVisible="{Binding IsValidate}">
+                            <Label Text="* Cần điền đầy đủ thông tin yêu cầu" FontSize="Medium" TextColor="Red" HorizontalOptions="EndAndExpand"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                    <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <Button CornerRadius="10" WidthRequest="200" BorderWidth="10" TextColor="White" BackgroundColor="{StaticResource MainColor}" HorizontalOptions="CenterAndExpand" Command="{Binding SaveTinTucCommand}" Text="Lưu"></Button>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1">
+                            <Button CornerRadius="10" WidthRequest="200" BorderWidth="10" TextColor="White" BackgroundColor="DarkGray" HorizontalOptions="CenterAndExpand" Text="Hủy"></Button>
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

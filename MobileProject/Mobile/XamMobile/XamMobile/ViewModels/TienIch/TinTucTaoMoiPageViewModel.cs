@@ -100,7 +100,6 @@ namespace XamMobile.ViewModels.TienIch
                 var res = await iTinTucService.InsertOrUpdateTinTuc(entity);
                 if(res != null)
                 {
-                    //MessagingCenter.Send((App)Application.Current, "UpdateNhanVien", res);
                     await App.Current.MainPage.DisplayAlert("Alert", "Tạo tin tức thành công!", "OK");
                     UserDialogs.Instance.Toast("Lưu thành công");
                     GotoTinTucDetailPage(res);
@@ -122,7 +121,6 @@ namespace XamMobile.ViewModels.TienIch
             if (obj == null)
                 obj = new TinTucEntity();
             navigationParamters.Add("obj", obj);
-            //navigationParamters.Add("totaltintuc", TotalTinTuc);
             await NavigationService.NavigateAsync("TinTucDetailPage", navigationParamters);
         }
     }

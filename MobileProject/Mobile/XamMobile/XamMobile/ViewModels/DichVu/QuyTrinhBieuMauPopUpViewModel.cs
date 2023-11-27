@@ -1,7 +1,9 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using XamMobile.EntityModels;
 using XamMobile.Services.Interface;
 
 namespace XamMobile.ViewModels.DichVu
@@ -10,9 +12,23 @@ namespace XamMobile.ViewModels.DichVu
     {
         IUserService iUserService;
 
+        private LoaiBieuMauEntity _loaiBieuMau;
+        public LoaiBieuMauEntity LoaiBieuMau
+        {
+            get { return _loaiBieuMau; }
+            set
+            {
+                _loaiBieuMau = value;
+                OnPropertyChanged(nameof(LoaiBieuMau));
+            }
+        }
+
+        public DelegateCommand GoToBieuMauPageCommand { get; private set; }
+
         public QuyTrinhBieuMauPopUpViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             this.iUserService = iUserService;
+            GoToBieuMauPageCommand = new DelegateCommand(() => { GotoBieuMauPage(LoaiBieuMau); });
         }
 
         public void GotoPage(string page)
@@ -28,6 +44,16 @@ namespace XamMobile.ViewModels.DichVu
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+            LoaiBieuMau = parameters.GetValue<LoaiBieuMauEntity>("obj");
+        }
+
+        public async void GotoBieuMauPage(object obj = null)
+        {
+            var navigationParamters = new NavigationParameters();
+            if (obj == null)
+                obj = new LoaiBieuMauEntity();
+            navigationParamters.Add("obj", obj);
+            await NavigationService.NavigateAsync("BieuMauPage", navigationParamters);
         }
     }
 }

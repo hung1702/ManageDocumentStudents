@@ -102,6 +102,7 @@ namespace XamMobile
             containerRegistry.RegisterForNavigation<ThongBaoVanBanPopup, ThongBaoVanBanPopupViewModel>();
            
             containerRegistry.RegisterForNavigation<DichVuMenuPage, DichVuMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<LoaiBieuMauPage, LoaiBieuMauPageViewModel>();
             containerRegistry.RegisterForNavigation<BieuMauPage, BieuMauPageViewModel>();
             containerRegistry.RegisterForNavigation<LichSuDichVuPage, LichSuDichVuPageViewModel>();
             containerRegistry.RegisterForNavigation<QuyTrinhBieuMauPopUp, QuyTrinhBieuMauPopUpViewModel>();

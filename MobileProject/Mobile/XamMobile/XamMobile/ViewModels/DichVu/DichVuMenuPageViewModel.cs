@@ -10,12 +10,12 @@ namespace XamMobile.ViewModels.DichVu
     public class DichVuMenuPageViewModel : ViewModelBase
     {
         IUserService iUserService;
-        public DelegateCommand GotoBieuMauPageCommand { get; private set; }
+        public DelegateCommand GotoLoaiBieuMauPageCommand { get; private set; }
         public DelegateCommand GotoLichSuDichVuPageCommand { get; private set; }
         public DichVuMenuPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             this.iUserService = iUserService;
-            GotoBieuMauPageCommand = new DelegateCommand(() => { GotoPage("BieuMauPage"); });
+            GotoLoaiBieuMauPageCommand = new DelegateCommand(() => { GotoPage("LoaiBieuMauPage"); });
             GotoLichSuDichVuPageCommand = new DelegateCommand(() => { GotoPage("LichSuDichVuPage"); });
         }
 

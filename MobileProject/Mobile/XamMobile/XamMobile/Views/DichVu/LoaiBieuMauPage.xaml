@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Loại Biểu Mẫu"
+             x:Class="XamMobile.Views.DichVu.LoaiBieuMauPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="10">
+                <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+                    <Button Text="Tạo Tin Tức Mới" Command="{Binding GoToTinTucTaoMoiPageCommand}" CornerRadius="10" VerticalOptions="End" HorizontalOptions="Center" WidthRequest="150" TextColor="{StaticResource MainColor}" BackgroundColor="Wheat" />
+                </StackLayout>
+                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+                <StackLayout Margin="5,0,5,0">
+                    <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Sắp xếp theo"/>
+                        <Picker Grid.Column="1" VerticalOptions="Center" TextColor="Black" x:Name="pickerSortBy" Title="Chọn" 
+                            FontSize="14" Style="{StaticResource TitleLabel}" 
+                            ItemsSource="{Binding SelectedSortBy}" 
+                            SelectedIndexChanged="Picker_OnSelectedSortBy"/>
+                        <Label Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Tất cả biểu mẫu "/>
+                        <Label Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="15" Text="{Binding TotalLoaiBieuMau}"/>
+                    </Grid>
+                </StackLayout>
+                <StackLayout>
+                    <StackLayout>
+                        <Frame HasShadow="True" Margin="0" Padding="10" CornerRadius="10" BackgroundColor="{StaticResource MainColor}">
+                            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="7*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label  Grid.Column="0" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Icon" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    <Label  Grid.Column="1" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Tên biểu mẫu" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout IsVisible="{Binding HasDataAll}">
+                        <ListView IsVisible="{Binding HasDataFilter}" HasUnevenRows="True" ItemSelected="ListView_ItemSelected" ItemsSource="{Binding ListLoaiBieuMau}" RowHeight="60">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Frame HasShadow="True" Margin="5" Padding="10" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                                            <StackLayout>
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="6*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackLayout Grid.Column="0">
+                                                        <Image HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="27" WidthRequest="27" Source="bell_child_red_icon.png"></Image>
+                                                    </StackLayout>
+                                                    <StackLayout Grid.Column="1">
+                                                        <Label TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding Ten}" FontSize="17"></Label>
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label HorizontalOptions="Start" FontSize="13" TextColor="Gray" Style="{StaticResource TitleLabel}" Text="Thời gian xử lý:"></Label>
+                                                            <Label HorizontalOptions="Start" FontSize="13" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" Text="{Binding ThoiGianXuLy}"></Label>
+                                                            <Label HorizontalOptions="Start" FontSize="13" TextColor="Gray" Style="{StaticResource TitleLabel}" Text="ngày"></Label>
+                                                        </StackLayout>
+                                                    </StackLayout>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

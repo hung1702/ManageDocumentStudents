@@ -19,10 +19,18 @@ namespace AppConstant
         public const string APIUploadImage = "api/img";
         public const string APIUpdateNhanVienAvatar = "api/nhanvien/updateavatar";
 
+        //TinTuc
         public const string APIGetAllTinTuc = "api/tintuc/getalltintuc";
         public const string APIInsertOrUpdateTinTuc = "api/tintuc/insertorupdatetintuc";
         public const string APIDeleteTinTuc = "api/tintuc/deletetintuc";
+
+        //MuonSach
         public const string APIGetAllMuonSach = "api/muonSach/getallmuonsach";
         public const string APIInsertOrUpdateMuonSach = "api/muonSach/insertorupdatemuonsach";
+
+        //BieuMau
+        public const string APIGetAllLoaiBieuMau = "api/bieumau/getallloaibieumau";
+        public const string APIInsertOrUpdateLoaiBieuMau = "api/bieumau/insertorupdateloaibieumau";
+        public const string APIDeleteLoaiBieuMau = "api/bieumau/deletetloaibieumau";
     }
 }

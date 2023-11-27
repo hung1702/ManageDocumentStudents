@@ -74,7 +74,7 @@
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="ThoiGianXuLy" Type="int" />
-          <Property Name="QuyTrinh" Type="varchar" MaxLength="3000" />
+          <Property Name="QuyTrinh" Type="nvarchar(max)" />
           <Property Name="NgayTao" Type="datetime" />
           <Property Name="NguoiTao" Type="int" />
         </EntityType>
@@ -703,7 +703,7 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="ThoiGianXuLy" Type="Int32" />
           <NavigationProperty Name="VanBans" Relationship="SoHoaModel.FK_VanBan_LoaiVB" FromRole="LoaiVB" ToRole="VanBan" />
-          <Property Name="QuyTrinh" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="QuyTrinh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
           <Property Name="NguoiTao" Type="Int32" />
         </EntityType>
