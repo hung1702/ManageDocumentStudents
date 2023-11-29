@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using XamMobile.EntityModels;
 using XamMobile.Services.Interface;
+using XamMobile.Views;
 
 namespace XamMobile.ViewModels.TienIch
 {
@@ -103,7 +104,7 @@ namespace XamMobile.ViewModels.TienIch
             if (FromQuanLyTinTuc)
                 GotoPage("TinTucPage");
             else
-                GotoPage("HomeMenuPage");
+                GotoPage(nameof(CommonTabbedPage));
         }
 
         public async void GotoSuaTinTucDetailPage(object obj = null)

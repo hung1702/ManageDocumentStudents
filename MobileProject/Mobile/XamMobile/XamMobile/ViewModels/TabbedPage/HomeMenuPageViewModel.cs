@@ -20,11 +20,9 @@ namespace XamMobile.ViewModels.TabbedPage
 {
     public partial class HomeMenuPageViewModel : ViewModelBase
     {
-        //INotificationService iNotificationService;
         IHoSoService hoSoService;
         ITinTucService iTinTucService;
         IUserService iUserService;
-        //private INavigationService _navigationService;
 
         public CaNhanTabbedPage CurrentPage { get; set; }
 
@@ -73,7 +71,6 @@ namespace XamMobile.ViewModels.TabbedPage
         public DelegateCommand GotoThuVienMenuPageCommand { get; private set; }
         public DelegateCommand GotoCongNoMenuPageCommand { get; private set; }
         public DelegateCommand GotoDichVuMenuPageCommand { get; private set; }
-        //public DelegateCommand GotoTinTucPageCommand { get; private set; }
 
         //HocTap
         public DelegateCommand GotoListDiemPageCommand { get; private set; }
@@ -99,33 +96,31 @@ namespace XamMobile.ViewModels.TabbedPage
         public DelegateCommand GotoHuongDanPageCommand { get; private set; }
         public DelegateCommand GotoHuongDanSlidePageCommand { get; private set; }
 
-
         //CaNhan
         public DelegateCommand GotoTrangCaNhanPageCommand { get; private set; }
         public DelegateCommand GotoLogoutCommand { get; private set; }
         public DelegateCommand GotoTouchPageCommand { get; private set; }
+        public DelegateCommand GotoLogoutPopUpCommand { get; private set; }
+
 
         public HomeMenuPageViewModel(INavigationService navigationService, IHoSoService hoSoService, ITinTucService iTinTucService, IUserService iUserService) : base(navigationService)
         {
             this.hoSoService = hoSoService;
             this.iTinTucService = iTinTucService;
             this.iUserService = iUserService;
-            //_navigationService = navigationService;
 
             Notifications = new ObservableCollection<HoSoEntity>();
 
             //HomeMenuPage
-            GotoUserInfoPageCommand = new DelegateCommand(() => { GotoPage("UserPage"); });
+            GotoUserInfoPageCommand = new DelegateCommand(() => { GotoPage("CaNhanMenuPage"); });
             GotoLogPageCommand = new DelegateCommand(() => { GotoPage("LogPage"); });
             GotoNhanVienPageCommand = new DelegateCommand(() => { GotoPage("NhanVienPage"); });
             GotoHoSoPageCommand = new DelegateCommand(() => { GotoPage("HoSoPage"); });
             GotoDiemMenuPageCommand = new DelegateCommand(() => { GotoPage("DiemMenuPage"); });
             GotoMenuTienIchPageCommand = new DelegateCommand(() => { GotoPage("MenuTienIchPage"); });
-            //GotoThuVienMenuPageCommand = new DelegateCommand(() => { GotoPage("MenuThuVienPage"); });
             GotoThuVienMenuPageCommand = new DelegateCommand(() => { GotoPage("LichSuThuVienPage"); });
             GotoCongNoMenuPageCommand = new DelegateCommand(() => { GotoPage("MenuCongNoPage"); });
             GotoDichVuMenuPageCommand = new DelegateCommand(() => { GotoPage("DichVuMenuPage"); });
-            //GotoTinTucPageCommand = new DelegateCommand(() => { GotoPage("TinTucPage"); });
 
             //HocTap
             GotoListDiemPageCommand = new DelegateCommand(() => { GotoPage("ListDiemPage"); });
@@ -135,11 +130,9 @@ namespace XamMobile.ViewModels.TabbedPage
             //DichVu
             GotoLoaiBieuMauPageCommand = new DelegateCommand(() => { GotoPage("LoaiBieuMauPage"); });
             GotoLichSuDichVuPageCommand = new DelegateCommand(() => { GotoPage("LichSuDichVuPage"); });
-
             GotoHocPhiPageCommand = new DelegateCommand(() => { GotoPage("HocPhiPage"); });
             GotoKhoanDaNopPageCommand = new DelegateCommand(() => { GotoPage("KhoanDaNopPage"); });
             GotoKhoanChuaNopPageCommand = new DelegateCommand(() => { GotoPage("KhoanChuaNopPage"); });
-
             GotoTimKiemSachPageCommand = new DelegateCommand(() => { GotoPage("TimKiemThuVienPage"); });
             GotoLichSuMuonPageCommand = new DelegateCommand(() => { GotoPage("LichSuThuVienPage"); });
 
@@ -153,28 +146,19 @@ namespace XamMobile.ViewModels.TabbedPage
             GotoHuongDanSlidePageCommand = new DelegateCommand(() => { GotoPage("HuongDanSlidePage"); });
 
             //CaNhan
-            //LoadCaNhanPageViewModel(navigationService);
             GotoTrangCaNhanPageCommand = new DelegateCommand(() => { GotoPage(nameof(UserPage)); });
             GotoTouchPageCommand = new DelegateCommand(() => { GotoPage(nameof(VanTayPopUp)); });
             GotoLogoutCommand = new DelegateCommand(async () => { await LogOut(navigationService); });
-
+            GotoLogoutPopUpCommand = new DelegateCommand(() => { GotoPage(nameof(LogOutPopUp)); });
 
             LoadAllData();
         }
 
         public async Task LogOut(INavigationService navigationService)
         {
-            //await CurrentPage.Navigation.PopToRootAsync(true);
-            //await navigationService.GoBackToRootAsync();
-            //await Navigation.PopToRootAsync(true);
             await Application.Current.MainPage.Navigation.PopToRootAsync();
 
         }
-
-        //public async Task GotoMenuPage()
-        //{
-        //    await NavigatetoPage("MenuPage");
-        //}
 
         public void GotoPage(string page)
         {
@@ -220,9 +204,7 @@ namespace XamMobile.ViewModels.TabbedPage
             var navigationParamters = new Prism.Navigation.NavigationParameters();
             if (obj == null)
                 obj = new TinTucEntity();
-            //var fromHomePage = true;
             navigationParamters.Add("obj", obj);
-            //navigationParamters.Add("fromhomepage", fromHomePage);
             await NavigationService.NavigateAsync("TinTucDetailPage", navigationParamters);
         }
 

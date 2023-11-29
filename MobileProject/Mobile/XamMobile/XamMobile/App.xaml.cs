@@ -25,6 +25,8 @@ using XamMobile.ViewModels.VanBan;
 using XamMobile.Views.DichVu;
 using XamMobile.ViewModels.DichVu;
 using XamMobile.ViewModels.TabbedPage;
+using XamMobile.ViewModels.CaNhan;
+using XamMobile.Views.CaNhan;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamMobile
@@ -114,6 +116,8 @@ namespace XamMobile
             containerRegistry.RegisterForNavigation<DichVuTabbedPage, HomeMenuPageViewModel>();
             containerRegistry.RegisterForNavigation<TienIchTabbedPage, HomeMenuPageViewModel>();
             containerRegistry.RegisterForNavigation<CaNhanTabbedPage, HomeMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<CaNhanMenuPage, CaNhanMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<LogOutPopUp, LogOutPopUpViewModel>();
 
             // Services dependence injection
             //containerRegistry.Register<IBaseService, BaseService>();

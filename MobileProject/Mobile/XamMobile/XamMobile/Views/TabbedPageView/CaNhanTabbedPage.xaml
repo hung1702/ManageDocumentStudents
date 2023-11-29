@@ -33,7 +33,7 @@
                 <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Wheat" >
                     <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLogoutCommand}"></TapGestureRecognizer>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLogoutPopUpCommand}"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
                         <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Log out" FontAttributes="Bold" FontSize="18"></Label>
                         <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="logout.png" Aspect="AspectFit"></Image>
