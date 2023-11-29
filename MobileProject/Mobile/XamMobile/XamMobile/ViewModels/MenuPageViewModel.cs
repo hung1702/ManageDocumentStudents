@@ -43,7 +43,7 @@ namespace XamMobile.ViewModels
             MenuItems.Add(new MyMenuItem()
             {
                 Icon = "home_icon_red.png",
-                PageName = nameof(HomeMenuPage),
+                PageName = nameof(CommonTabbedPage),
                 Title = "Trang chủ"
             });
 
