@@ -64,7 +64,7 @@
                                                         <ColumnDefinition Width="6*" />
                                                     </Grid.ColumnDefinitions>
                                                     <StackLayout Grid.Column="0">
-                                                        <Image HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="27" WidthRequest="27" Source="bell_child_red_icon.png"></Image>
+                                                        <Image HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="27" WidthRequest="27" Source="tintuc.png"></Image>
                                                     </StackLayout>
                                                     <StackLayout Grid.Column="1">
                                                         <Label HeightRequest="52" TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding Ten}" FontSize="15"></Label>

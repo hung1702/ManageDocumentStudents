@@ -45,7 +45,7 @@
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoHuongDanSlidePageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
-                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="slide.png" Aspect="AspectFit"></Image>
                                 <Label HorizontalTextAlignment="Center" Text="Slide Hướng Dẫn" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                             </StackLayout>
                         </Frame>

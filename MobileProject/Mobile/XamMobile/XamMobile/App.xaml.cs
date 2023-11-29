@@ -46,7 +46,6 @@ namespace XamMobile
             await NavigationService.NavigateAsync("NavigationPage/LoginPage");
         }
 
-
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             //containerRegistry.RegisterForNavigation<MenuPage>();
@@ -106,11 +105,8 @@ namespace XamMobile
             containerRegistry.RegisterForNavigation<BieuMauPage, BieuMauPageViewModel>();
             containerRegistry.RegisterForNavigation<LichSuDichVuPage, LichSuDichVuPageViewModel>();
             containerRegistry.RegisterForNavigation<QuyTrinhBieuMauPopUp, QuyTrinhBieuMauPopUpViewModel>();
-
-            //containerRegistry.RegisterForNavigation<CommonTabbedPage, CommonTabbedPageViewModel>();
-            //containerRegistry.RegisterForNavigation<HocTapTabbedPage, HocTapTabbedPageViewModel>();
-            //containerRegistry.RegisterForNavigation<TienIchTabbedPage, TienIchTabbedPageViewModel>();
-            //containerRegistry.RegisterForNavigation<CaNhanTabbedPage, CaNhanTabbedPageViewModel>();
+            containerRegistry.RegisterForNavigation<VanTayPopUp, VanTayPopUpViewModel>();
+            containerRegistry.RegisterForNavigation<CommonPopUp, CommonPopUpViewModel>();
 
             containerRegistry.RegisterForNavigation<CommonTabbedPage, HomeMenuPageViewModel>();
             containerRegistry.RegisterForNavigation<HomeMenuPage, HomeMenuPageViewModel>();

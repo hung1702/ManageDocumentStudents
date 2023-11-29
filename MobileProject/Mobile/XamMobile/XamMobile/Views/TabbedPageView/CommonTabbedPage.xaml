@@ -11,7 +11,7 @@
             NavigationPage.HasBackButton="False"
             NavigationPage.HasNavigationBar="False"
             >
-    <local:HomeMenuPage Title="Trang Chủ" IconImageSource="outline_home_black_18.png"/>
+    <local:HomeMenuPage Title="TrangChủ" IconImageSource="outline_home_black_18.png"/>
     <local:HocTapTabbedPage Title="Học Tập" IconImageSource="hoctap.png" />
     <local:DichVuTabbedPage Title="Dịch Vụ" IconImageSource="service.png" />
     <local:TienIchTabbedPage Title="Tiện Ích" IconImageSource="tienich.png" />

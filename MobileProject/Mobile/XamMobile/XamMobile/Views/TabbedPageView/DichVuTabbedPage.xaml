@@ -28,7 +28,7 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLoaiBieuMauPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Loại biểu Mẫu" FontAttributes="Bold" FontSize="18"></Label>
-                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="bieumau.png" Aspect="AspectFit"></Image>
                             </StackLayout>
                         </Frame>
                         <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
@@ -37,7 +37,7 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLichSuDichVuPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Lịch Sử Dịch Vụ" FontAttributes="Bold" FontSize="18"></Label>
-                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="lichsubieumau.png" Aspect="AspectFit"></Image>
                             </StackLayout>
                         </Frame>
                     </StackLayout>

@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamMobile.ViewModels;
+using XamMobile.ViewModels.Diem;
 
 namespace XamMobile.Views.Diem
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DiemMenuPage : ContentPage
 	{
-        private HomeMenuPageViewModel viewModel { get; set; }
+        private DiemMenuPageViewModel viewModel { get; set; }
 
         public DiemMenuPage ()
 		{
