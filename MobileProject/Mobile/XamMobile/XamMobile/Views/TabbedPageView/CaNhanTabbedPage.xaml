@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Cá Nhân"
+             x:Class="XamMobile.Views.CaNhanTabbedPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource MainColor}" HeightRequest="40">
+                <Label Text="Thông Tin Cá Nhân" FontSize="17" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" Style="{StaticResource TitleLabel}" ></Label>
+            </StackLayout>
+
+            <StackLayout Margin="10" Orientation="Vertical">
+                <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                    <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTrangCaNhanPageCommand}"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Thông tin cá nhân" FontAttributes="Bold" FontSize="18"></Label>
+                        <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="manageacc.png" Aspect="AspectFit"></Image>
+                    </StackLayout>
+                </Frame>
+                <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                    <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLogoutCommand}"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Log out" FontAttributes="Bold" FontSize="18"></Label>
+                        <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="logout_icon_red.png" Aspect="AspectFit"></Image>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

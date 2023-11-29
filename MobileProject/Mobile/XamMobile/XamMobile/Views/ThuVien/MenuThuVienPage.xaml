@@ -26,30 +26,26 @@
                             <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
                         </StackLayout>
                     </Frame>
-                    <Grid Margin="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Frame Grid.Column="0" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="0,0,2,0">
-                            <StackLayout>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTimKiemSachPageCommand}"></TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
-                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
-                                <Label HorizontalTextAlignment="Center" Text="Tìm kiếm sách" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
-                            </StackLayout>
-                        </Frame>
-                        <Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="2,0,0,0">
-                            <StackLayout>
+                    <StackLayout Margin="10" Orientation="Vertical">
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLichSuMuonPageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
-                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
-                                <Label HorizontalTextAlignment="Center" Text="Lịch sử mượn" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Lịch sử mượn sách" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
                             </StackLayout>
                         </Frame>
-                    </Grid>
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTimKiemSachPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Tìm kiếm sách" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
                 </StackLayout>
             </Grid>
         </ScrollView>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Học Tập"
+             x:Class="XamMobile.Views.HocTapTabbedPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource MainColor}" HeightRequest="50">
+                <Label Text="Góc Học Tập" FontSize="17" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" Style="{StaticResource TitleLabel}" ></Label>
+            </StackLayout>
+
+            <ScrollView>
+                <StackLayout Margin="10" Orientation="Vertical">
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoListDiemPageCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Kết Quả Học Tập" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoGiaLapDiemPageCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Giả Lập Điểm" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

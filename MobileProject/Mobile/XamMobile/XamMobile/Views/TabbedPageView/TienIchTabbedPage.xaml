@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamMobile.Views.TienIchTabbedPage"
+             Title="Tiện Ích">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource MainColor}" HeightRequest="50">
+                <Label Text="Tiện Ích" FontSize="17" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" Style="{StaticResource TitleLabel}" ></Label>
+            </StackLayout>
+            <ScrollView>
+
+                <StackLayout Margin="10" Orientation="Vertical">
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTinTucPageCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Tin Tức" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                    <!--<Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoThongBaoPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Thông Báo" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>-->
+
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoQuetMaQRPageCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Quét Mã QR" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTruyCapMapPageCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Truy Cập MAP" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--HuongDanSuDung-->
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ToggleHuongDanCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Hướng Dẫn Sử Dụng Hệ Thống" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="expand.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout IsVisible="{Binding IsOpenToggleHuongDan}" Margin="20,0,10,15" Orientation="Vertical">
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoHuongDanPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Văn Bản Hướng Dẫn" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="vanban.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoHuongDanSlidePageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Slide Hướng Dẫn" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoGioiThieuPageCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Giới Thiệu Về Trường" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
