@@ -5,20 +5,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamMobile.EntityModels;
 using XamMobile.Models;
 using XamMobile.Services.Interface;
 using XamMobile.Views;
+using XamMobile.Views.MasterDetail;
 
 namespace XamMobile.ViewModels
 {
-    public class LoginPageViewModel: ViewModelBase
+    public class LoginPageViewModel : ViewModelBase
     {
         public DelegateCommand GotoHomePageCommand { get; private set; }
+        public DelegateCommand GotoHoTroCommand { get; private set; }
+        public DelegateCommand GotoQuenMatKhauCommand { get; private set; }
 
         private string _userName;
-        public string UserName {
+        public string UserName
+        {
             get { return _userName; }
             set { SetProperty(ref _userName, value); }
         }
@@ -34,6 +39,9 @@ namespace XamMobile.ViewModels
         public LoginPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             GotoHomePageCommand = new DelegateCommand(GotoHomePage);
+            GotoHoTroCommand = new DelegateCommand(() => { GotoCommonPopUp("Hỗ trợ", "Liên hệ với Admin để lấy lại mật khẩu", "Đồng ý"); });
+            GotoQuenMatKhauCommand = new DelegateCommand(() => { GotoCommonPopUp("Quên mật khẩu", "Liên hệ với Admin để lấy lại mật khẩu", "Đồng ý"); });
+
             this.iUserService = iUserService;
         }
 
@@ -80,12 +88,21 @@ namespace XamMobile.ViewModels
 
                     //await NavigationService.NavigateAsync(nameof(MenuPage) + "/" + nameof(NavigationPage) + "/" + nameof(HomeMenuPage));
                     await NavigationService.NavigateAsync(nameof(MenuPage) + "/" + nameof(NavigationPage) + "/" + nameof(CommonTabbedPage));
-            }
+                }
                 else
-            {
-                UserDialogs.Instance.Alert("Tài khoản hoặc mật khẩu không hợp lệ");
+                {
+                    UserDialogs.Instance.Alert("Tài khoản hoặc mật khẩu không hợp lệ");
+                }
             }
         }
+
+        public async void GotoCommonPopUp(string tilte, string message, string buttonName)
+        {
+            var navigationParamters = new NavigationParameters();
+            navigationParamters.Add("title", tilte);
+            navigationParamters.Add("message", message);
+            navigationParamters.Add("buttonname", buttonName);
+            await NavigationService.NavigateAsync(nameof(CommonPopUp), navigationParamters);
         }
     }
 }

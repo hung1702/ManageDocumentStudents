@@ -19,7 +19,7 @@
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoListDiemPageCommand}"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                             <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Kết Quả Học Tập" FontAttributes="Bold" FontSize="18"></Label>
-                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="ketquadiem.png" Aspect="AspectFit"></Image>
                         </StackLayout>
                     </Frame>
                     <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
@@ -28,7 +28,7 @@
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoGiaLapDiemPageCommand}"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                             <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Giả Lập Điểm" FontAttributes="Bold" FontSize="18"></Label>
-                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="gialapdiem.png" Aspect="AspectFit"></Image>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

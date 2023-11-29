@@ -22,7 +22,7 @@
                     </Frame>
                 </StackLayout>
                 <StackLayout>
-                    <Label Text="Digitizing Documents" HorizontalOptions="Center" FontSize="26" TextColor="{StaticResource MainColor}"/>
+                    <Label Text="Student Documents" HorizontalOptions="Center" FontSize="26" TextColor="{StaticResource MainColor}"/>
                     <Label Text="Management" HorizontalOptions="Center" FontSize="26" TextColor="{StaticResource MainColor}"/>
                 </StackLayout>
             </StackLayout>
@@ -41,13 +41,19 @@
                 <!--<Entry Grid.Row="1" Placeholder="Tài khoản / Email" PlaceholderColor="#bababa" FontSize="{StaticResource FontSizeXLarge}"/>
                 <Entry Grid.Row="2" Placeholder="Mật khẩu" PlaceholderColor="#bababa" FontSize="{StaticResource FontSizeXLarge}"/>-->
                 <customcontrols:CustomEntry  
-                                Grid.Row="1" Text="{Binding UserName}" Placeholder="Tài khoản / Email" PlaceholderColor="#bababa" FontSize="{StaticResource FontSizeXLarge}"    
-                                TextColor="Gray"  />
+                                Grid.Row="1" Text="{Binding UserName}" Placeholder="Tài khoản / Email" PlaceholderColor="Gray" FontSize="{StaticResource FontSizeXLarge}"    
+                                TextColor="Black"  />
                 <customcontrols:CustomEntry  
-                                Grid.Row="2" Text="{Binding Password}" IsPassword="True" Placeholder="Mật khẩu" PlaceholderColor="#bababa" FontSize="{StaticResource FontSizeXLarge}"  
-                                TextColor="Gray"  />
-                <Button Text="Đăng nhập" Command="{Binding GotoHomePageCommand}" BackgroundColor="{StaticResource MainColor}" TextColor="White" HeightRequest="50" FontSize="{StaticResource FontSizeNormal}" VerticalOptions="Start" Grid.Row="3"/>
-                <Label Text="Đăng nhập ? Hỗ trợ" HorizontalOptions="Center" Grid.Row="4" Margin="0,10,0,0" FontSize="{StaticResource FontSizeXSmall}"/>
+                                Grid.Row="2" Text="{Binding Password}" IsPassword="True" Placeholder="Mật khẩu" PlaceholderColor="Gray" FontSize="{StaticResource FontSizeXLarge}"  
+                                TextColor="Black"  />
+                <Button Text="Đăng nhập" Command="{Binding GotoHomePageCommand}" HorizontalOptions="CenterAndExpand" WidthRequest="150" CornerRadius="10" BackgroundColor="{StaticResource MainColor}" TextColor="White" HeightRequest="50" FontSize="{StaticResource FontSizeNormal}" VerticalOptions="Start" Grid.Row="3"/>
+
+                <StackLayout Grid.Row="4" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoHoTroCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                    <Label Text="Đăng nhập ? Hỗ trợ" TextColor="Blue" HorizontalOptions="Center" Margin="0,10,0,0" FontSize="14"/>
+                </StackLayout>
                 <Grid Grid.Row="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -55,16 +61,17 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Label BackgroundColor="#bababa" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
-                    <!--<Label Text="" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>-->
-                    <!--<Image Source="gf.png" Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0"/>-->
                     <Label Grid.Column="1" VerticalOptions="Center" Margin="10,0,10,0" Text="OR"></Label>
                     <Label BackgroundColor="#bababa" Grid.Column="2" HeightRequest="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center"/>
                 </Grid>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Grid.Row="6" Padding="0,50,0,0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoQuenMatKhauCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
                     <Label Text="Quên mật khẩu" TextColor="{StaticResource MainColor}"  />
                 </StackLayout>
             </Grid>
-            <StackLayout Grid.Row="2" BackgroundColor="#ffffff">
+            <StackLayout Padding="15" Grid.Row="2" BackgroundColor="#ffffff">
                 <Label HeightRequest="1" BackgroundColor="#e3e3e3"/>
                 <Label Text="Code by hung.phantrung@gmail.com" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>

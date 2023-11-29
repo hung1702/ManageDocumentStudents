@@ -17,7 +17,7 @@
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTinTucPageCommand}"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                             <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Tin Tức" FontAttributes="Bold" FontSize="18"></Label>
-                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="tintuc.png" Aspect="AspectFit"></Image>
                         </StackLayout>
                     </Frame>
                     <!--<Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
@@ -36,7 +36,7 @@
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoQuetMaQRPageCommand}"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                             <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Quét Mã QR" FontAttributes="Bold" FontSize="18"></Label>
-                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="qrcode.png" Aspect="AspectFit"></Image>
                         </StackLayout>
                     </Frame>
                     <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
@@ -45,7 +45,7 @@
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTruyCapMapPageCommand}"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                             <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Truy Cập MAP" FontAttributes="Bold" FontSize="18"></Label>
-                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="map.png" Aspect="AspectFit"></Image>
                         </StackLayout>
                     </Frame>
 
@@ -75,7 +75,7 @@
                                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoHuongDanSlidePageCommand}"></TapGestureRecognizer>
                                 </StackLayout.GestureRecognizers>
                                 <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Slide Hướng Dẫn" FontAttributes="Bold" FontSize="18"></Label>
-                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="slide.png" Aspect="AspectFit"></Image>
                             </StackLayout>
                         </Frame>
                     </StackLayout>
@@ -86,7 +86,7 @@
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoGioiThieuPageCommand}"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                             <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Giới Thiệu Về Trường" FontAttributes="Bold" FontSize="18"></Label>
-                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="gioithieutruong.png" Aspect="AspectFit"></Image>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

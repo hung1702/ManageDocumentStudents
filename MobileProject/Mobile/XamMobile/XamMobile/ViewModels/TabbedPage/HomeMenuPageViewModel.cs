@@ -96,11 +96,14 @@ namespace XamMobile.ViewModels.TabbedPage
         public DelegateCommand GotoTinTucPageCommand { get; private set; }
         public DelegateCommand GotoQuetMaQRPageCommand { get; private set; }
         public DelegateCommand GotoTruyCapMapPageCommand { get; private set; }
+        public DelegateCommand GotoHuongDanPageCommand { get; private set; }
+        public DelegateCommand GotoHuongDanSlidePageCommand { get; private set; }
 
 
         //CaNhan
         public DelegateCommand GotoTrangCaNhanPageCommand { get; private set; }
         public DelegateCommand GotoLogoutCommand { get; private set; }
+        public DelegateCommand GotoTouchPageCommand { get; private set; }
 
         public HomeMenuPageViewModel(INavigationService navigationService, IHoSoService hoSoService, ITinTucService iTinTucService, IUserService iUserService) : base(navigationService)
         {
@@ -146,11 +149,13 @@ namespace XamMobile.ViewModels.TabbedPage
             GotoQuetMaQRPageCommand = new DelegateCommand(() => { GotoPage("QuetMaQRPage"); });
             GotoTruyCapMapPageCommand = new DelegateCommand(() => { GotoPage("TruyCapMapPage"); });
             GotoTinTucPageCommand = new DelegateCommand(() => { GotoPage("TinTucPage"); });
-
+            GotoHuongDanPageCommand = new DelegateCommand(() => { GotoPage("HuongDanPage"); });
+            GotoHuongDanSlidePageCommand = new DelegateCommand(() => { GotoPage("HuongDanSlidePage"); });
 
             //CaNhan
             //LoadCaNhanPageViewModel(navigationService);
             GotoTrangCaNhanPageCommand = new DelegateCommand(() => { GotoPage(nameof(UserPage)); });
+            GotoTouchPageCommand = new DelegateCommand(() => { GotoPage(nameof(VanTayPopUp)); });
             GotoLogoutCommand = new DelegateCommand(async () => { await LogOut(navigationService); });
 
 
