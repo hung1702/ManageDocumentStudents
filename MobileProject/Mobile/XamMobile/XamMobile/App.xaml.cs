@@ -24,6 +24,7 @@ using XamMobile.Views.VanBan;
 using XamMobile.ViewModels.VanBan;
 using XamMobile.Views.DichVu;
 using XamMobile.ViewModels.DichVu;
+using XamMobile.ViewModels.TabbedPage;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XamMobile
@@ -55,7 +56,6 @@ namespace XamMobile
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
             containerRegistry.RegisterForNavigation<MenuPage, MenuPageViewModel>();
-            containerRegistry.RegisterForNavigation<HomeMenuPage, HomeMenuPageViewModel>();
             containerRegistry.RegisterForNavigation<UserPage, UserPageViewModel>();
             containerRegistry.RegisterForNavigation<UserPopupPage, UserPopupPageViewModel>();
             containerRegistry.RegisterForNavigation<NotificationPopupPage, NotificationPopupPageViewModel>();
@@ -106,6 +106,18 @@ namespace XamMobile
             containerRegistry.RegisterForNavigation<BieuMauPage, BieuMauPageViewModel>();
             containerRegistry.RegisterForNavigation<LichSuDichVuPage, LichSuDichVuPageViewModel>();
             containerRegistry.RegisterForNavigation<QuyTrinhBieuMauPopUp, QuyTrinhBieuMauPopUpViewModel>();
+
+            //containerRegistry.RegisterForNavigation<CommonTabbedPage, CommonTabbedPageViewModel>();
+            //containerRegistry.RegisterForNavigation<HocTapTabbedPage, HocTapTabbedPageViewModel>();
+            //containerRegistry.RegisterForNavigation<TienIchTabbedPage, TienIchTabbedPageViewModel>();
+            //containerRegistry.RegisterForNavigation<CaNhanTabbedPage, CaNhanTabbedPageViewModel>();
+
+            containerRegistry.RegisterForNavigation<CommonTabbedPage, HomeMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<HomeMenuPage, HomeMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<HocTapTabbedPage, HomeMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<DichVuTabbedPage, HomeMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<TienIchTabbedPage, HomeMenuPageViewModel>();
+            containerRegistry.RegisterForNavigation<CaNhanTabbedPage, HomeMenuPageViewModel>();
 
             // Services dependence injection
             //containerRegistry.Register<IBaseService, BaseService>();

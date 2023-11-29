@@ -138,7 +138,7 @@ namespace XamMobile.ViewModels
                 {
                     NgayCapFormat = UserInfoSetting.UserInfos.NgayCapFormat;
                     NgaySinhFormat = UserInfoSetting.UserInfos.NgaySinhFormat;
-                    ImageSourceAvatar = string.IsNullOrEmpty(UserInfoSetting.UserInfos.AnhDaiDien) ? null : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{UserInfoSetting.UserInfos.AnhDaiDien}");
+                    //ImageSourceAvatar = string.IsNullOrEmpty(UserInfoSetting.UserInfos.AnhDaiDien) ? null : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{UserInfoSetting.UserInfos.AnhDaiDien}");
                     var nhanVienRes = await iUserService.GetNhanVien(UserInfoSetting.UserInfos.NhanVienID);
                     if (nhanVienRes == null)
                     {

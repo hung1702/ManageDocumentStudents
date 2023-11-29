@@ -37,6 +37,7 @@ namespace XamMobile.ViewModels
             this.iUserService = iUserService;
         }
 
+        //tai icon font: https://fonts.google.com/icons
         public async void GotoHomePage()
         {
             //username1: admin1
@@ -77,7 +78,8 @@ namespace XamMobile.ViewModels
                         return;
                     }
 
-                    await NavigationService.NavigateAsync(nameof(MenuPage) + "/" + nameof(NavigationPage) + "/" + nameof(HomeMenuPage));
+                    //await NavigationService.NavigateAsync(nameof(MenuPage) + "/" + nameof(NavigationPage) + "/" + nameof(HomeMenuPage));
+                    await NavigationService.NavigateAsync(nameof(MenuPage) + "/" + nameof(NavigationPage) + "/" + nameof(CommonTabbedPage));
             }
                 else
             {

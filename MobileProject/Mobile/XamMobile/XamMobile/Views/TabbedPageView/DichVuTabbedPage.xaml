@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Dịch Vụ"
+             x:Class="XamMobile.Views.DichVuTabbedPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource MainColor}" HeightRequest="50">
+                <Label Text="Dịch Vụ" FontSize="17" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White" Style="{StaticResource TitleLabel}" ></Label>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Margin="10" Orientation="Vertical">
+
+                    <!--Dich Vu Mot Cua-->
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ToggleDichVuMotCuaCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Loại biểu Mẫu" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="expand.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout IsVisible="{Binding IsOpenToggleDichVuMotCua}" Margin="20,0,10,15" Orientation="Vertical">
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLoaiBieuMauPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Loại biểu Mẫu" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLichSuDichVuPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Lịch Sử Dịch Vụ" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="invoice_red_icon.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+                    <!--Cong No-->
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ToggleCongNoCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Xem học phí" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="expand.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout IsVisible="{Binding IsOpenToggleCongNo}" Margin="20,0,10,15" Orientation="Vertical">
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoHocPhiPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Xem học phí" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="hocphi.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoKhoanDaNopPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Các khoản đã nộp" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="danop.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoKhoanChuaNopPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Các khoản chưa nộp" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="chuanop.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+                    <!--Thu Vien-->
+                    <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                        <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ToggleThuVienCommand}"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Lịch sử mượn sách" FontAttributes="Bold" FontSize="18"></Label>
+                            <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="expand.png" Aspect="AspectFit"></Image>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout IsVisible="{Binding IsOpenToggleThuVien}" Margin="20,0,10,15" Orientation="Vertical">
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoLichSuMuonPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Lịch sử mượn sách" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="thuvien.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                        <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" >
+                            <StackLayout Margin="20,0,20,0" Orientation="Horizontal">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoTimKiemSachPageCommand}"></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+                                <Label HorizontalOptions="StartAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Start" Text="Tìm kiếm sách" FontAttributes="Bold" FontSize="18"></Label>
+                                <Image HorizontalOptions="EndAndExpand" VerticalOptions="Center" Source="thuvien1.png" Aspect="AspectFit"></Image>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

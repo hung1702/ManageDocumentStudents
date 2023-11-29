@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamMobile.ViewModels;
+using XamMobile.ViewModels.TabbedPage;
 using XamMobile.ViewModels.TienIch;
 
 namespace XamMobile.Views
@@ -19,6 +19,14 @@ namespace XamMobile.Views
         public HomeMenuPage()
         {
             InitializeComponent();
+
+            //var tabbedPage = new TabbedPage();
+            //tabbedPage.Children.Add(new TrangChuTabbedPage());
+            //tabbedPage.Children.Add(new HocTapTabbedPage());
+            //tabbedPage.Children.Add(new TienIchTabbedPage());
+            //tabbedPage.Children.Add(new CaNhanTabbedPage());
+            //MainPage = new TabbedPage();
+
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
