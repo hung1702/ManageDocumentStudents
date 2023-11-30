@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using XamMobile.EntityModels;
 using XamMobile.Services.Interface;
+using XamMobile.Views;
 
 namespace XamMobile.ViewModels.TienIch
 {
@@ -59,7 +60,23 @@ namespace XamMobile.ViewModels.TienIch
             set { SetProperty(ref _totalTinTuc, value); }
         }
 
+        private string _textSearch = "";
+        public string TextSearch
+        {
+            get { return _textSearch; }
+            set
+            {
+                if (_textSearch != value)
+                {
+                    _textSearch = value;
+                    OnPropertyChanged(nameof(TextSearch));
+                }
+            }
+        }
+
         public DelegateCommand GoToTinTucTaoMoiPageCommand { get; private set; }
+        public DelegateCommand GotoCommonPopUpCommand { get; private set; }
+        public DelegateCommand TimKiemTinTucCommand { get; private set; }
 
         IUserService iUserService;
         ITinTucService iTinTucService;
@@ -71,6 +88,10 @@ namespace XamMobile.ViewModels.TienIch
             SelectedSortBy = new List<string> { "Ngày tạo mới nhất", "Ngày tạo cũ nhất", "Tiêu đề", "Tin nổi bật"};
 
             GoToTinTucTaoMoiPageCommand = new DelegateCommand(() => { GotoPage("TinTucTaoMoiPage"); });
+            GotoCommonPopUpCommand = new DelegateCommand(() => { GotoPage(nameof(CommonTabbedPage)); });
+            TimKiemTinTucCommand = new DelegateCommand(() => { SearchCommand(TextSearch) ; });
+            TextSearch = "";
+
         }
 
         public void GotoPage(string page)
@@ -122,6 +143,11 @@ namespace XamMobile.ViewModels.TienIch
         public void SortByTieuDe()
         {
             ListTinTuc = DataTinTucList.OrderBy(x => x.Ten).ToList();
+        }
+
+        public void SearchCommand(string text)
+        {
+            ListTinTuc = DataTinTucList.Where(x => x.Ten.ToLower().Contains(text.ToLower())).OrderBy(x => x.Ten).ToList();
         }
 
         public async void GotoTinTucDetailPage(object obj = null)

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               NavigationPage.HasBackButton="True"
+             xmlns:customcontrols="clr-namespace:XamMobile.CustomControls"
              NavigationPage.HasNavigationBar="True"
              Title="Loại Biểu Mẫu"
              x:Class="XamMobile.Views.DichVu.LoaiBieuMauPage">
@@ -9,9 +10,18 @@
         <ScrollView>
             <StackLayout Margin="10">
                 <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
-                    <Button Text="Tạo Tin Tức Mới" Command="{Binding GoToTinTucTaoMoiPageCommand}" CornerRadius="10" VerticalOptions="End" HorizontalOptions="Center" WidthRequest="150" TextColor="{StaticResource MainColor}" BackgroundColor="Wheat" />
+                    <Button Text="Tạo loại biểu mẫu mới" Command="{Binding GoToTinTucTaoMoiPageCommand}" CornerRadius="10" VerticalOptions="End" HorizontalOptions="Center" WidthRequest="150" TextColor="{StaticResource MainColor}" BackgroundColor="Wheat" />
                 </StackLayout>
                 <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                <StackLayout Margin="15,0,15,0" Orientation="Horizontal" HeightRequest="40">
+                    <StackLayout WidthRequest="250">
+                        <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TextSearch}" Placeholder="Nhập tên loại biểu mẫu" HorizontalOptions="FillAndExpand" PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="End">
+                        <Button HeightRequest="40" CornerRadius="10" BackgroundColor="{StaticResource MainColor}" Command="{Binding TimKiemLoaiBieuMauCommand}" Text="Tìm kiếm"></Button>
+                    </StackLayout>
+                </StackLayout>
                 <StackLayout Margin="5,0,5,0">
                     <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
                         <Grid.ColumnDefinitions>

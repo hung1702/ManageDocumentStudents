@@ -48,16 +48,8 @@ namespace XamMobile.ViewModels.NhanVien
         public AddNhanVienPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             this.iUserService = iUserService;
-            this.iUploadFileService = iUploadFileService;
-            _permissionService = Xamarin.Forms.DependencyService.Get<DependencyServices.IPermissionService>();
-            _fileService = Xamarin.Forms.DependencyService.Get<DependencyServices.IFileService>();
-            downloadService = new DownloadService(_permissionService, _fileService);
-
-
 
             SaveNhanVienCommand = new DelegateCommand(async () => { await SaveNhanVien(); });
-            UpdatePictureCommand = new DelegateCommand(async () => { await UpdatePicture(); });
-
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
@@ -79,15 +71,6 @@ namespace XamMobile.ViewModels.NhanVien
             {
                 using (UserDialogs.Instance.Loading("Đang tải"))
                 {
-                    //ImageSourceAvatar = string.IsNullOrEmpty(CurrentData.AnhDaiDien)
-                    //    ? null
-                    //    : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{CurrentData.AnhDaiDien}");
-                    // var nhanVienRes = await iUserService.GetNhanVien(UserInfoSetting.UserInfos.NhanVienID);
-                    //if (nhanVienRes == null)
-                    //{
-                    //    UserDialogs.Instance.Alert("Có lỗi khi tải thông tin nhân viên");
-                    //    return;
-                    //}
                 }
             }
             catch (Exception)
@@ -98,9 +81,6 @@ namespace XamMobile.ViewModels.NhanVien
 
         public async Task SaveNhanVien()
         {
-            //Random rnd = new Random();
-            //CurrentData.NhanVienID = rnd.Next(1, 1000000000);
-            //CurrentData.UserID = rnd.Next(1, 1000000000);
             if (string.IsNullOrEmpty(CurrentData.TenNhanVien))
             {
                 UserDialogs.Instance.Toast("save failed");
@@ -135,38 +115,5 @@ namespace XamMobile.ViewModels.NhanVien
                 }
             }
         }
-
-        private async Task UpdatePicture()
-        {
-            try
-            {
-                await _permissionService.RequestExternalPermssion();
-
-                var fileData = await CrossFilePicker.Current.PickFile();
-                if (fileData == null)
-                    return; // user canceled file picking
-                var fileName = fileData.FileName;
-                var contents = fileData.DataArray;
-
-                var file = new Services.Models.FileUploaded() { FileName = fileName, Content = contents };
-
-                var imageRes = await iUploadFileService.UploadFile(file);
-                if (!string.IsNullOrEmpty(imageRes))
-                {
-                    CurrentData.AnhDaiDien = imageRes.Replace("\"", "");
-                    //var updateAvatar = await iUserService.SaveNhanVien(UserInfoSetting.UserInfos);
-                    //if (!string.IsNullOrEmpty(updateAvatar.AnhDaiDien))
-                    //{
-                    //    ImageSourceAvatar = string.IsNullOrEmpty(UserInfoSetting.UserInfos.AnhDaiDien) ? null : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{UserInfoSetting.UserInfos.AnhDaiDien}");
-                    //    UserDialogs.Instance.Toast("Cập nhật ảnh đại diện thành công");
-                    //}
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Exception choosing file: " + ex.ToString());
-            }
-        }
-
     }
 }

@@ -3,22 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamMobile.Views.NhanVien.NhanVienPage"
              NavigationPage.HasBackButton="True"
+             xmlns:customcontrols="clr-namespace:XamMobile.CustomControls"
              NavigationPage.HasNavigationBar="True"
-             Title="Quản Lý Nhân Viên">
+             Title="Danh Sách Nhân Viên">
     <ContentPage.Content>
         <StackLayout Margin="15">
-            <!--<Label Text="Danh Sach Nhan Vien" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource MainColor}" FontSize="Title" FontAttributes="Bold"/>-->
-            <!--<BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />-->
             <StackLayout Padding="100, 0, 100, 0" Margin="0, 0, 0, 5">
                 <Button Text="Thêm Nhân Viên" CornerRadius="10" Command="{Binding GotoAddNhanVienPageCommand}" BackgroundColor="{StaticResource MainColor}" TextColor="White" HeightRequest="40" FontSize="{StaticResource FontSizeNormal}" VerticalOptions="Start"/>
             </StackLayout>
             <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
 
-            <StackLayout HeightRequest="70">
-                <Label Text="Danh Sách Nhân Viên" HorizontalOptions="CenterAndExpand"  TextColor="Gray" FontSize="20" FontAttributes="Bold"/>
+            <StackLayout Orientation="Vertical">
+                <StackLayout Margin="15,0,15,0" Orientation="Horizontal" HeightRequest="40">
+                    <StackLayout WidthRequest="250">
+                        <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TextSearch}" Placeholder="Nhập tên nhân viên" HorizontalOptions="FillAndExpand" PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                    </StackLayout>
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="End">
+                        <Button HeightRequest="40" CornerRadius="10" BackgroundColor="{StaticResource MainColor}" Command="{Binding TimKiemNhanVienCommand}" Text="Tìm kiếm"></Button>
+                    </StackLayout>
+                </StackLayout>
+                
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Sort by: " VerticalOptions="Center" HorizontalOptions="EndAndExpand"  TextColor="Gray" FontSize="Small" FontAttributes="Bold"/>
-                    <Picker x:Name="pickerSortBy" FontSize="Small" VerticalOptions="Center"  HorizontalOptions="StartAndExpand" Title="Select a sort by" ItemsSource="{Binding SortByList}" SelectedIndexChanged="Picker_OnSelectedSortBy"/>
+                    <Label Text="Sắp xếp theo: " VerticalOptions="Center" HorizontalOptions="EndAndExpand"  TextColor="Gray" FontSize="Small" FontAttributes="Bold"/>
+                    <Picker x:Name="pickerSortBy" FontSize="Small" VerticalOptions="Center"  HorizontalOptions="StartAndExpand" Title="Chọn" ItemsSource="{Binding SortByList}" SelectedIndexChanged="Picker_OnSelectedSortBy"/>
                 </StackLayout>
             </StackLayout>
             <ListView HasUnevenRows="True" ItemSelected="ListView_ItemSelected" ItemsSource="{Binding ListNhanVien}" RowHeight="60">

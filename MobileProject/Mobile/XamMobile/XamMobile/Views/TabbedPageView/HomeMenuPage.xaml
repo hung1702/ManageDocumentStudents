@@ -4,6 +4,7 @@
              xmlns:htmlLabel="clr-namespace:LabelHtml.Forms.Plugin.Abstractions;assembly=HtmlLabel.Forms.Plugin"
              x:Class="XamMobile.Views.HomeMenuPage"
              BackgroundColor="White"
+             Title="TrangChủ"
              NavigationPage.HasBackButton="False"
              NavigationPage.HasNavigationBar="False"
              >
@@ -158,7 +159,7 @@
                                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoThuVienMenuPageCommand}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                     <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="thuvien.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit"></Image>
-                                    <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Thư viên" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                    <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Thư Viện" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -174,17 +175,17 @@
                                         <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoNhanVienPageCommand}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
                                     <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="group.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit"></Image>
-                                    <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Quan Ly Nhan Vien" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                    <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Quản Lý Nhân Viên" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                                 </StackLayout>
                             </Frame>
 
                             <Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Wheat" Margin="2,0,0,0">
                                 <StackLayout>
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoUserInfoPageCommand}"></TapGestureRecognizer>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoClassPageCommand}"></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
-                                    <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="baseline_account_circle_black_18.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit"></Image>
-                                    <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Tài Khoản" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                    <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="lophoc1.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit"></Image>
+                                    <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Quản Lý Lớp Học" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -202,16 +203,15 @@
                                     <Label LineBreakMode="WordWrap"  HorizontalTextAlignment="Center" Text="Tiện Ích" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
                                 </StackLayout>
                             </Frame>
-
-                            <!--<Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke" Margin="2,0,0,0">
-                            <StackLayout>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoThuVienMenuPageCommand}"></TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
-                                <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="taikhoan1.png" Aspect="AspectFit"></Image>
-                                <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Thư viên" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
-                            </StackLayout>
-                        </Frame>-->
+                            <Frame Grid.Column="1" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="Wheat" Margin="2,0,0,0">
+                                <StackLayout>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoUserInfoPageCommand}"></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                    <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="baseline_account_circle_black_18.png" WidthRequest="40" HeightRequest="40" Aspect="AspectFit"></Image>
+                                    <Label LineBreakMode="WordWrap" HorizontalTextAlignment="Center" Text="Tài Khoản" TextColor="#2A2424" FontAttributes="Bold" FontSize="{StaticResource FontSizeNormal}"></Label>
+                                </StackLayout>
+                            </Frame>
                         </Grid>
                     </StackLayout>
                 </Grid>

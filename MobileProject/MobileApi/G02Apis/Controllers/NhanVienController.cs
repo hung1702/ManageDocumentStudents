@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.OData;
 
 namespace G02Apis.Controllers
 {
@@ -71,6 +72,23 @@ namespace G02Apis.Controllers
                 }
 
             }
+        }
+
+        [Route("api/nhanvien/deletenhanvien")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Delete(S_NhanVien model)
+        {
+            var db = new SoHoaEntities();
+            S_NhanVien s_NhanVien = await db.S_NhanVien.FindAsync(model.NhanVienID);
+            if (s_NhanVien == null)
+            {
+                return NotFound();
+            }
+
+            db.S_NhanVien.Remove(s_NhanVien);
+            await db.SaveChangesAsync();
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
     }
 }

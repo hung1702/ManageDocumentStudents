@@ -1,88 +1,108 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             NavigationPage.HasBackButton="True"
-             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="False"
+             xmlns:customcontrols="clr-namespace:XamMobile.CustomControls"
+             NavigationPage.HasNavigationBar="False"
              Title="Tin Tức"
              x:Class="XamMobile.Views.TienIch.TinTucPage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Margin="10">
-                <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
-                    <Button Text="Tạo Tin Tức Mới" Command="{Binding GoToTinTucTaoMoiPageCommand}" CornerRadius="10" VerticalOptions="End" HorizontalOptions="Center" WidthRequest="150" TextColor="{StaticResource MainColor}" BackgroundColor="Wheat" />
-                </StackLayout>
-                <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
-                <StackLayout Margin="5,0,5,0">
-                    <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+        <StackLayout>
+            <StackLayout BackgroundColor="{StaticResource MainColor}" Spacing="30" Orientation="Horizontal" HeightRequest="65">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding GotoCommonPopUpCommand}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+                <Image Margin="18,0,0,0" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Source="backbutton2.png" WidthRequest="25" HeightRequest="25" Aspect="AspectFit"></Image>
+                <Label Text="Tin Tức" FontSize="20" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="White" Style="{StaticResource TitleLabel}" ></Label>
+            </StackLayout>
 
-                        <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Sắp xếp theo"/>
-                        <Picker Grid.Column="1" VerticalOptions="Center" TextColor="Black" x:Name="pickerSortBy" Title="Chọn" 
+            <ScrollView>
+                <StackLayout Margin="10">
+                    <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
+                        <Button Text="Tạo Tin Tức Mới" Command="{Binding GoToTinTucTaoMoiPageCommand}" CornerRadius="10" VerticalOptions="End" HorizontalOptions="Center" WidthRequest="150" TextColor="{StaticResource MainColor}" BackgroundColor="Wheat" />
+                    </StackLayout>
+                    <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
+
+                    <StackLayout Margin="15,0,15,0" Orientation="Horizontal" HeightRequest="40">
+                        <StackLayout WidthRequest="250">
+                            <customcontrols:CustomEntry FontSize="Medium" TextColor="Black" Text="{Binding TextSearch}" Placeholder="Nhập tên tin tức" HorizontalOptions="FillAndExpand" PlaceholderColor="Silver" ></customcontrols:CustomEntry>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="End">
+                            <Button HeightRequest="40" CornerRadius="10" BackgroundColor="{StaticResource MainColor}" Command="{Binding TimKiemTinTucCommand}" Text="Tìm kiếm"></Button>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Margin="5,0,5,0">
+                        <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Sắp xếp theo"/>
+                            <Picker Grid.Column="1" VerticalOptions="Center" TextColor="Black" x:Name="pickerSortBy" Title="Chọn" 
                             FontSize="14" Style="{StaticResource TitleLabel}" 
                             ItemsSource="{Binding SelectedSortBy}" 
                             SelectedIndexChanged="Picker_OnSelectedSortBy"/>
-                        <Label Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Tất cả tin tức "/>
-                        <Label Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="15" Text="{Binding TotalTinTuc}"/>
-                    </Grid>
-                </StackLayout>
-                <StackLayout>
+                            <Label Grid.Column="2" VerticalOptions="Center" HorizontalOptions="End" TextColor="Black" FontSize="15" Text="Tất cả tin tức "/>
+                            <Label Grid.Column="3" VerticalOptions="Center" HorizontalOptions="Start" TextColor="{StaticResource MainColor}" Style="{StaticResource TitleLabel}" FontSize="15" Text="{Binding TotalTinTuc}"/>
+                        </Grid>
+                    </StackLayout>
                     <StackLayout>
-                        <Frame HasShadow="True" Margin="0" Padding="10" CornerRadius="10" BackgroundColor="{StaticResource MainColor}">
-                            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="7*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Label  Grid.Column="0" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Icon" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                    <Label  Grid.Column="1" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Tiêu đề" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                                </Grid>
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout IsVisible="{Binding HasDataAll}">
-                        <ListView IsVisible="{Binding HasDataFilter}" HasUnevenRows="True" ItemSelected="ListView_ItemSelected" ItemsSource="{Binding ListTinTuc}" RowHeight="60">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <Frame HasShadow="True" Margin="5" Padding="10" CornerRadius="10" BackgroundColor="WhiteSmoke">
-                                            <StackLayout>
-                                                <Grid>
-                                                    <Grid.RowDefinitions>
-                                                        <RowDefinition Height="Auto" />
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="6*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <StackLayout Grid.Column="0">
-                                                        <Image HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="27" WidthRequest="27" Source="tintuc.png"></Image>
-                                                    </StackLayout>
-                                                    <StackLayout Grid.Column="1">
-                                                        <Label HeightRequest="52" TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding Ten}" FontSize="15"></Label>
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <!--<Label IsVisible="{Binding IsNoibat}" HorizontalOptions="StartAndExpand" FontSize="14" TextColor="Gray" Style="{StaticResource TitleLabel}" FontAttributes="Italic" Text="Tin nổi bật"></Label>-->
-                                                            <Label HorizontalOptions="EndAndExpand" FontSize="13" TextColor="Gray" Style="{StaticResource TitleLabel}" Text="{Binding NgayTao}"></Label>
+                        <StackLayout>
+                            <Frame HasShadow="True" Margin="0" Padding="10" CornerRadius="10" BackgroundColor="{StaticResource MainColor}">
+                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="7*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label  Grid.Column="0" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Icon" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                        <Label  Grid.Column="1" Grid.Row="0" TextColor="#F8F8FF" Style="{StaticResource TitleLabel}" FontSize="15" Text="Tiêu đề" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout IsVisible="{Binding HasDataAll}">
+                            <ListView IsVisible="{Binding HasDataFilter}" HasUnevenRows="True" ItemSelected="ListView_ItemSelected" ItemsSource="{Binding ListTinTuc}" RowHeight="60">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Frame HasShadow="True" Margin="5" Padding="10" CornerRadius="10" BackgroundColor="WhiteSmoke">
+                                                <StackLayout>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="Auto" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="6*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <StackLayout Grid.Column="0">
+                                                            <Image HorizontalOptions="Center" VerticalOptions="CenterAndExpand" HeightRequest="27" WidthRequest="27" Source="tintuc.png"></Image>
                                                         </StackLayout>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </StackLayout>
-                                        </Frame>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                                        <StackLayout Grid.Column="1">
+                                                            <Label HeightRequest="52" TextColor="Black" Style="{StaticResource TitleLabel}" Text="{Binding Ten}" FontSize="15"></Label>
+                                                            <StackLayout Orientation="Horizontal">
+                                                                <!--<Label IsVisible="{Binding IsNoibat}" HorizontalOptions="StartAndExpand" FontSize="14" TextColor="Gray" Style="{StaticResource TitleLabel}" FontAttributes="Italic" Text="Tin nổi bật"></Label>-->
+                                                                <Label HorizontalOptions="EndAndExpand" FontSize="13" TextColor="Gray" Style="{StaticResource TitleLabel}" Text="{Binding NgayTao}"></Label>
+                                                            </StackLayout>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
                     </StackLayout>
                 </StackLayout>
-            </StackLayout>
-        </ScrollView>
+            </ScrollView>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -62,7 +62,22 @@ namespace XamMobile.ViewModels.DichVu
             set { SetProperty(ref _totalLoaiBieuMau, value); }
         }
 
+        private string _textSearch = "";
+        public string TextSearch
+        {
+            get { return _textSearch; }
+            set
+            {
+                if (_textSearch != value)
+                {
+                    _textSearch = value;
+                    OnPropertyChanged(nameof(TextSearch));
+                }
+            }
+        }
+
         public DelegateCommand GoToBieuMauTaoMoiPageCommand { get; private set; }
+        public DelegateCommand TimKiemLoaiBieuMauCommand { get; private set; }
 
         public LoaiBieuMauPageViewModel(INavigationService navigationService, IUserService iUserService, IBieuMauService iBieuMauService) : base(navigationService)
         {
@@ -71,6 +86,9 @@ namespace XamMobile.ViewModels.DichVu
             SelectedSortBy = new List<string> { "Tên biểu mẫu", "Thời gian xử lý", "Ngày tạo" };
 
             GoToBieuMauTaoMoiPageCommand = new DelegateCommand(() => { GotoPage("BieuMauTaoMoiPage"); });
+            TimKiemLoaiBieuMauCommand = new DelegateCommand(() => { SearchCommand(TextSearch); });
+            TextSearch = "";
+
         }
 
         public void GotoPage(string page)
@@ -117,6 +135,10 @@ namespace XamMobile.ViewModels.DichVu
         public void SortByTen()
         {
             ListLoaiBieuMau = DataLoaiBieuMauList.OrderBy(x => x.Ten).ToList();
+        }
+        public void SearchCommand(string text)
+        {
+            ListLoaiBieuMau = DataLoaiBieuMauList.Where(x => x.Ten.ToLower().Contains(text.ToLower())).OrderBy(x => x.Ten).ToList();
         }
 
         public async void GotoBieuMauPage(object obj = null)

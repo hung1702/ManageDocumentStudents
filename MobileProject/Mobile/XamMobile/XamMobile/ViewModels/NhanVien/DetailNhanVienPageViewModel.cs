@@ -76,11 +76,7 @@ namespace XamMobile.ViewModels.NhanVien
             this.iUserService = iUserService;
             this.iUploadFileService = iUploadFileService;
             UserInfoModel = UserInfoSetting.UserInfos;
-            //ActionDatasource = new ObservableCollection<string>(new List<string>() { "Chỉnh sửa", "Xóa" });
-            _permissionService = Xamarin.Forms.DependencyService.Get<DependencyServices.IPermissionService>();
-            _fileService = Xamarin.Forms.DependencyService.Get<DependencyServices.IFileService>();
-            downloadService = new DownloadService(_permissionService, _fileService);
-            UpdatePictureCommand = new DelegateCommand(async () => { await UpdatePicture(); });
+
             MessagingCenter.Unsubscribe<App, NhanVienEntity>((App)Application.Current, "UpdateNhanVien");
             MessagingCenter.Subscribe<App, NhanVienEntity>((App)Application.Current, "UpdateNhanVien", (o, serverItem) =>
             {
@@ -102,36 +98,6 @@ namespace XamMobile.ViewModels.NhanVien
             DeleteNhanVienCommand = new DelegateCommand(async () => { await DeleteNhanVien(); });
         }
 
-        private async Task UpdatePicture()
-        {
-            try
-            {
-                await _permissionService.RequestExternalPermssion();
-
-                var fileData = await CrossFilePicker.Current.PickFile();
-                if (fileData == null)
-                    return; // user canceled file picking
-                var fileName = fileData.FileName;
-                var contents = fileData.DataArray;
-
-                var imageRes = await iUploadFileService.UploadFile(new Services.Models.FileUploaded() { FileName = fileName, Content = contents });
-                if (!string.IsNullOrEmpty(imageRes))
-                {
-                    CurrentData.AnhDaiDien = imageRes.Replace("\"", "");
-                    var updateAvatar = await iUserService.SaveNhanVien(CurrentData);
-                    if (!string.IsNullOrEmpty(updateAvatar.AnhDaiDien))
-                    {
-                        ImageSourceAvatar = string.IsNullOrEmpty(CurrentData.AnhDaiDien) ? null : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{CurrentData.AnhDaiDien}");
-                        UserDialogs.Instance.Toast("Cập nhật ảnh đại diện thành công");
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Exception choosing file: " + ex.ToString());
-            }
-        }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             CurrentData = parameters.GetValue<NhanVienEntity>("obj");
@@ -148,7 +114,6 @@ namespace XamMobile.ViewModels.NhanVien
             {
                 using (UserDialogs.Instance.Loading("Đang tải"))
                 {
-                    ImageSourceAvatar = string.IsNullOrEmpty(CurrentData.AnhDaiDien) ? null : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{CurrentData.AnhDaiDien}");
                 }
             }
             catch (Exception)

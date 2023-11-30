@@ -159,9 +159,24 @@ namespace XamMobile.ViewModels.Diem
             }
         }
 
+        private string _textSearch = "";
+        public string TextSearch
+        {
+            get { return _textSearch; }
+            set
+            {
+                if (_textSearch != value)
+                {
+                    _textSearch = value;
+                    OnPropertyChanged(nameof(TextSearch));
+                }
+            }
+        }
+
         IUserService iUserService;
         IDiemService iDiemService;
         public DelegateCommand GotoDetailDiemPageCommand { get; private set; }
+        public DelegateCommand TimKiemCommand { get; private set; }
 
         public ListDiemPageViewModel(INavigationService navigationService, IUserService iUserService, IDiemService iDiemService) : base(navigationService)
         {
@@ -169,10 +184,12 @@ namespace XamMobile.ViewModels.Diem
             this.iUserService = iUserService;
             this.iDiemService = iDiemService;
             GotoDetailDiemPageCommand = new DelegateCommand(() => { GotoPage("DetailDiemPage"); });
+            TimKiemCommand = new DelegateCommand(() => { SearchCommand(TextSearch); });
 
             ListDiem = new List<DiemEntity>();
             TenHocKyList = HocKyList.Select(x => GetTenHocKy(x)).ToList();
             SelectedHocky = HocKyList.FirstOrDefault();
+            TextSearch = "";
         }
 
         public void GotoPage(string page)
@@ -256,6 +273,11 @@ namespace XamMobile.ViewModels.Diem
         public void SortByName()
         {
             ListDiem = ListDiem.OrderBy(d => d.TenMonHoc).ToList();
+        }
+
+        public void SearchCommand(string text)
+        {
+            ListDiem = DataDiemList.Where(x => x.TenMonHoc.ToLower().Contains(text.ToLower())).OrderBy(x => x.TenMonHoc).ToList();
         }
 
         public void FilterByHocKy(int selectedIndex)

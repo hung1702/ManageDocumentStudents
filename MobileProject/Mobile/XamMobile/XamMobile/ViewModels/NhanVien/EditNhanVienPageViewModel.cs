@@ -56,77 +56,18 @@ namespace XamMobile.ViewModels.NhanVien
             set { SetProperty(ref _imageSource, value); }
         }
 
-        IPermissionService _permissionService;
-        DownloadService downloadService { get; set; }
-        IFileService _fileService;
         IUserService iUserService;
-        IUploadFileService iUploadFileService;
         public DelegateCommand UpdatePictureCommand { get; private set; }
 
 
-        public EditNhanVienPageViewModel(INavigationService navigationService, IUserService iUserService, IUploadFileService iUploadFileService) : base(navigationService)
+        public EditNhanVienPageViewModel(INavigationService navigationService, IUserService iUserService) : base(navigationService)
         {
             this.iUserService = iUserService;
-            this.iUploadFileService = iUploadFileService;
             UserInfoModel = UserInfoSetting.UserInfos;
-            //ActionDatasource = new ObservableCollection<string>(new List<string>() { "Chỉnh sửa", "Xóa" });
-            _permissionService = Xamarin.Forms.DependencyService.Get<DependencyServices.IPermissionService>();
-            _fileService = Xamarin.Forms.DependencyService.Get<DependencyServices.IFileService>();
-            downloadService = new DownloadService(_permissionService, _fileService);
-            UpdatePictureCommand = new DelegateCommand(async () => { await UpdatePicture(); });
-            MessagingCenter.Unsubscribe<App, NhanVienEntity>((App)Application.Current, "UpdateNhanVien");
-            MessagingCenter.Subscribe<App, NhanVienEntity>((App)Application.Current, "UpdateNhanVien", (o, serverItem) =>
-            {
-                try
-                {
-                    if (serverItem != null)
-                    {
-                        UserInfoSetting.UserInfos = serverItem;
-                        NgayCapFormat = serverItem.NgayCapFormat;
-                        NgaySinhFormat = serverItem.NgaySinhFormat;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    UserDialogs.Instance.Alert("Lỗi cập nhật ui");
-                }
-            });
         }
 
-        private async Task UpdatePicture()
-        {
-            try
-            {
-                await _permissionService.RequestExternalPermssion();
-
-                var fileData = await CrossFilePicker.Current.PickFile();
-                if (fileData == null)
-                    return; // user canceled file picking
-                var fileName = fileData.FileName;
-                var contents = fileData.DataArray;
-
-                var imageRes = await iUploadFileService.UploadFile(new Services.Models.FileUploaded() { FileName = fileName, Content = contents });
-                if (!string.IsNullOrEmpty(imageRes))
-                {
-                    UserInfoSetting.UserInfos.AnhDaiDien = imageRes.Replace("\"", "");
-                    var updateAvatar = await iUserService.SaveNhanVien(UserInfoSetting.UserInfos);
-                    if (!string.IsNullOrEmpty(updateAvatar.AnhDaiDien))
-                    {
-                        ImageSourceAvatar = string.IsNullOrEmpty(UserInfoSetting.UserInfos.AnhDaiDien) ? null : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{UserInfoSetting.UserInfos.AnhDaiDien}");
-                        UserDialogs.Instance.Toast("Cập nhật ảnh đại diện thành công");
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                System.Console.WriteLine("Exception choosing file: " + ex.ToString());
-            }
-        }
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            //var nhanVienId = parameters.GetValue<int>("nhanVienId");
-
             base.OnNavigatedTo(parameters);
             var nhanVienId = 3;
             LoadAllData(nhanVienId);
@@ -140,7 +81,6 @@ namespace XamMobile.ViewModels.NhanVien
                 {
                     NgayCapFormat = UserInfoSetting.UserInfos.NgayCapFormat;
                     NgaySinhFormat = UserInfoSetting.UserInfos.NgaySinhFormat;
-                    ImageSourceAvatar = string.IsNullOrEmpty(UserInfoSetting.UserInfos.AnhDaiDien) ? null : await downloadService.DownloadFileIntoMemory($"{AppConstant.AppConstant.Endpoint}{AppConstant.AppConstant.APIGetImage}{UserInfoSetting.UserInfos.AnhDaiDien}");
                     var nhanVienRes = await iUserService.GetNhanVien(nhanVienId);
                     if (nhanVienRes == null)
                     {
@@ -163,6 +103,5 @@ namespace XamMobile.ViewModels.NhanVien
             navigationParamters.Add("obj", obj);
             await NavigationService.NavigateAsync("UserPopupPage", navigationParamters);
         }
-
     }
 }
