@@ -17,15 +17,7 @@
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" BackgroundColor="White" Padding="5,0,5,0">
-                    <Frame HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
-                        <StackLayout HorizontalOptions="FillAndExpand" Spacing="0">
-                            <StackLayout Orientation="Horizontal" Margin="0,0,0,10" Padding="5,0,5,0">
-                                <Image HorizontalOptions="Start"  HeightRequest="27" WidthRequest="27" Source="bell_child_red_icon.png"></Image>
-                                <Label Margin="0,0,0,5" Text="Thông báo" FontAttributes="Bold" FontSize="Medium" TextColor="{StaticResource MainColor}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
-                            </StackLayout>
-                            <BoxView HeightRequest=".75" BackgroundColor="{StaticResource LightGray}" HorizontalOptions="FillAndExpand" />
-                        </StackLayout>
-                    </Frame>
+
                     <StackLayout Margin="10" Orientation="Vertical">
                         <Frame Padding="10" Margin="3" HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="WhiteSmoke">
                             <StackLayout Margin="20,0,20,0" Orientation="Horizontal">

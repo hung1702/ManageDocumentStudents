@@ -3,6 +3,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 using XamMobile.Services.Interface;
 
 namespace XamMobile.ViewModels.TienIch
@@ -19,7 +20,7 @@ namespace XamMobile.ViewModels.TienIch
         {
             this.iUserService = iUserService;
             GotoHuongDanPageCommand = new DelegateCommand(() => { GotoPage("HuongDanPage"); });
-            GotoHuongDanSlidePageCommand = new DelegateCommand(() => { GotoPage("HuongDanSlidePage"); });
+            GotoHuongDanSlidePageCommand = new DelegateCommand(() => { HuongDanSlideCommand(); });
         }
 
         public void GotoPage(string page)
@@ -35,6 +36,11 @@ namespace XamMobile.ViewModels.TienIch
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
+        }
+
+        public void HuongDanSlideCommand()
+        {
+             Device.OpenUri(new Uri("https://portal.ptit.edu.vn/wp-content/uploads/2021/01/HDSD-HSSV-Ptit.pdf"));
         }
     }
 }
